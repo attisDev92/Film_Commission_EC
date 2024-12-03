@@ -1,0 +1,14 @@
+.login__container {
+  width: 100%;
+  height: 100vh;
+  padding: 2rem;
+}
+
+.login__card {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 10%;
+  height: fit-content;
+}

@@ -1,0 +1,82 @@
+@font-face {
+  font-family: 'Helvetica';
+  src: url('fonts/Helvetica.ttc') format('truetype');
+}
+
+@font-face {
+  font-family: 'Cubano';
+  src: url('fonts/Cubano.ttf') format('truetype');
+}
+
+:root {
+  /* colors */
+  --color-primary-0: #ffffff;
+  --color-primary-100: #d1d7dc;
+  --color-primary-300: #768896;
+  --color-primary-400: #515f6a;
+  --color-primary-500: #2e363c;
+  --color-primary-600: #23292d;
+  --color-primary-700: #171b1e;
+  --color-primary-800: #0b0d0f;
+  --color-primary-900: #000000;
+  --color-secondary-100: #f1d3ff;
+  --color-secondary-200: #e3a6ff;
+  --color-secondary-300: #d47aff;
+  --color-secondary-400: #c64dff;
+  --color-secondary-500: #b821ff;
+  --color-secondary-600: #9d00e6;
+  --color-secondary-700: #7600ad;
+  --color-secondary-800: #4e0073;
+  --color-secondary-900: #27003a;
+  --color-red: #e72635;
+  --color-blue: #60c7f2;
+  --color-yellow: #fab623;
+  --color-green: #00a75a;
+
+  /* types */
+  --font-family-primary: 'Helvetica', Helvetica, Arial;
+  --font-weight-h1: 900;
+  --font-size-h1: 60px;
+  --font-weight-h2: 900;
+  --font-size-h2: 60px;
+  --font-weight-h3: 900;
+  --font-size-h3: 32px;
+  --font-weight-h4: 900;
+  --font-size-h4: 24px;
+  --font-weight-h5: 900;
+  --font-size-h5: 20px;
+  --font-weight-h6: 900;
+  --font-size-h6: 28px;
+  --font-weight-large-bold: 700;
+  --font-size-large-bold: 16px;
+  --font-weight-large-bold: 300;
+  --font-size-large-bold: 16px;
+  --font-weight-large-light: 100;
+  --font-size-large-light: 16px;
+  --font-weight-medium-bold: 700;
+  --font-size-medium-bold: 14px;
+  --font-weight-medium-normal: 300;
+  --font-size-medium-normal: 14px;
+  --font-weight-medium-light: 100;
+  --font-size-medium-light: 14px;
+
+  --font-family-button: 'Cubano', Arial;
+  --font-weight-button: 300;
+  --font-size-button: 18px;
+
+  /* shadows */
+  --button-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+  --button-shadow-hover: 0px 15px 30px rgba(0, 0, 0, 0.25);
+  --card-shadow: 0px 20px 40px rgba(0, 0, 0, 0.15);
+  --card-shadow-hover: 0px 30px 60px rgba(0, 0, 0, 0.35);
+
+  /* border radius */
+  --radio-primary-button: 10px;
+  --radio-secondary-button: 30px;
+  --radio-img: 4px;
+  --radio-card: 5px;
+
+  /* border */
+  --border-primary-button: 1px solid var(--color-primary-0);
+  --border-primary-button-hover: 1px solid var(var(--color-secondary-500));
+}

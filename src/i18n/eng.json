@@ -1,0 +1,115 @@
+{
+  "titulo": "Ecuador Film Comission",
+  "idioma": "eng",
+  "menu": {
+    "locacion": "Locations",
+    "documentos": "Documents",
+    "proveedores": "Directory",
+    "contacto": "Contact"
+  },
+  "logo": {
+    "textoAlternativo": "film comission"
+  },
+  "videoBanner": {
+    "urlVideo": "VIDEOCOMISIONFILMICAECUADORENG"
+  },
+  "locacionSeccion": {
+    "titulo": "Locations",
+    "parrafo": "Ecuador is one of the most biodiverse places on the planet with landscapes ranging from the highlands to the tropical forest. The Andes, the Amazon and the Galapagos Islands are all part of Ecuador.<br>These diverse locations are all very close to each other and have excellent and constant climate conditions, throughout the year. Ecuador has a very rich and varied architecture, reminiscent of different and past eras.<br>There are 21 operational airports in the country, 3 of them, international.",
+    "button": "Show more locations"
+  },
+  "documentosSeccion": {
+    "titulo": "Documents",
+    "lista": [
+      {
+        "nombre": "Audiovisual investment certificate - CIA.",
+        "link": "/downloads/normacertificadosCIA.pdf"
+      },
+      {
+        "nombre": "Film shooting in the Galápagos Islands",
+        "link": "https://www.galapagos.gob.ec/wp-content/uploads/2021/12/MANUAL_DE_REGULACION_PARA_PROYECTOS_DE_FILMACION_Y_FOTOGRAFIA_EN_AREAS_PROTEGIDAS_DE_GALAPAGOS.pdf"
+      },
+      {
+        "nombre": "Use of drones protocol",
+        "link": "/downloads/normasoperativasdrones.pdf"
+      },
+      {
+        "nombre": "Works visas.",
+        "link": "https://www.gob.ec/mremh/tramites/concesion-visa-residencia-temporal-trabajo-actividades-laborales-relacion-dependencia"
+      },
+      {
+        "nombre": "Equipment temporary import",
+        "link": "#"
+      }
+    ]
+  },
+  "proveedoresSeccion": {
+    "titulo": "Film Production Services",
+    "mailtext": "e-mail",
+    "contacttext": "Contact",
+    "phonetext": "Telephone",
+    "webtext": "Website",
+    "proveedores": [
+      {
+        "nombre": "Ecuadorian audiovisual producers corporation - COPAE",
+        "mail": "copae@gmail.com",
+        "contacto": "Mariana Andrade",
+        "telefono": "+593 999733887",
+        "link": "www.copae.ec"
+      },
+      {
+        "nombre": "Ecuadorian audiovisual producers association - APAE",
+        "mail": "info@apae.ec",
+        "contacto": "Nhora Salgado",
+        "telefono": "+593 991373625",
+        "link": "filminecuador.com"
+      },
+      {
+        "nombre": "Ecuadorian film technicians association - AETC",
+        "mail": "aetccomunicacion@gmail.com",
+        "contacto": "",
+        "telefono": "",
+        "link": ""
+      },
+      {
+        "nombre": "Ecuadorian documentary film proffesionals - ADEC",
+        "mail": "adececuador@gmail.com",
+        "contacto": "Marcela Camacho",
+        "telefono": "+593 984374307",
+        "link": "https://www.adececuador.org/"
+      },
+      {
+        "nombre": "Actors association - UNIACTORES",
+        "mail": "afiliadosuniactores@gmail.com",
+        "contacto": "Alex Altamirano",
+        "telefono": "+593 994221100",
+        "link": "https://www.instagram.com/uniactores_ec?igsh=bGU0eXd2ZzNvZjY0"
+      },
+      {
+        "nombre": "Ecuadorian independent film directors and screenwriters association - ADG",
+        "mail": "adgecuadorcine@gmail.com",
+        "contacto": "",
+        "telefono": "",
+        "link": "https://www.facebook.com/ADGECUADOR"
+      },
+      {
+        "nombre": "Audiovisual workers of Ecuador - TAE",
+        "mail": "trabajadoresaudiovisualesec@gmail.com",
+        "contacto": "Gabriela Jaramillo",
+        "telefono": "+593 999004024",
+        "link": "https://www.facebook.com/share/g52efzhCVSFUG51q/?mibextid=LQQJ4d"
+      }
+    ]
+  },
+  "contactoInfo": {
+    "contacto": "Contact",
+    "direccion": "Address",
+    "telf": "Phone",
+    "buttonName": "More information"
+  },
+  "LocationGuide": {
+    "title": "Locations Guide",
+    "categories": "Categories",
+    "filters": "Filters"
+  }
+}

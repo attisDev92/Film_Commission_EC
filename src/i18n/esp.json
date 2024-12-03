@@ -1,0 +1,115 @@
+{
+  "titulo": "Comisión Fílmica",
+  "idioma": "esp",
+  "menu": {
+    "locacion": "Locación",
+    "documentos": "Documentos",
+    "proveedores": "Directorio",
+    "contacto": "Contacto"
+  },
+  "logo": {
+    "textoAlternativo": "comisión fílmica"
+  },
+  "videoBanner": {
+    "urlVideo": "VIDEOCOMISIONFILMICAECUADORESP"
+  },
+  "locacionSeccion": {
+    "titulo": "Locación",
+    "parrafo": "Ecuador es uno de los lugares con mayor biodiversidad del planeta, con paisajes que van desde la alta montaña hasta el bosque tropical.<br>Los Andes, el Amazonas y las Islas Galápagos son todos parte de Ecuador. Estas locaciones tan diversas están muy cerca unas de otras y tienen excelentes y constantes condiciones climáticas, durante todo el año. El Ecuador tiene una arquitectura muy rica y variada, que recuerda a distintas y pasadas épocas.<br>Contamos con 21 aeropuertos operativos en el país, 3 de ellos, internacionales.",
+    "button": "Ver más locaciones"
+  },
+  "documentosSeccion": {
+    "titulo": "Documentos",
+    "lista": [
+      {
+        "nombre": "Certificado de Inversión Audiovisual CIA.",
+        "link": "/downloads/normacertificadosCIA.pdf"
+      },
+      {
+        "nombre": "Filmar en las Islas Galápagos.",
+        "link": "https://www.galapagos.gob.ec/wp-content/uploads/2021/12/MANUAL_DE_REGULACION_PARA_PROYECTOS_DE_FILMACION_Y_FOTOGRAFIA_EN_AREAS_PROTEGIDAS_DE_GALAPAGOS.pdf"
+      },
+      {
+        "nombre": "Protocolo de uso de drones.",
+        "link": "/downloads/normasoperativasdrones.pdf"
+      },
+      {
+        "nombre": "Visas de trabajo temporales.",
+        "link": "https://www.gob.ec/mremh/tramites/concesion-visa-residencia-temporal-trabajo-actividades-laborales-relacion-dependencia"
+      },
+      {
+        "nombre": "Importación temporal de equipos.",
+        "link": "#"
+      }
+    ]
+  },
+  "proveedoresSeccion": {
+    "titulo": "Directorio",
+    "mailtext": "e-mail",
+    "contacttext": "Contacto",
+    "phonetext": "Teléfono",
+    "webtext": "Página web",
+    "proveedores": [
+      {
+        "nombre": "Asociación de productores - COPAE",
+        "mail": "copae@gmail.com",
+        "contacto": "Mariana Andrade",
+        "telefono": "+593 99-973-3887",
+        "link": "www.copae.ec"
+      },
+      {
+        "nombre": "Asociación de productoras - APAE",
+        "mail": "info@apae.ec",
+        "contacto": "Nhora Salgado",
+        "telefono": "+593 991373625",
+        "link": "filminecuador.com"
+      },
+      {
+        "nombre": "Asociación de técnicos - AETC",
+        "mail": "aetccomunicacion@gmail.com",
+        "contacto": "",
+        "telefono": "",
+        "link": ""
+      },
+      {
+        "nombre": "Asociación de documentalistas - ADEC",
+        "mail": "adececuador@gmail.com",
+        "contacto": "Marcela Camacho",
+        "telefono": "0984374307",
+        "link": "https://www.adececuador.org/"
+      },
+      {
+        "nombre": "Asociación de actores y actrices - UNIACTORES",
+        "mail": "afiliadosuniactores@gmail.com",
+        "contacto": "Alex Altamirano",
+        "telefono": "+593 994221100",
+        "link": "https://www.instagram.com/uniactores_ec?igsh=bGU0eXd2ZzNvZjY0"
+      },
+      {
+        "nombre": "Asociación de directores y directoras - ADG",
+        "mail": "adgecuadorcine@gmail.com",
+        "contacto": "",
+        "telefono": "",
+        "link": "https://www.facebook.com/ADGECUADOR"
+      },
+      {
+        "nombre": "Trabajadores audiovisuales del Ecuador - TAE",
+        "mail": "trabajadoresaudiovisualesec@gmail.com",
+        "contacto": "Gabriela Jaramillo",
+        "telefono": "+593 999004024",
+        "link": "https://www.facebook.com/share/g52efzhCVSFUG51q/?mibextid=LQQJ4d"
+      }
+    ]
+  },
+  "contactoInfo": {
+    "contacto": "Contacto",
+    "direccion": "Dirección",
+    "telf": "Teléfonos",
+    "buttonName": "Más información"
+  },
+  "LocationGuide": {
+    "title": "Guía de Locaciones",
+    "categories": "Categorías",
+    "filters": "Filtros"
+  }
+}

@@ -1,0 +1,150 @@
+@import url(../../styles/stylesguide.css);
+
+.slider {
+  display: flex;
+  width: 100%;
+  aspect-ratio: 16 / 6;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.banner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: auto;
+  width: auto;
+  align-items: center;
+}
+
+.card__img {
+  width: 70vw;
+  aspect-ratio: 16 / 9;
+  position: relative;
+}
+
+.image__box img {
+  height: fit-content;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+  transition: 0.5s ease-in-out;
+}
+
+.card__img:hover img {
+  filter: grayscale(1) brightness(0.4);
+}
+
+.card__img:hover .arrows {
+  filter: brightness(20);
+  transform: scale(1.5);
+}
+
+.arrows {
+  transform: scale(1.2);
+  margin: auto;
+  transition: all 0.5s;
+}
+
+.arrows__left {
+  position: absolute;
+  right: 3rem;
+  top: 50%;
+}
+
+.arrows__right {
+  position: absolute;
+  left: 3rem;
+  top: 50%;
+}
+
+.card__principal {
+  background-size: cover;
+  display: grid;
+  position: relative;
+  overflow: hidden;
+}
+
+.card__box {
+  position: absolute;
+  top: 30%;
+  right: 0;
+  opacity: 0;
+  width: 50%;
+  height: 40%;
+  padding: 3rem;
+  cursor: pointer;
+  background-color: #b921ff2d;
+  backdrop-filter: blur(5px);
+  transition: all 0.5s ease-in-out;
+}
+
+.card__box h4 {
+  color: white;
+}
+
+.card__box a {
+  color: var(--color-primary-100);
+  text-decoration: underline;
+}
+
+.card__img:hover .card__box {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.card__principal .image__box {
+  object-fit: cover;
+  transition: all 0.6s ease-in-out;
+}
+
+.card__principal:hover .image__box {
+  scale: 1.1;
+}
+
+@media (max-width: 425px) {
+  .slider {
+    aspect-ratio: 1.5 / 2;
+    width: 100%;
+  }
+
+  .banner {
+    height: 100%;
+  }
+
+  .card__img {
+    aspect-ratio: 1.5 / 2;
+  }
+
+  .image__box img {
+    aspect-ratio: 1.5 / 2;
+  }
+
+  .card__img:hover .arrows {
+    transform: scale(0.9);
+  }
+
+  .arrows {
+    display: none;
+  }
+
+  .card__box {
+    width: 60%;
+    height: 50%;
+    padding: 2rem;
+  }
+
+  .card__box h4 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .card__box {
+    width: 70%;
+    height: 60%;
+  }
+
+  .card__box h4 {
+    font-size: 1.2rem;
+  }
+}

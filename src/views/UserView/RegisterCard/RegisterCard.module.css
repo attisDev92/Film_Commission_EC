@@ -1,0 +1,22 @@
+@import url(/src/styles/stylesGuide.css);
+
+.register__card {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  height: max-content;
+  height: 100%;
+  max-width: 430px;
+  padding: 1rem;
+}
+
+.register__card p {
+  text-align: center;
+  color: var(--color-primary-900);
+  line-height: 1.5rem;
+  padding: 2rem;
+}
+
+.register__card img {
+  width: 70%;
+}

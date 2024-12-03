@@ -1,0 +1,32 @@
+@import url(./styles/stylesguide.css);
+
+.list__links {
+  margin: 0 10rem;
+}
+
+.notfound__container {
+  margin: auto;
+  padding: 15rem 20% 0;
+}
+
+@media (max-width: 1024px) {
+  .list__links {
+    margin: 0 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .list__links {
+    margin: 0 5rem;
+  }
+
+  .notfound__container {
+    padding: 10rem 2rem 0;
+  }
+}
+
+@media (max-width: 430px) {
+  .list__links {
+    margin: 0 1rem;
+  }
+}

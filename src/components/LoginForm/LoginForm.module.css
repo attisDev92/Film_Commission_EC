@@ -1,0 +1,13 @@
+.LoginCard {
+  width: 270px;
+  padding-top: 2rem;
+}
+
+.LoginForm {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+}

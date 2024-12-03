@@ -1,0 +1,135 @@
+@import url(../../../styles/stylesguide.css);
+
+.list__container {
+  padding: 2rem 3rem;
+  text-align: start;
+  border-bottom: 1px solid var(--color-primary-0);
+  transition: all 0.3s ease-in-out;
+}
+
+.list__container:hover {
+  background-color: var(--color-primary-600);
+  border-bottom: 3px solid var(--color-primary-0);
+  transform: scale(1.03);
+  transition: all 0.3s ease-in-out;
+}
+
+.list__container p {
+  font-size: 1.5rem;
+}
+
+.list__container a {
+  color: var(--color-secondary-300);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.Btn {
+  width: 25px;
+  height: 25px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgb(27, 27, 27);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition-duration: 0.3s;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.11);
+}
+
+.svgIcon {
+  fill: rgb(214, 178, 255);
+}
+
+.icon2 {
+  width: 9px;
+  height: 2.5px;
+  border-bottom: 1px solid rgb(182, 143, 255);
+  border-left: 1px solid rgb(182, 143, 255);
+  border-right: 1px solid rgb(182, 143, 255);
+}
+
+.tooltip {
+  position: absolute;
+  right: -53px;
+  opacity: 0;
+  background-color: rgb(12, 12, 12);
+  color: white;
+  padding: 2.5px 5px;
+  border-radius: 2.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 0.2s;
+  pointer-events: none;
+  letter-spacing: 0.25px;
+}
+
+.tooltip::before {
+  position: absolute;
+  content: '';
+  width: 5px;
+  height: 5px;
+  background-color: rgb(12, 12, 12);
+  background-size: 500%;
+  background-position: center;
+  transform: rotate(45deg);
+  left: -5%;
+  transition-duration: 0.3s;
+}
+
+.list__container a:hover .tooltip {
+  opacity: 1;
+  transition-duration: 0.3s;
+}
+
+.list__container a:hover .Btn {
+  background-color: rgb(150, 94, 255);
+  transition-duration: 0.3s;
+}
+
+.list__container a:hover .icon2 {
+  border-bottom: 1px solid rgb(235, 235, 235);
+  border-left: 1px solid rgb(235, 235, 235);
+  border-right: 1px solid rgb(235, 235, 235);
+}
+
+.list__container a:hover .svgIcon {
+  fill: rgb(255, 255, 255);
+  animation: slide-in-top 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 430px) {
+  .list__container {
+    padding: 2rem 1rem;
+  }
+
+  .list__container p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .list__container {
+    padding: 1rem 0;
+  }
+}
