@@ -2,6 +2,7 @@ export interface User {
   username: string | null
   role: 'admin' | 'creator' | null
   userToken: string | null
+  email?: string
 }
 
 export interface UserCredentials {
@@ -68,5 +69,13 @@ export interface LanguageState {
     title: string
     categories: string
     filters: string
+  }
+}
+
+export interface ErrorType extends Error {
+  response?: {
+    data?: {
+      error?: string
+    }
   }
 }

@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { UserCredentials, User, newUser } from '../types'
 import { IsUserExitResponse } from '../views/UserView/Register/UserAuth'
+import { ResponseRecoverMail } from '../components/RecoverPassForm/RecoverPassForm'
+import { UserForChangePass } from '../components/RecoverPassForm/ChangePassForm'
 
 export interface UserData extends User {
   validation: boolean
@@ -78,8 +80,32 @@ export const authEmailUser = async (
 ): Promise<UserData | void> => {
   try {
     const response = await axios.post(`${baseURL}/auth`, { token })
+    return response.data.data
+  } catch (error: unknown) {
+    console.error(error)
+  }
+}
+
+export const sendUserRecoverData = async (
+  userData: Pick<User, 'username' | 'email'>,
+): Promise<ResponseRecoverMail | unknown> => {
+  try {
+    const response = await axios.post(`${baseURL}/recover_pass`, userData)
     return response.data
-  } catch (error) {
-    console.log(error)
+  } catch (error: unknown) {
+    console.error(error)
+    return error
+  }
+}
+
+export const sendNewPassForChange = async (
+  userToChange: UserForChangePass,
+): Promise<ResponseRecoverMail | unknown> => {
+  try {
+    const response = await axios.post(`${baseURL}/change_newpass`, userToChange)
+    return response.data
+  } catch (error: unknown) {
+    console.error(error)
+    return error
   }
 }

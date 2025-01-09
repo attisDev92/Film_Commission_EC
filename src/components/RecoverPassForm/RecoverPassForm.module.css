@@ -1,0 +1,11 @@
+.recoverForm__container {
+  margin: 20%;
+  margin-top: 10%;
+}
+
+.form {
+  padding: 2rem;
+  display: flex;
+  gap: 2rem;
+  flex-flow: column nowrap;
+}

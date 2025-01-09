@@ -8,6 +8,7 @@ import { UserCredentials } from '../../types'
 import { AppDispatch } from '../../Redux/store'
 import { setLoader } from '../../Redux/notificationReducer'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
+import RecoverPass from './RecoverPass'
 
 interface LoginFormProps {
   legend: 'administrador' | 'usuario'
@@ -63,6 +64,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ legend }) => {
           <Button type="submit" variant="contained">
             Login
           </Button>
+          <RecoverPass />
         </form>
       </CardContent>
     </Card>

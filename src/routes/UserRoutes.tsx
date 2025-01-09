@@ -9,6 +9,8 @@ import ProtectRoutes from './ProtectRoutes'
 import { User } from '../types'
 import UserRegister from '../views/UserView/Register/UserRegister'
 import UserAuth from '../views/UserView/Register/UserAuth'
+import RecoverPassForm from '../components/RecoverPassForm/RecoverPassForm'
+import ChangePass from '../components/RecoverPassForm/ChangePassForm'
 
 const UserRoutes: React.FC = () => {
   const user: User | null = useGetUser()
@@ -32,6 +34,8 @@ const UserRoutes: React.FC = () => {
         />
         <Route path="register" element={<UserRegister />} />
         <Route path="auth/:token" element={<UserAuth />} />
+        <Route path="recover" element={<RecoverPassForm />} />
+        <Route path="recover_pass/:token" element={<ChangePass />} />
         <Route element={<ProtectRoutes url="/system/login" role="creator" />}>
           <Route />
         </Route>
