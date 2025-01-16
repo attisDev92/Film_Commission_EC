@@ -8,6 +8,7 @@ const initialState: User = {
   username: null,
   role: null,
   userToken: null,
+  profile: '',
 }
 
 const userSlice: Slice<User> = createSlice({

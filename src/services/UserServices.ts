@@ -4,6 +4,8 @@ import { IsUserExitResponse } from '../views/UserView/Register/UserAuth'
 import { ResponseRecoverMail } from '../components/RecoverPassForm/RecoverPassForm'
 import { UserForChangePass } from '../components/RecoverPassForm/ChangePassForm'
 
+const baseURL = 'http://localhost:3002/api/users'
+
 export interface UserData extends User {
   validation: boolean
 }
@@ -13,9 +15,7 @@ interface LoginResponse {
   data: UserData
 }
 
-const baseURL = 'http://localhost:3002/api/users'
-
-const getConfig = (token: User['userToken']) => {
+export const getConfig = (token: User['userToken']) => {
   return {
     headers: {
       Authorization: `Bearer ${token}`,

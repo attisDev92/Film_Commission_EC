@@ -1,0 +1,18 @@
+.form__container {
+  margin: 5% auto;
+  padding: 2rem;
+  max-width: 700px;
+}
+
+.form {
+  display: flex;
+  margin: 1rem;
+  flex-flow: column wrap;
+  gap: 1.3rem;
+}
+
+.form span {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1rem;
+}

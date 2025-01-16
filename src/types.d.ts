@@ -1,8 +1,12 @@
+import { Dayjs } from 'dayjs'
+
 export interface User {
+  id?: string
   username: string | null
   role: 'admin' | 'creator' | null
   userToken: string | null
   email?: string
+  profile?: string
 }
 
 export interface UserCredentials {
@@ -78,4 +82,16 @@ export interface ErrorType extends Error {
       error?: string
     }
   }
+}
+
+export type UserProfile = {
+  firstName: string
+  lastName: string
+  identificationType: 'Cédula' | 'RUC' | 'Pasaporte'
+  identification: string
+  nationality: string
+  residenceCity: string
+  birthdate: Dayjs
+  cellPhone: string
+  genre: 'Masculino' | 'Femenino' | 'No especificado'
 }
