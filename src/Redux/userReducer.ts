@@ -22,10 +22,13 @@ const userSlice: Slice<User> = createSlice({
       window.localStorage.removeItem('FilmCommisionUser')
       return initialState
     },
+    setUserProfile: (state, action: PayloadAction<string>) => {
+      state.profile = action.payload
+    },
   },
 })
 
-export const { setUser, setLogout } = userSlice.actions
+export const { setUser, setLogout, setUserProfile } = userSlice.actions
 
 export const userLogin = (credentials: UserCredentials) => {
   return async (dispatch: AppDispatch) => {
@@ -63,6 +66,8 @@ export const verifyLoggedToken = (user: User) => {
       dispatch(setUser(user))
     } catch (error) {
       console.error(error)
+      // @ts-expect-error dispatch expect payload action but setLogout dont need arguments
+      dispatch(setLogout())
       dispatch(
         setNotification({
           style: 'error',

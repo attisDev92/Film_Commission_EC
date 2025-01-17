@@ -37,10 +37,9 @@ const RegisterProfile: React.FC = () => {
 
   const onSubmit = (values: UserProfile) => {
     dispatch(setLoader(true))
-    console.log(values)
     dispatch(postProfileData(user?.userToken as string, values)).then(() => {
-      dispatch(setLoader(false))
       navigate('/system')
+      dispatch(setLoader(false))
     })
   }
 

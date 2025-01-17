@@ -3,6 +3,7 @@ import { UserProfile } from '../types'
 import { AppDispatch } from './store'
 import { sendProfileData } from '../services/ProfileServices'
 import { setNotification } from './notificationReducer'
+import { setUserProfile } from './userReducer'
 
 const initialState: UserProfile | object = {}
 
@@ -26,6 +27,7 @@ export const postProfileData = (token: string, profileData: UserProfile) => {
     try {
       const response = await sendProfileData(token, profileData)
       dispatch(setProfile(response))
+      dispatch(setUserProfile(response.id))
     } catch (error) {
       if (error instanceof Error) {
         dispatch(

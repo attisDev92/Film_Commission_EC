@@ -13,7 +13,7 @@ export const sendProfileData = async (
       profileData,
       getConfig(token),
     )
-    return response.data
+    return response.data.data
   } catch (error: unknown) {
     console.error(error)
     return error
