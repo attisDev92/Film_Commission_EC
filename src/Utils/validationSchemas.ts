@@ -1,5 +1,14 @@
 import * as yup from 'yup'
 import dayjs from 'dayjs'
+import { accessibilityList } from '../data/accessibilityList'
+import {
+  categories,
+  subCategoryNatural,
+  subCategoryRural,
+  subCategoryUrban,
+} from '../data/categories'
+import { provinciaList } from '../data/provinciaList'
+import { weatherList } from '../data/weatherList'
 
 const errorValidationMessage = {
   min: 'caracteres mínimo',
@@ -72,12 +81,24 @@ const validationBirthdate = yup
     return dayjs(value).isBefore(eighteenYearsAgo, 'day')
   })
 
+const validationEmail = yup
+  .string()
+  .min(6, `${6} ${errorValidationMessage.min}`)
+  .max(100, `${100} ${errorValidationMessage.max}`)
+  .matches(
+    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+    'El pasaporte puede contener letras y números',
+  )
+
 export const userProfileSchema = yup.object().shape({
   firstName: validationName,
   lastName: validationName,
   typeIdentification: yup.string().oneOf(['Cédula', 'RUC', 'Pasaporte']),
   identification: validateIdentification,
-  nationality: yup.string(),
+  nationality: yup
+    .string()
+    .min(5, `${5} ${errorValidationMessage.min}`)
+    .max(100, `${100} ${errorValidationMessage.max}`),
   residenceCity: validationName,
   birthdate: validationBirthdate,
   cellPhone: validationCellPhone,
@@ -86,9 +107,29 @@ export const userProfileSchema = yup.object().shape({
 
 export const locationSchema = yup.object().shape({
   name: validationName,
+  type: yup.string().oneOf(['Público', 'Privado']),
+  category: yup.string().oneOf(categories),
+  subCategory: yup
+    .string()
+    .oneOf([...subCategoryRural, ...subCategoryNatural, ...subCategoryUrban]),
   description: yup
     .string()
     .min(100, `${100} ${errorValidationMessage.min}`)
     .max(300, `${300} ${errorValidationMessage.max}`)
     .required(errorValidationMessage.required),
+  province: yup.string().oneOf(provinciaList),
+  city: yup
+    .string()
+    .min(10, `${10} ${errorValidationMessage.min}`)
+    .max(100, `${100} ${errorValidationMessage.max}`),
+  requestInformation: yup
+    .string()
+    .min(100, `${100} ${errorValidationMessage.min}`)
+    .max(300, `${300} ${errorValidationMessage.max}`)
+    .required(errorValidationMessage.required),
+  weather: yup.string().oneOf(weatherList),
+  accessibilities: yup.string().oneOf(accessibilityList),
+  contactName: validationName,
+  email: validationEmail,
+  phone: validationCellPhone,
 })
