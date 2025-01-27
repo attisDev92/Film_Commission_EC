@@ -2,7 +2,27 @@
   display: flex;
   flex-flow: column nowrap;
   gap: 1rem;
-  margin: 2rem 5%;
+  max-width: 900px;
+  margin: 2rem auto;
   padding: 2rem;
   background-color: #677a8a;
+}
+
+.form {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 2rem;
+}
+
+.form span {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .card {
+    margin: 2rem 5%;
+    max-width: none;
+  }
 }

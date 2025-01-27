@@ -8,6 +8,8 @@ interface TextInputProps {
   touchedHelper?: boolean
   helperText?: string
   type: string
+  multiline?: boolean
+  rows?: number
 }
 
 const TextInput: React.FC<TextInputProps> = ({
@@ -18,6 +20,8 @@ const TextInput: React.FC<TextInputProps> = ({
   touchedHelper,
   helperText,
   type,
+  multiline,
+  rows,
   ...props
 }) => {
   return (
@@ -30,6 +34,8 @@ const TextInput: React.FC<TextInputProps> = ({
       placeholder={placeholder}
       error={touchedHelper && Boolean(errorHelper)}
       helperText={errorHelper ? touchedHelper && errorHelper : helperText}
+      multiline={multiline}
+      rows={rows}
       {...props}
     />
   )

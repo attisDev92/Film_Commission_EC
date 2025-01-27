@@ -19,7 +19,7 @@ const UserLocations: React.FC = () => {
           variant="contained"
           onClick={() => navigate('/system/register_location')}
         >
-          Registrar
+          Registrar Locación
         </Button>
       </Card>
     </>

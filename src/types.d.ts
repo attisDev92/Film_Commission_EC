@@ -1,4 +1,8 @@
 import { Dayjs } from 'dayjs'
+import { ProvinciasEcuador } from './data/provinciaList'
+import { WeatherTypes } from './data/weatherList'
+import { AccessibilityTypes } from './data/accessibilityList'
+import { Areas, NaturalArea, RuralArea, UrbanArea } from './data/categories'
 
 export interface User {
   id?: string
@@ -94,4 +98,22 @@ export type UserProfile = {
   birthdate: Dayjs
   cellPhone: string
   genre: 'Masculino' | 'Femenino' | 'No especificado'
+}
+
+export interface LocationTypes {
+  name: string
+  type: 'Público' | 'Privado'
+  category: Areas
+  subCategory: (UrbanArea | RuralArea | NaturalArea)[]
+  description: string
+  province: ProvinciasEcuador
+  city: string
+  direction: string
+  googleDireccion: string
+  requestInformation: string
+  weather: WeatherTypes
+  accessibilities: AccessibilityTypes[]
+  contactName: string
+  email: string
+  phone: string
 }

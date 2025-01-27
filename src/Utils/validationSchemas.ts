@@ -83,3 +83,12 @@ export const userProfileSchema = yup.object().shape({
   cellPhone: validationCellPhone,
   genre: yup.string().oneOf(['Masculino', 'Femenino', 'No especificado']),
 })
+
+export const locationSchema = yup.object().shape({
+  name: validationName,
+  description: yup
+    .string()
+    .min(100, `${100} ${errorValidationMessage.min}`)
+    .max(300, `${300} ${errorValidationMessage.max}`)
+    .required(errorValidationMessage.required),
+})
