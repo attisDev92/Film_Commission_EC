@@ -1,0 +1,8 @@
+.card {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+  margin: 2rem 5%;
+  padding: 2rem;
+  background-color: #677a8a;
+}

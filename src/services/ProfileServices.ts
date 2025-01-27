@@ -23,7 +23,7 @@ export const sendProfileData = async (
 export const getProfile = async (token: User['userToken']) => {
   try {
     const response = await axios.get(`${baseURL}`, getConfig(token))
-    return response.data
+    return response.data.data
   } catch (error: unknown) {
     console.log(error)
     return error

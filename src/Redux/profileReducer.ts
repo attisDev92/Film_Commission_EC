@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit'
 import { UserProfile } from '../types'
 import { AppDispatch } from './store'
-import { sendProfileData } from '../services/ProfileServices'
+import { getProfile, sendProfileData } from '../services/ProfileServices'
 import { setNotification } from './notificationReducer'
 import { setUserProfile } from './userReducer'
 
@@ -28,6 +28,32 @@ export const postProfileData = (token: string, profileData: UserProfile) => {
       const response = await sendProfileData(token, profileData)
       dispatch(setProfile(response))
       dispatch(setUserProfile(response.id))
+    } catch (error) {
+      if (error instanceof Error) {
+        dispatch(
+          setNotification({
+            style: 'error',
+            // @ts-expect-error error includes response and data but the unknow not contain the property
+            text: `${error.response.data.error}`,
+          }),
+        )
+      } else {
+        dispatch(
+          setNotification({
+            style: 'error',
+            text: `Error desconocido`,
+          }),
+        )
+      }
+    }
+  }
+}
+
+export const getUserProfile = (token: string) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const response = await getProfile(token)
+      dispatch(setProfile(response))
     } catch (error) {
       if (error instanceof Error) {
         dispatch(

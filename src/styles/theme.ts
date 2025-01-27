@@ -16,6 +16,9 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: ['Helvetica', 'Cubano', 'Roboto'].join(','),
+    body1: {
+      color: '#2e363c',
+    },
   },
 })
 

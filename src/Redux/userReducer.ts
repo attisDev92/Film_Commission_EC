@@ -3,11 +3,13 @@ import { User, UserCredentials } from '../types'
 import { authenticateToken, loginUser } from '../services/UserServices'
 import { setNotification } from './notificationReducer'
 import { AppDispatch } from './store'
+import { getUserProfile } from './profileReducer'
 
 const initialState: User = {
   username: null,
   role: null,
   userToken: null,
+  email: '',
   profile: '',
 }
 
@@ -23,7 +25,9 @@ const userSlice: Slice<User> = createSlice({
       return initialState
     },
     setUserProfile: (state, action: PayloadAction<string>) => {
+      window.localStorage.removeItem('FilmCommisionUser')
       state.profile = action.payload
+      window.localStorage.setItem('FilmCommisionUser', JSON.stringify(state))
     },
   },
 })
@@ -36,6 +40,9 @@ export const userLogin = (credentials: UserCredentials) => {
       const response = await loginUser(credentials)
       window.localStorage.setItem('FilmCommisionUser', JSON.stringify(response))
       dispatch(setUser(response))
+      if (response.profile && response.userToken) {
+        dispatch(getUserProfile(response.userToken))
+      }
       return response
     } catch (error: unknown) {
       console.error(error)
@@ -64,6 +71,9 @@ export const verifyLoggedToken = (user: User) => {
     try {
       await authenticateToken(user.userToken)
       dispatch(setUser(user))
+      if (user.profile && user.userToken) {
+        dispatch(getUserProfile(user.userToken))
+      }
     } catch (error) {
       console.error(error)
       // @ts-expect-error dispatch expect payload action but setLogout dont need arguments

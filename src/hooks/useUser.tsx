@@ -1,10 +1,8 @@
 import { useSelector } from 'react-redux'
 import { GlobalState } from '../Redux/store'
-import { User } from '../types'
+import { User, UserProfile } from '../types'
 
-type UseUser = User | null
-
-export const useGetUser = (): UseUser => {
+export const useGetUser = (): User | null => {
   const user = useSelector<GlobalState, User>((state) => state.user)
 
   if (!user.userToken || !user.username) {
@@ -12,4 +10,13 @@ export const useGetUser = (): UseUser => {
   }
 
   return user
+}
+
+export const useGetProfile = (): UserProfile | null => {
+  const profile = useSelector<GlobalState, UserProfile>(
+    (state) => state.userProfile,
+  )
+
+  if (!profile) return null
+  return profile
 }

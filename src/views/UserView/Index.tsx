@@ -7,13 +7,15 @@ import { setNotification } from '../../Redux/notificationReducer'
 import { Card, Button, Typography } from '@mui/material'
 import styles from './Index.module.css'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
+import Profile from './Profile/Profile'
+import UserLocations from './UserLocations/UserLoations'
 
 const IndexUser: React.FC = () => {
   const user: User | null = useGetUser()
   const dispatch = useDispatch<AppDispatch>()
   const [isUserProfile, setIsUserProfile] = useState<boolean>(false)
   const navigate: NavigateFunction = useNavigate()
-  console.log(user)
+
   useEffect(() => {
     if (user?.profile && user?.profile?.length > 0) {
       setIsUserProfile(true)
@@ -32,8 +34,8 @@ const IndexUser: React.FC = () => {
     <>
       {isUserProfile ? (
         <>
-          <p>Perfil</p>
-          <p>Locaciones</p>
+          <Profile />
+          <UserLocations />
         </>
       ) : (
         <>

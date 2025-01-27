@@ -32,7 +32,9 @@ const App = (): JSX.Element => {
       <Routes>
         <Route path="/*" element={<PublicRoutes />} />
         {user?.role === 'creator' ? null : (
-          <Route path="/admin/*" element={<AdminRoutes />} />
+          <>
+            <Route path="/admin/*" element={<AdminRoutes />} />
+          </>
         )}
         {user?.role === 'admin' ? null : (
           <Route path="/system/*" element={<UserRoutes />} />
