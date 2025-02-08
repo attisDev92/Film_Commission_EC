@@ -69,10 +69,15 @@ export const userLogin = (credentials: UserCredentials) => {
 export const verifyLoggedToken = (user: User) => {
   return async (dispatch: AppDispatch) => {
     try {
-      await authenticateToken(user.userToken)
-      dispatch(setUser(user))
-      if (user.profile && user.userToken) {
-        dispatch(getUserProfile(user.userToken))
+      const response = await authenticateToken(user.userToken)
+      if (response.username) {
+        dispatch(setUser(user))
+        if (user.profile && user.userToken) {
+          dispatch(getUserProfile(user.userToken))
+        }
+      } else {
+        // @ts-expect-error dispatch expect payload action but setLogout dont need arguments
+        dispatch(setLogout())
       }
     } catch (error) {
       console.error(error)
@@ -84,7 +89,6 @@ export const verifyLoggedToken = (user: User) => {
           text: `Error: Intento de autenticación fallido, credenciales invalidas`,
         }),
       )
-      dispatch(setLogout)
     }
   }
 }

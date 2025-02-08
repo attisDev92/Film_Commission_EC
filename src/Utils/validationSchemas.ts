@@ -1,14 +1,8 @@
 import * as yup from 'yup'
 import dayjs from 'dayjs'
-import { accessibilityList } from '../data/accessibilityList'
-import {
-  categories,
-  subCategoryNatural,
-  subCategoryRural,
-  subCategoryUrban,
-} from '../data/categories'
+import { categories } from '../data/categories'
 import { provinciaList } from '../data/provinciaList'
-import { weatherList } from '../data/weatherList'
+import { companyServices } from '../data/companyServiceList'
 
 const errorValidationMessage = {
   min: 'caracteres mínimo',
@@ -90,6 +84,15 @@ const validationEmail = yup
     'El pasaporte puede contener letras y números',
   )
 
+const validationUrl = yup
+  .string()
+  .min(6, `${6} ${errorValidationMessage.min}`)
+  .max(100, `${100} ${errorValidationMessage.max}`)
+  .matches(
+    /^(https?|ftp):\/\/([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6}(:[0-9]{1,5})?(\/[a-zA-Z0-9\-._~:?#[\]@!$&'()*+,;=]*)?$/,
+    'El link debe contener la estructura https:www.website.com',
+  )
+
 export const userProfileSchema = yup.object().shape({
   firstName: validationName,
   lastName: validationName,
@@ -109,9 +112,6 @@ export const locationSchema = yup.object().shape({
   name: validationName,
   type: yup.string().oneOf(['Público', 'Privado']),
   category: yup.string().oneOf(categories),
-  subCategory: yup
-    .string()
-    .oneOf([...subCategoryRural, ...subCategoryNatural, ...subCategoryUrban]),
   description: yup
     .string()
     .min(100, `${100} ${errorValidationMessage.min}`)
@@ -120,16 +120,41 @@ export const locationSchema = yup.object().shape({
   province: yup.string().oneOf(provinciaList),
   city: yup
     .string()
-    .min(10, `${10} ${errorValidationMessage.min}`)
+    .min(3, `${3} ${errorValidationMessage.min}`)
     .max(100, `${100} ${errorValidationMessage.max}`),
   requestInformation: yup
     .string()
     .min(100, `${100} ${errorValidationMessage.min}`)
     .max(300, `${300} ${errorValidationMessage.max}`)
     .required(errorValidationMessage.required),
-  weather: yup.string().oneOf(weatherList),
-  accessibilities: yup.string().oneOf(accessibilityList),
   contactName: validationName,
   email: validationEmail,
   phone: validationCellPhone,
+})
+
+export const companySchema = yup.object().shape({
+  company: validationName,
+  firstActivity: yup.string().oneOf(companyServices),
+  secondActivity: yup.string().oneOf(companyServices),
+  province: yup.string().oneOf(provinciaList),
+  city: yup
+    .string()
+    .min(3, `${3} ${errorValidationMessage.min}`)
+    .max(100, `${100} ${errorValidationMessage.max}`),
+  description: yup
+    .string()
+    .min(100, `${100} ${errorValidationMessage.min}`)
+    .max(300, `${300} ${errorValidationMessage.max}`)
+    .required(errorValidationMessage.required),
+  descriptionENG: yup
+    .string()
+    .min(100, `${100} ${errorValidationMessage.min}`)
+    .max(300, `${300} ${errorValidationMessage.max}`)
+    .required(errorValidationMessage.required),
+  clients: yup.array().required(),
+  email: validationEmail,
+  phone: validationCellPhone,
+  website: validationUrl,
+  urlVideo: validationUrl,
+  typeVideo: yup.string().oneOf(['YouTube', 'Vimeo']),
 })

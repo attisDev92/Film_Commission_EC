@@ -5,7 +5,7 @@ import UserRoutes from './routes/UserRoutes'
 import './App.css'
 import Notification from './components/Notification/Notification'
 import Loader from './components/Loader/Loader'
-import { useEffect } from 'react'
+import { useEffect, JSX } from 'react'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from './Redux/store'
 import { verifyLoggedToken } from './Redux/userReducer'
@@ -26,7 +26,7 @@ const App = (): JSX.Element => {
   }, [dispatch])
 
   return (
-    <>
+    <div style={{ height: '100%' }}>
       <Notification />
       <Loader />
       <Routes>
@@ -40,7 +40,7 @@ const App = (): JSX.Element => {
           <Route path="/system/*" element={<UserRoutes />} />
         )}
       </Routes>
-    </>
+    </div>
   )
 }
 

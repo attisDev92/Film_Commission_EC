@@ -20,3 +20,33 @@
 .register__card img {
   width: 70%;
 }
+
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 2rem;
+  justify-content: space-evenly;
+}
+
+.card {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 1rem;
+  width: 25rem;
+  min-width: 10rem;
+  gap: 1rem;
+  align-items: center;
+}
+
+.imgContainer {
+  width: 40%;
+  height: auto;
+}
+
+.textContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+}

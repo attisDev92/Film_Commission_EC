@@ -13,6 +13,8 @@ import RecoverPassForm from '../components/RecoverPassForm/RecoverPassForm'
 import ChangePass from '../components/RecoverPassForm/ChangePassForm'
 import RegisterProfile from '../views/UserView/RegisterProfile/RegisterProfile'
 import RegisterLoacation from '../views/UserView/UserLocations/RegisterLoation'
+import LocationForm from '../views/UserView/UserLocations/components/LocationForm'
+import RegisterService from '../views/UserView/RegisterService.tsx/RegisterService'
 
 const UserRoutes: React.FC = () => {
   const user: User | null = useGetUser()
@@ -20,7 +22,15 @@ const UserRoutes: React.FC = () => {
 
   return (
     <div
-      style={{ background: backgroundImage, width: '100%', height: '100vh' }}
+      style={{
+        backgroundImage: backgroundImage,
+        width: '100%',
+        minHeight: '100vh',
+        paddingBottom: '3rem',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
     >
       <HeaderSystem />
       <Routes>
@@ -41,10 +51,16 @@ const UserRoutes: React.FC = () => {
         <Route element={<ProtectRoutes url="/system/login" role="creator" />}>
           <Route />
         </Route>
-        {!user?.profile && (
-          <Route path="register_profile" element={<RegisterProfile />} />
+        {user && (
+          <>
+            {!user?.profile && (
+              <Route path="register_profile" element={<RegisterProfile />} />
+            )}
+            <Route path="register_location" element={<RegisterLoacation />} />
+            <Route path="locations/map/:id" element={<LocationForm />} />
+            <Route path="register_service" element={<RegisterService />} />
+          </>
         )}
-        <Route path="register_location" element={<RegisterLoacation />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

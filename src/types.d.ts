@@ -3,6 +3,7 @@ import { ProvinciasEcuador } from './data/provinciaList'
 import { WeatherTypes } from './data/weatherList'
 import { AccessibilityTypes } from './data/accessibilityList'
 import { Areas, NaturalArea, RuralArea, UrbanArea } from './data/categories'
+import { CompanyServices } from './data/companyServiceList'
 
 export interface User {
   id?: string
@@ -108,12 +109,27 @@ export interface LocationTypes {
   description: string
   province: ProvinciasEcuador
   city: string
-  direction: string
-  googleDireccion: string
   requestInformation: string
   weather: WeatherTypes
   accessibilities: AccessibilityTypes[]
   contactName: string
   email: string
   phone: string
+}
+
+export interface CompanyServiceType {
+  company: string
+  firstActivity: CompanyServices
+  secondActivity: CompanyServices
+  province: ProvinciasEcuador
+  city: string
+  direction: string
+  description: string
+  descriptionENG: string
+  clients: string[]
+  email: string
+  phone: string
+  website: string
+  urlVideo: string
+  typeVideo: 'YouTube' | 'Vimeo'
 }

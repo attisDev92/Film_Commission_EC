@@ -1,10 +1,16 @@
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+} from '@mui/material'
 
 interface SelectInputProps {
   id: string
   label: string
   options: string[]
-  onChange?: (e: React.ChangeEvent<{ value: unknown }>) => void
+  onChange?: (e: SelectChangeEvent<unknown>) => void
   required?: boolean
   multiple?: boolean
 }

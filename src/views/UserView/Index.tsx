@@ -9,6 +9,7 @@ import styles from './Index.module.css'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 import Profile from './Profile/Profile'
 import UserLocations from './UserLocations/UserLoations'
+import RegisterServiceLocationCard from './RegisterCard/RegisterServicesLocationCard'
 
 const IndexUser: React.FC = () => {
   const user: User | null = useGetUser()
@@ -31,10 +32,11 @@ const IndexUser: React.FC = () => {
   }, [user, dispatch])
 
   return (
-    <>
+    <div style={{ height: '100%', marginBlockEnd: 20 }}>
       {isUserProfile ? (
         <>
           <Profile />
+          <RegisterServiceLocationCard />
           <UserLocations />
         </>
       ) : (
@@ -53,7 +55,7 @@ const IndexUser: React.FC = () => {
           </Card>
         </>
       )}
-    </>
+    </div>
   )
 }
 
