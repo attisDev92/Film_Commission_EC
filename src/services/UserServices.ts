@@ -15,7 +15,13 @@ interface LoginResponse {
   data: UserData
 }
 
-export const getConfig = (token: User['userToken']) => {
+let token: User['userToken']
+
+export const setUserToken = (userToken: User['userToken']) => {
+  return (token = userToken)
+}
+
+export const getConfig = () => {
   return {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -30,12 +36,13 @@ export const loginUser = async (
     `${baseURL}/login`,
     credentials,
   )
+  setUserToken(response.data.data.userToken)
   return response.data.data
 }
 
-export const authenticateToken = async (token: User['userToken']) => {
+export const authenticateToken = async () => {
   try {
-    const response = await axios.get(`${baseURL}/login`, getConfig(token))
+    const response = await axios.get(`${baseURL}/login`, getConfig())
     return response.data.data
   } catch (error) {
     console.log(error)

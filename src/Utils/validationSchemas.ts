@@ -89,8 +89,8 @@ const validationUrl = yup
   .min(6, `${6} ${errorValidationMessage.min}`)
   .max(100, `${100} ${errorValidationMessage.max}`)
   .matches(
-    /^(https?|ftp):\/\/([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6}(:[0-9]{1,5})?(\/[a-zA-Z0-9\-._~:?#[\]@!$&'()*+,;=]*)?$/,
-    'El link debe contener la estructura https:www.website.com',
+    /^(?:https?:\/\/)?(?:www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)$/,
+    'El link debe tener un formato válido (ej: https://www.ejemplo.com)',
   )
 
 export const userProfileSchema = yup.object().shape({

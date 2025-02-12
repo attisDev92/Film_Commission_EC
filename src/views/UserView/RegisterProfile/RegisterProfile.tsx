@@ -1,7 +1,7 @@
 import { Button, Card, Typography, FormHelperText } from '@mui/material'
 import styles from './RegisterProfile.module.css'
 import { useFormik } from 'formik'
-import { User, UserProfile } from '../../../types'
+import { UserProfile } from '../../../types'
 import TextInput from '../../../components/FormikInputs/TextInput'
 import { userProfileSchema } from '../../../Utils/validationSchemas'
 import SelectInput from '../../../components/FormikInputs/SelectInpu'
@@ -12,7 +12,6 @@ import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../../Redux/store'
 import { setLoader } from '../../../Redux/notificationReducer'
 import { postProfileData } from '../../../Redux/profileReducer'
-import { useGetUser } from '../../../hooks/useUser'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 
 const initialValuesForm: UserProfile = {
@@ -31,13 +30,12 @@ const initialValuesForm: UserProfile = {
 }
 
 const RegisterProfile: React.FC = () => {
-  const user: User | null = useGetUser()
   const navigate: NavigateFunction = useNavigate()
   const dispatch = useDispatch<AppDispatch>()
 
   const onSubmit = (values: UserProfile) => {
     dispatch(setLoader(true))
-    dispatch(postProfileData(user?.userToken as string, values)).then(() => {
+    dispatch(postProfileData(values)).then(() => {
       navigate('/system')
       dispatch(setLoader(false))
     })

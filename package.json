@@ -15,7 +15,7 @@
     "@emotion/styled": "^11.14.0",
     "@fontsource/roboto": "^5.1.1",
     "@mapbox/mapbox-sdk": "^0.16.1",
-    "@mui/icons-material": "^6.4.2",
+    "@mui/icons-material": "^6.4.4",
     "@mui/material": "^6.4.2",
     "@mui/x-date-pickers": "^7.24.1",
     "@react-leaflet/core": "^3.0.0",

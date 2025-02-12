@@ -117,10 +117,16 @@ export interface LocationTypes {
   phone: string
 }
 
+export interface Image {
+  url?: string
+  _id?: string
+}
+
 export interface CompanyServiceType {
+  id?: string
   company: string
   firstActivity: CompanyServices
-  secondActivity: CompanyServices
+  secondActivity?: CompanyServices
   province: ProvinciasEcuador
   city: string
   direction: string
@@ -132,4 +138,6 @@ export interface CompanyServiceType {
   website: string
   urlVideo: string
   typeVideo: 'YouTube' | 'Vimeo'
+  photos?: Image[]
+  logo?: Image
 }

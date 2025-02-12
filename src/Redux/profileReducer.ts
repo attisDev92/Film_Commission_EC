@@ -22,10 +22,10 @@ const userProfileSlice: Slice<UserProfile | object> = createSlice({
 
 export const { setProfile, unsetProfile } = userProfileSlice.actions
 
-export const postProfileData = (token: string, profileData: UserProfile) => {
+export const postProfileData = (profileData: UserProfile) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await sendProfileData(token, profileData)
+      const response = await sendProfileData(profileData)
       dispatch(setProfile(response))
       dispatch(setUserProfile(response.id))
     } catch (error) {
@@ -49,10 +49,10 @@ export const postProfileData = (token: string, profileData: UserProfile) => {
   }
 }
 
-export const getUserProfile = (token: string) => {
+export const getUserProfile = () => {
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await getProfile(token)
+      const response = await getProfile()
       dispatch(setProfile(response))
     } catch (error) {
       if (error instanceof Error) {

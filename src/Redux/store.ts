@@ -1,17 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit'
 import language from './languageReducer'
 import user from './userReducer'
-import { LanguageState, User, UserProfile } from '../types'
+import { CompanyServiceType, LanguageState, User, UserProfile } from '../types'
 import { thunk } from 'redux-thunk'
 import { NotificationState } from './notificationReducer'
 import notification from './notificationReducer'
 import userProfile from './profileReducer'
+import companies from './companiesReducer'
 
 export interface GlobalState {
   user: User
   language: LanguageState
   notification: NotificationState
   userProfile: UserProfile
+  companies: CompanyServiceType[]
 }
 
 const store = configureStore({
@@ -19,6 +21,7 @@ const store = configureStore({
     user,
     userProfile,
     language,
+    companies,
     notification,
   },
   middleware: (getDefaultMddleware) => getDefaultMddleware().concat(thunk),

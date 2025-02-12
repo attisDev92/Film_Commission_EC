@@ -6,8 +6,7 @@ import {
   FormControlLabel,
 } from '@mui/material'
 import styles from './RegisterServices.module.css'
-import { useGetUser } from '../../../hooks/useUser'
-import { CompanyServiceType, User } from '../../../types'
+import { CompanyServiceType } from '../../../types'
 import { useFormik } from 'formik'
 import { initialValues } from '../../../Utils/initialValuesServiceForm'
 import TextInput from '../../../components/FormikInputs/TextInput'
@@ -19,16 +18,20 @@ import { useState } from 'react'
 import ListInput from '../../../components/FormikInputs/ListInput'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../../Redux/store'
-import { setNotification } from '../../../Redux/notificationReducer'
+import { setLoader, setNotification } from '../../../Redux/notificationReducer'
+import { postCompany } from '../../../Redux/companiesReducer'
+import { useNavigate } from 'react-router-dom'
 
 const RegisterService: React.FC = () => {
-  const user: User | null = useGetUser()
   const dispatch = useDispatch<AppDispatch>()
+  const navigate = useNavigate()
 
   const [checkForm, setCheckForm] = useState<boolean>(false)
 
-  const onSubmit = (values: CompanyServiceType) => {
+  const onSubmit = async (values: CompanyServiceType) => {
+    dispatch(setLoader(true))
     if (!checkForm) {
+      dispatch(setLoader(false))
       dispatch(
         setNotification({
           text: 'Debe aceptar las condiciones descritas al final del formulario',
@@ -37,8 +40,21 @@ const RegisterService: React.FC = () => {
       )
       return
     }
-    console.log(user)
-    console.log('Formulario enviado con los valores:', values)
+    try {
+      const newCompany = await dispatch(postCompany(values))
+      console.log(newCompany)
+      navigate(`/system/services/files/${newCompany.id}`)
+    } catch (error: unknown) {
+      console.error(error)
+      dispatch(
+        setNotification({
+          style: 'error',
+          text: `Error al crear un nuevo servicio`,
+        }),
+      )
+    } finally {
+      dispatch(setLoader(false))
+    }
   }
 
   const formik = useFormik({
@@ -73,7 +89,6 @@ const RegisterService: React.FC = () => {
             label="Actividad secundaria"
             options={companyServices}
             {...formik.getFieldProps('secondActivity')}
-            required={true}
           />
         </span>
         <span>

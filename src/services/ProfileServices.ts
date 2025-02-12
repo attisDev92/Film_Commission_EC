@@ -1,18 +1,11 @@
 import axios from 'axios'
 import { getConfig } from './UserServices'
-import { User, UserProfile } from '../types'
+import { UserProfile } from '../types'
 const baseURL = 'http://localhost:3002/api/profile'
 
-export const sendProfileData = async (
-  token: string,
-  profileData: UserProfile,
-) => {
+export const sendProfileData = async (profileData: UserProfile) => {
   try {
-    const response = await axios.post(
-      `${baseURL}`,
-      profileData,
-      getConfig(token),
-    )
+    const response = await axios.post(`${baseURL}`, profileData, getConfig())
     return response.data.data
   } catch (error: unknown) {
     console.error(error)
@@ -20,9 +13,9 @@ export const sendProfileData = async (
   }
 }
 
-export const getProfile = async (token: User['userToken']) => {
+export const getProfile = async () => {
   try {
-    const response = await axios.get(`${baseURL}`, getConfig(token))
+    const response = await axios.get(`${baseURL}`, getConfig())
     return response.data.data
   } catch (error: unknown) {
     console.log(error)

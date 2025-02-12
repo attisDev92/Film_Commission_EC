@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit'
 import { User, UserCredentials } from '../types'
-import { authenticateToken, loginUser } from '../services/UserServices'
+import {
+  authenticateToken,
+  loginUser,
+  setUserToken,
+} from '../services/UserServices'
 import { setNotification } from './notificationReducer'
 import { AppDispatch } from './store'
 import { getUserProfile } from './profileReducer'
@@ -41,7 +45,7 @@ export const userLogin = (credentials: UserCredentials) => {
       window.localStorage.setItem('FilmCommisionUser', JSON.stringify(response))
       dispatch(setUser(response))
       if (response.profile && response.userToken) {
-        dispatch(getUserProfile(response.userToken))
+        dispatch(getUserProfile())
       }
       return response
     } catch (error: unknown) {
@@ -69,11 +73,12 @@ export const userLogin = (credentials: UserCredentials) => {
 export const verifyLoggedToken = (user: User) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await authenticateToken(user.userToken)
+      setUserToken(user.userToken)
+      const response = await authenticateToken()
       if (response.username) {
         dispatch(setUser(user))
         if (user.profile && user.userToken) {
-          dispatch(getUserProfile(user.userToken))
+          dispatch(getUserProfile())
         }
       } else {
         // @ts-expect-error dispatch expect payload action but setLogout dont need arguments

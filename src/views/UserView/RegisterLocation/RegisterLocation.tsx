@@ -11,23 +11,19 @@ import { accessibilityList } from '../../../data/accessibilityList'
 import filterSubcategories from '../../../Utils/filterSubcategories'
 import { initialValues } from '../../../Utils/initialValiuesFormLocation'
 import { postLocationInfo } from '../../../services/LoacationServices'
-import { useSelector } from 'react-redux'
-import { GlobalState } from '../../../Redux/store'
-import { User } from '../../../types'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../../Redux/store'
 import { setLoader, setNotification } from '../../../Redux/notificationReducer'
 import { useNavigate } from 'react-router-dom'
 
 const RegisterLoacation: React.FC = () => {
-  const user = useSelector<GlobalState, User>((state) => state.user)
   const dispatch = useDispatch<AppDispatch>()
   const navigate = useNavigate()
 
   const onSubmit = async (values: LocationTypes) => {
     dispatch(setLoader(true))
     try {
-      const response = await postLocationInfo(user.userToken, values)
+      const response = await postLocationInfo(values)
       console.log(response)
       navigate(`/system/locations/map/${response.id}`)
     } catch (error: unknown) {
