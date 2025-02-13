@@ -1,5 +1,3 @@
-@import url(../../styles/stylesGuide.css);
-
 .container__suppliers {
   display: flex;
   flex-direction: row;
