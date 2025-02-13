@@ -2,7 +2,7 @@ import axios from 'axios'
 import { getConfig } from './UserServices'
 import { LocationTypes } from '../types'
 
-const baseURL = 'http://localhost:3002/api/locations'
+const baseURL = `${import.meta.env.VITE_API_FILMCOMMISSION_URI}/locations`
 
 export const postLocationInfo = async (locationInfo: LocationTypes) => {
   try {

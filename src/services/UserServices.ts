@@ -4,7 +4,7 @@ import { IsUserExitResponse } from '../views/UserView/Register/UserAuth'
 import { ResponseRecoverMail } from '../components/RecoverPassForm/RecoverPassForm'
 import { UserForChangePass } from '../components/RecoverPassForm/ChangePassForm'
 
-const baseURL = 'http://localhost:3002/api/users'
+const baseURL = `${import.meta.env.VITE_API_FILMCOMMISSION_URI}/users`
 
 export interface UserData extends User {
   validation: boolean

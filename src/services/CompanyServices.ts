@@ -2,7 +2,7 @@ import axios from 'axios'
 import { getConfig } from './UserServices'
 import { CompanyServiceType } from '../types'
 
-const baseURL = 'http://localhost:3002/api/companies'
+const baseURL = `${import.meta.env.VITE_API_FILMCOMMISSION_URI}/companies`
 
 export const getCompanies = async () => {
   try {
