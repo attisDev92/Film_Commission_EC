@@ -6,7 +6,7 @@ import rightArrow from '../../../assets/images/Icon-right-arrow.png'
 
 const SuppliersCard: React.FC<Suppliers> = ({
   nombre,
-  mail,
+  email,
   contacto,
   telefono,
   link,
@@ -25,7 +25,7 @@ const SuppliersCard: React.FC<Suppliers> = ({
   }
 
   const handleClockContact = (): void => {
-    const destinatario = mail
+    const destinatario = email
     const link = `mailto:${destinatario}`
     window.location.href = link
   }
@@ -54,7 +54,7 @@ const SuppliersCard: React.FC<Suppliers> = ({
               </a>
             </li>
             <li>
-              {text.proveedoresSeccion.mailtext}: {mail}
+              {text.proveedoresSeccion.mailtext}: {email}
             </li>
           </ul>
 

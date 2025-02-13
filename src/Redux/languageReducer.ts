@@ -4,16 +4,20 @@ import spanishFile from '../i18n/esp.json'
 import { LanguageState } from '../types'
 
 type LanguageOptions = 'eng' | 'esp'
+
 const initialState: LanguageState = englishFile
 
 const languageSlice: Slice<LanguageState> = createSlice({
   name: 'language',
   initialState,
   reducers: {
-    changeLanguage: (_state, actions: PayloadAction<LanguageOptions>) => {
+    changeLanguage: (
+      _state,
+      actions: PayloadAction<LanguageOptions>,
+    ): LanguageState => {
       if (actions.payload === 'eng') {
         return englishFile
-      } else if (actions.payload == 'esp') {
+      } else {
         return spanishFile
       }
     },

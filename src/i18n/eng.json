@@ -52,49 +52,49 @@
     "proveedores": [
       {
         "nombre": "Ecuadorian audiovisual producers corporation - COPAE",
-        "mail": "copae@gmail.com",
+        "email": "copae@gmail.com",
         "contacto": "Mariana Andrade",
         "telefono": "+593 999733887",
         "link": "www.copae.ec"
       },
       {
         "nombre": "Ecuadorian audiovisual producers association - APAE",
-        "mail": "info@apae.ec",
+        "email": "info@apae.ec",
         "contacto": "Nhora Salgado",
         "telefono": "+593 991373625",
         "link": "filminecuador.com"
       },
       {
         "nombre": "Ecuadorian film technicians association - AETC",
-        "mail": "aetccomunicacion@gmail.com",
+        "email": "aetccomunicacion@gmail.com",
         "contacto": "",
         "telefono": "",
         "link": ""
       },
       {
         "nombre": "Ecuadorian documentary film proffesionals - ADEC",
-        "mail": "adececuador@gmail.com",
+        "email": "adececuador@gmail.com",
         "contacto": "Marcela Camacho",
         "telefono": "+593 984374307",
         "link": "https://www.adececuador.org/"
       },
       {
         "nombre": "Actors association - UNIACTORES",
-        "mail": "afiliadosuniactores@gmail.com",
+        "email": "afiliadosuniactores@gmail.com",
         "contacto": "Alex Altamirano",
         "telefono": "+593 994221100",
         "link": "https://www.instagram.com/uniactores_ec?igsh=bGU0eXd2ZzNvZjY0"
       },
       {
         "nombre": "Ecuadorian independent film directors and screenwriters association - ADG",
-        "mail": "adgecuadorcine@gmail.com",
+        "email": "adgecuadorcine@gmail.com",
         "contacto": "",
         "telefono": "",
         "link": "https://www.facebook.com/ADGECUADOR"
       },
       {
         "nombre": "Audiovisual workers of Ecuador - TAE",
-        "mail": "trabajadoresaudiovisualesec@gmail.com",
+        "email": "trabajadoresaudiovisualesec@gmail.com",
         "contacto": "Gabriela Jaramillo",
         "telefono": "+593 999004024",
         "link": "https://www.facebook.com/share/g52efzhCVSFUG51q/?mibextid=LQQJ4d"
