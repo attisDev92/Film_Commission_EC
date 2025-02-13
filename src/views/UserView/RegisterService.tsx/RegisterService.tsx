@@ -43,7 +43,6 @@ const RegisterService: React.FC = () => {
     }
     try {
       const newCompany = await dispatch(postCompany(values))
-      console.log(newCompany)
       navigate(`/system/services/files/${newCompany.id}`)
     } catch (error: unknown) {
       console.error(error)

@@ -6,6 +6,7 @@ import {
   destroyCompanyFile,
   getUserCompanies,
   postCompanyFile,
+  putCompany,
   sendNewCompanyService,
 } from '../services/CompanyServices'
 import { setNotification } from './notificationReducer'
@@ -30,12 +31,9 @@ const companiesSlice: Slice<CompanyServiceType[]> = createSlice({
       action: PayloadAction<CompanyServiceType>,
     ) => {
       const companyUpdated = action.payload
-      const indexToReplace = state.findIndex(
-        (company) => company.id === companyUpdated.id,
+      return state.map((company) =>
+        company.id === companyUpdated.id ? companyUpdated : company,
       )
-      if (indexToReplace !== -1) {
-        state[indexToReplace] = companyUpdated
-      }
     },
     removeCompany: (
       state: CompanyServiceType[],
@@ -132,7 +130,7 @@ export const editFile = (formData: FormData) => {
 export const editCompany = (companyEdited: CompanyServiceType) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await postCompany(companyEdited)
+      const response = await putCompany(companyEdited)
       dispatch(updateCompany(response))
     } catch (error) {
       if (error instanceof Error) {

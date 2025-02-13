@@ -18,7 +18,7 @@ export const getProfile = async () => {
     const response = await axios.get(`${baseURL}`, getConfig())
     return response.data.data
   } catch (error: unknown) {
-    console.log(error)
+    console.error(error)
     return error
   }
 }

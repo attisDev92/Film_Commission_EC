@@ -34,6 +34,7 @@ import { provinciaList } from '../../../data/provinciaList'
 import { useFormik } from 'formik'
 import { CompanyServiceType } from '../../../types'
 import ListInput from '../../../components/FormikInputs/ListInput'
+import { editCompany } from '../../../Redux/companiesReducer'
 
 const EditCompany: React.FC = () => {
   const { id } = useParams()
@@ -59,9 +60,9 @@ const EditCompany: React.FC = () => {
   }
 
   const onSubmit = async (values: CompanyServiceType) => {
+    dispatch(setLoader(true))
     try {
-      console.log('nuwvos datos: ', values)
-
+      await dispatch(editCompany(values))
       dispatch(
         setNotification({
           style: 'success',
@@ -77,6 +78,8 @@ const EditCompany: React.FC = () => {
           text: 'Error al guardar los cambios',
         }),
       )
+    } finally {
+      dispatch(setLoader(false))
     }
   }
 

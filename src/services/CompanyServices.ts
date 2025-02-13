@@ -57,10 +57,10 @@ export const destroyCompanyFile = async (fileId: string, companyId: string) => {
   }
 }
 
-export const postCompany = async (companyEdited: CompanyServiceType) => {
+export const putCompany = async (companyEdited: CompanyServiceType) => {
   try {
-    const response = await axios.post(
-      `${baseURL}/edit/${companyEdited.id}`,
+    const response = await axios.put(
+      `${baseURL}/edit`,
       companyEdited,
       getConfig(),
     )
