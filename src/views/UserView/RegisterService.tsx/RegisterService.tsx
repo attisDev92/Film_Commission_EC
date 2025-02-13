@@ -4,6 +4,7 @@ import {
   Button,
   Checkbox,
   FormControlLabel,
+  Switch,
 } from '@mui/material'
 import styles from './RegisterServices.module.css'
 import { CompanyServiceType } from '../../../types'
@@ -149,6 +150,25 @@ const RegisterService: React.FC = () => {
           formik={formik}
         />
         <span>
+          <FormControlLabel
+            control={
+              <Switch
+                color="success"
+                checked={formik.values.activeWhatsapp || false}
+                onChange={(e) =>
+                  formik.setFieldValue('activeWhatsapp', e.target.checked)
+                }
+              />
+            }
+            label="Pueden contactarlo por WhatsApp y/o teléfono celular."
+          />
+          <Typography variant="body2">
+            *IMPORTANTE: Si no marca esta casilla su teléfono celular
+            permanecerá oculto a otros usuarios. Solo el e-mail será visible
+            para otros usuarios.
+          </Typography>
+        </span>
+        <span>
           <TextInput
             id="email"
             type="text"
@@ -204,6 +224,7 @@ const RegisterService: React.FC = () => {
           <FormControlLabel
             control={
               <Checkbox
+                color="success"
                 checked={checkForm}
                 onChange={(e) => setCheckForm(e.target.checked)}
               />

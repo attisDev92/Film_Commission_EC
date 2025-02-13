@@ -11,7 +11,9 @@ import {
 import { useGetProfile, useGetUser } from '../../../hooks/useUser'
 import { UserProfile, User } from '../../../types'
 import styles from './Profile.module.css'
-import { ImageAspectRatio } from '@mui/icons-material'
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd'
+import DirectionsIcon from '@mui/icons-material/Directions'
+import AttachEmailIcon from '@mui/icons-material/AttachEmail'
 
 const Profile = () => {
   const user: User | null = useGetUser()
@@ -28,7 +30,7 @@ const Profile = () => {
         <ListItem>
           <ListItemAvatar>
             <Avatar>
-              <ImageAspectRatio />
+              <AssignmentIndIcon />
             </Avatar>
           </ListItemAvatar>
           <ListItemText
@@ -43,7 +45,7 @@ const Profile = () => {
         <ListItem>
           <ListItemAvatar>
             <Avatar>
-              <ImageAspectRatio />
+              <DirectionsIcon />
             </Avatar>
           </ListItemAvatar>
           <ListItemText
@@ -58,7 +60,7 @@ const Profile = () => {
         <ListItem>
           <ListItemAvatar>
             <Avatar>
-              <ImageAspectRatio />
+              <AttachEmailIcon />
             </Avatar>
           </ListItemAvatar>
           <ListItemText primary="Correo electrónico" secondary={user?.email} />

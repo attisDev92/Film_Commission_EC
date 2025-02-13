@@ -56,3 +56,25 @@ export const destroyCompanyFile = async (fileId: string, companyId: string) => {
     console.error(error)
   }
 }
+
+export const postCompany = async (companyEdited: CompanyServiceType) => {
+  try {
+    const response = await axios.post(
+      `${baseURL}/edit/${companyEdited.id}`,
+      companyEdited,
+      getConfig(),
+    )
+    return response.data.data
+  } catch (error: unknown) {
+    console.error(error)
+  }
+}
+
+export const destroyCompany = async (companyId: string) => {
+  try {
+    const response = await axios.delete(`${baseURL}/${companyId}`, getConfig())
+    return response.data
+  } catch (error: unknown) {
+    console.error(error)
+  }
+}

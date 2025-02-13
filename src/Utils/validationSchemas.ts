@@ -16,7 +16,6 @@ const validationName = yup
   .string()
   .min(3, `${3} ${errorValidationMessage.min}`)
   .max(40, `${3} ${errorValidationMessage.max}`)
-  .required(errorValidationMessage.required)
 
 const cedulaSchema = yup
   .string()
@@ -63,7 +62,6 @@ const validationCellPhone = yup
   .string()
   .length(10, `${10} ${errorValidationMessage.length}`)
   .matches(/^0\d{9}$/, errorValidationMessage.specialCharacters)
-  .required(errorValidationMessage.required)
 
 const validationBirthdate = yup
   .date()
@@ -125,8 +123,7 @@ export const locationSchema = yup.object().shape({
   requestInformation: yup
     .string()
     .min(100, `${100} ${errorValidationMessage.min}`)
-    .max(300, `${300} ${errorValidationMessage.max}`)
-    .required(errorValidationMessage.required),
+    .max(300, `${300} ${errorValidationMessage.max}`),
   contactName: validationName,
   email: validationEmail,
   phone: validationCellPhone,
@@ -144,14 +141,12 @@ export const companySchema = yup.object().shape({
   description: yup
     .string()
     .min(100, `${100} ${errorValidationMessage.min}`)
-    .max(300, `${300} ${errorValidationMessage.max}`)
-    .required(errorValidationMessage.required),
+    .max(300, `${300} ${errorValidationMessage.max}`),
   descriptionENG: yup
     .string()
     .min(100, `${100} ${errorValidationMessage.min}`)
-    .max(300, `${300} ${errorValidationMessage.max}`)
-    .required(errorValidationMessage.required),
-  clients: yup.array().required(),
+    .max(300, `${300} ${errorValidationMessage.max}`),
+  clients: yup.array(),
   email: validationEmail,
   phone: validationCellPhone,
   website: validationUrl,

@@ -15,4 +15,5 @@ export const initialValues: LocationTypes = {
   contactName: '',
   email: '',
   phone: '',
+  activeWhatsapp: false,
 }

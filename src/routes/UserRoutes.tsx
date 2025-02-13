@@ -16,6 +16,7 @@ import RegisterLoacation from '../views/UserView/RegisterLocation/RegisterLocati
 import LocationForm from '../views/UserView/RegisterLocation/components/LocationForm'
 import RegisterService from '../views/UserView/RegisterService.tsx/RegisterService'
 import CompaniesFiles from '../views/UserView/RegisterService.tsx/CompaniesFiles'
+import EditCompany from '../views/UserView/RegisterService.tsx/EditCompany'
 
 const UserRoutes: React.FC = () => {
   const user: User | null = useGetUser()
@@ -59,6 +60,7 @@ const UserRoutes: React.FC = () => {
             )}
             <Route path="locations/map/:id" element={<LocationForm />} />
             <Route path="services/files/:id" element={<CompaniesFiles />} />
+            <Route path="services/edit/:id" element={<EditCompany />} />
             <Route path="register_location" element={<RegisterLoacation />} />
             <Route path="register_service" element={<RegisterService />} />
           </>

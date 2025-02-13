@@ -24,8 +24,8 @@
 .container {
   display: flex;
   flex-flow: row wrap;
-  gap: 2rem;
-  justify-content: space-evenly;
+  gap: 3rem;
+  justify-content: center;
 }
 
 .card {

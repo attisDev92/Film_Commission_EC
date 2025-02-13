@@ -2,6 +2,7 @@ import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit'
 import { CompanyServiceType } from '../types'
 import { AppDispatch } from './store'
 import {
+  destroyCompany,
   destroyCompanyFile,
   getUserCompanies,
   postCompanyFile,
@@ -107,6 +108,61 @@ export const editFile = (formData: FormData) => {
     try {
       const response = await postCompanyFile(formData)
       dispatch(updateCompany(response))
+    } catch (error) {
+      if (error instanceof Error) {
+        dispatch(
+          setNotification({
+            style: 'error',
+            // @ts-expect-error error includes response and data but the unknow not contain the property
+            text: `${error.response.data.error}`,
+          }),
+        )
+      } else {
+        dispatch(
+          setNotification({
+            style: 'error',
+            text: `Error desconocido`,
+          }),
+        )
+      }
+    }
+  }
+}
+
+export const editCompany = (companyEdited: CompanyServiceType) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const response = await postCompany(companyEdited)
+      dispatch(updateCompany(response))
+    } catch (error) {
+      if (error instanceof Error) {
+        dispatch(
+          setNotification({
+            style: 'error',
+            // @ts-expect-error error includes response and data but the unknow not contain the property
+            text: `${error.response.data.error}`,
+          }),
+        )
+      } else {
+        dispatch(
+          setNotification({
+            style: 'error',
+            text: `Error desconocido`,
+          }),
+        )
+      }
+    }
+  }
+}
+
+export const deleteCompany = (companyId: string) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const response = await destroyCompany(companyId)
+      if (response.success) {
+        dispatch(removeCompany(companyId))
+      }
+      return response
     } catch (error) {
       if (error instanceof Error) {
         dispatch(

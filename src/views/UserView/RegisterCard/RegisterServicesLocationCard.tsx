@@ -14,12 +14,13 @@ const RegisterServiceLocationCard: React.FC = () => {
         </div>
         <div className={styles.textContainer}>
           <Typography variant="h6">Registrar una nueva locación</Typography>
-          <Button
+          {/* <Button
             variant="contained"
             onClick={() => navigate('/system/register_location')}
           >
             Registrar Locación
-          </Button>
+          </Button> */}
+          <Typography variant="h5">Muy pronto</Typography>
         </div>
       </Card>
       <Card className={styles.card}>

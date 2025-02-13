@@ -140,4 +140,6 @@ export interface CompanyServiceType {
   typeVideo: 'YouTube' | 'Vimeo'
   photos?: Image[]
   logo?: Image
+  public?: boolean
+  activeWhatsapp?: boolean
 }
