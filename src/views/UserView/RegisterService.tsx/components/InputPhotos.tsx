@@ -96,6 +96,7 @@ const InputPhotos: React.FC<InputPhotosProps> = ({
     <div className={styles.editImagesContainer}>
       <form onSubmit={handleUploadFile} encType="multipart/form-data">
         <Typography variant="h5">Fotos</Typography>
+        <Typography>Puede subir un máximo de 5 fotos.</Typography>
         <Typography variant="body1">
           {photos.length >= 5
             ? 'Número máximo de fotogramas, debe eliminar un archivo antes de subir uno nuevo'

@@ -12,3 +12,12 @@
   margin: 10%;
   height: fit-content;
 }
+
+.card {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+  margin: 2rem 5%;
+  padding: 3rem;
+  background-color: var(--color-primary-0);
+}

@@ -33,12 +33,16 @@ const RegisterProfile: React.FC = () => {
   const navigate: NavigateFunction = useNavigate()
   const dispatch = useDispatch<AppDispatch>()
 
-  const onSubmit = (values: UserProfile) => {
-    dispatch(setLoader(true))
-    dispatch(postProfileData(values)).then(() => {
+  const onSubmit = async (values: UserProfile) => {
+    try {
+      dispatch(setLoader(true))
+      await dispatch(postProfileData(values))
       navigate('/system')
+    } catch (error: unknown) {
+      console.error(error)
+    } finally {
       dispatch(setLoader(false))
-    })
+    }
   }
 
   const formik = useFormik({

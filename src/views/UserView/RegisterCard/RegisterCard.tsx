@@ -14,7 +14,7 @@ const RegisterCard: React.FC = () => {
           locación?
         </Typography>
         <Typography variant="body1">
-          Enséñaselo al mundo!
+          !Muestralo al mundo!
           <br />
           Registra tus locaciones y empresas de servicios audiovisuales en
           nuestro catálogo.

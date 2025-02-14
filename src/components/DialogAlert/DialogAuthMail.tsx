@@ -30,15 +30,18 @@ const DialogAuthMail: React.FC<DialogProps> = ({ open }) => {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Gracias por registrarte como usuario del Catálogo de Locaciones de
-            la Comisión Fílmica de Ecuador. Para completar tu registro es
-            necesario que ingreses a tu mail y des click en el link de
-            autenticación. Cuando hayas completado este proceso, ingresa a tu
-            perfil y completa la información.
+            Gracias por registrarte como usuario del la Comisión Fílmica de
+            Ecuador. <br />
+            Para completar tu registro es necesario que ingreses a tu mail y des
+            click en el link de autenticación. <br />
+            No olvides revisar la bandeja de SPAM de tu correo electrónico.
+            <br />
+            Cuando hayas completado este proceso, ingresa a tu perfil y completa
+            la información.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleAcceptDialog}>
+          <Button variant="contained" autoFocus onClick={handleAcceptDialog}>
             Aceptar
           </Button>
         </DialogActions>

@@ -18,8 +18,7 @@ import AttachEmailIcon from '@mui/icons-material/AttachEmail'
 const Profile = () => {
   const user: User | null = useGetUser()
   const userProfile: UserProfile | null = useGetProfile()
-  console.log(user)
-  console.log(userProfile)
+
   return (
     <Card className={styles.profileContainer}>
       <Typography variant="h4">

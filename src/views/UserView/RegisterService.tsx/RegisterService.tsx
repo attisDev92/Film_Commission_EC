@@ -128,7 +128,7 @@ const RegisterService: React.FC = () => {
           {...formik.getFieldProps('description')}
           touchedHelper={formik.touched.description}
           errorHelper={formik.errors.description}
-          helperText="min 100 caracteres, max 300 caracteres"
+          helperText="min 100 caracteres, max 1000 caracteres"
         />
         <TextInput
           id="descriptionENG"
@@ -140,7 +140,7 @@ const RegisterService: React.FC = () => {
           {...formik.getFieldProps('descriptionENG')}
           touchedHelper={formik.touched.descriptionENG}
           errorHelper={formik.errors.descriptionENG}
-          helperText="min 100 caracteres, max 300 caracteres"
+          helperText="min 100 caracteres, max 1000 caracteres"
         />
         <ListInput
           id="clients"

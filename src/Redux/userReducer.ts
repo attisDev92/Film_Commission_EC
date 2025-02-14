@@ -28,6 +28,9 @@ const userSlice: Slice<User> = createSlice({
       window.localStorage.removeItem('FilmCommisionUser')
       return initialState
     },
+    setUserProfile: (state: User, action: PayloadAction<string>) => {
+      state.profile = action.payload
+    },
   },
 })
 

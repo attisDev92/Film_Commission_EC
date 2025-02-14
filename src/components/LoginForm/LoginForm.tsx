@@ -25,17 +25,21 @@ const LoginForm: React.FC<LoginFormProps> = ({ legend }) => {
     password: password.value as string,
   }
 
-  const handleOnSubmit = (e: React.SyntheticEvent) => {
+  const handleOnSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     dispatch(setLoader(true))
-    dispatch(userLogin(credentials)).then((response) => {
-      dispatch(setLoader(false))
-      if (response?.role === 'admin') {
+    try {
+      const response = await dispatch(userLogin(credentials))
+      if (response && response.role === 'admin') {
         navigate('/admin')
       } else if (response?.role === 'creator') {
         navigate('/system')
       }
-    })
+    } catch (error: unknown) {
+      console.error(error)
+    } finally {
+      dispatch(setLoader(false))
+    }
   }
 
   return (

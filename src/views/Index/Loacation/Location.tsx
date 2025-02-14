@@ -1,16 +1,11 @@
-import { useNavigate } from 'react-router-dom'
-//import SliderImages from '../SliderImages/SliderImages'
+//import { useNavigate } from 'react-router-dom'
 import styles from './Location.module.css'
 import { LanguageState } from '../../../types'
 import { useLanguageSelected } from '../../../hooks/useLanguages'
 
 const Locations: React.FC = () => {
-  const navigate = useNavigate()
+  //const navigate = useNavigate()
   const text: LanguageState = useLanguageSelected()
-
-  const handleOnClick = (): void => {
-    navigate('/locations')
-  }
 
   const paragraph: string[] = text.locacionSeccion.parrafo.split('<br>')
 
@@ -25,11 +20,9 @@ const Locations: React.FC = () => {
         ))}
       </div>
 
-      {/* <SliderImages /> */}
-
-      <button onClick={handleOnClick} className={styles.button}>
+      {/* <button onClick={() => navigate('/locations')} className={styles.button}>
         {text.locacionSeccion.button}
-      </button>
+      </button> */}
     </>
   )
 }

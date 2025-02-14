@@ -45,8 +45,9 @@ const IndexUser: React.FC = () => {
         <>
           <Card className={styles.card}>
             <Typography variant="subtitle1">
-              Completa la información del perfil y después podrás registrar
-              locaciones.
+              Completa la información de tu perfil y después podrás registrarte
+              en el catálogo de servicios y locaciones de la Comisión Fílmica
+              del Ecuador.
             </Typography>
             <Button
               variant="contained"

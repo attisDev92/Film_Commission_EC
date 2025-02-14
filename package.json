@@ -11,6 +11,8 @@
     "server": "json-server --port 3003 --watch db.json"
   },
   "dependencies": {
+    "@coreui/coreui": "^5.2.0",
+    "@coreui/react": "^5.5.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@fontsource/roboto": "^5.1.1",
