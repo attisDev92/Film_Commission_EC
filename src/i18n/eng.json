@@ -4,7 +4,8 @@
   "menu": {
     "locacion": "Locations",
     "documentos": "Documents",
-    "proveedores": "Directory",
+    "proveedores": "Production services",
+    "asociaciones": "Associations and guilds",
     "contacto": "Contact"
   },
   "logo": {
@@ -20,6 +21,7 @@
   },
   "documentosSeccion": {
     "titulo": "Documents",
+    "parrafo": "Documents of interest to companies and people interested in filming in Ecuador.",
     "lista": [
       {
         "nombre": "Audiovisual investment certificate - CIA.",
@@ -43,13 +45,13 @@
       }
     ]
   },
-  "proveedoresSeccion": {
-    "titulo": "Film Production Services",
+  "associationsSeccion": {
+    "titulo": "Associations and guilds",
     "mailtext": "e-mail",
     "contacttext": "Contact",
     "phonetext": "Telephone",
     "webtext": "Website",
-    "proveedores": [
+    "associations": [
       {
         "nombre": "Ecuadorian audiovisual producers corporation - COPAE",
         "email": "copae@gmail.com",
@@ -101,15 +103,16 @@
       }
     ]
   },
+  "suppliersSection": {
+    "titulo": "Film production services",
+    "parrafo": "Catalog of companies that provide a wide variety of film and audiovisual production services. Companies that can support the execution of audiovisual projects in Ecuador.",
+    "message": "If you have a company that offers audiovisual production services, you can register it in this catalogue",
+    "button": "Register company"
+  },
   "contactoInfo": {
     "contacto": "Contact",
     "direccion": "Address",
     "telf": "Phone",
     "buttonName": "More information"
-  },
-  "LocationGuide": {
-    "title": "Locations Guide",
-    "categories": "Categories",
-    "filters": "Filters"
   }
 }

@@ -74,7 +74,7 @@ const UserCompanies: React.FC = () => {
       field: 'actions',
       type: 'actions',
       width: 150,
-      headerName: 'Acciones',
+      headerName: 'Edición',
       getActions: ({ id }) => {
         return [
           <GridActionsCellItem

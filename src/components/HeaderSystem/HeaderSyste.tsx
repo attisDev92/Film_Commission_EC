@@ -10,9 +10,11 @@ import LogoutButton from '../Buttons/LogoutButton'
 import RegisterButton from '../Buttons/RegisterButton'
 import logo from '../../assets/images/filmcomissionEC_blanco.svg'
 import styles from './HeaderSystem.module.css'
+import { useNavigate } from 'react-router-dom'
 
 const HeaderSystem: React.FC = () => {
   const user = useGetUser()
+  const navigate = useNavigate()
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -30,8 +32,8 @@ const HeaderSystem: React.FC = () => {
             </IconButton>
           )}
 
-          <div className={styles.logo__container}>
-            <img src={logo} alt="" />
+          <div className={styles.logo__container} onClick={() => navigate('/')}>
+            <img src={logo} alt="Ecuador Film Commission" />
           </div>
 
           <Typography

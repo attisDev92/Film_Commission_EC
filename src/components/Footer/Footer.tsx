@@ -41,16 +41,15 @@ const Footer: React.FC = () => {
           <li>
             <a href="/#locations">{text.menu.locacion}</a>
           </li>
-
+          <li>
+            <a href="/#suppliers">{text.menu.proveedores}</a>
+          </li>
           <li>
             <a href="/#documents">{text.menu.documentos}</a>
           </li>
 
           <li>
-            <a href="/#suppliers">{text.menu.proveedores}</a>
-          </li>
-          <li>
-            <a href="/locations">{text.LocationGuide.title}</a>
+            <a href="/#associations">{text.menu.proveedores}</a>
           </li>
         </ul>
 

@@ -28,12 +28,19 @@ export interface DocumentsLink {
   link: string
 }
 
-export interface Suppliers {
+export interface Associations {
   nombre: string
   email: string
   contacto: string
   telefono: string
   link: string
+}
+
+export interface Suppliers {
+  titulo: string
+  parrafo: string
+  message: string
+  button: string
 }
 
 export interface LanguageState {
@@ -42,6 +49,7 @@ export interface LanguageState {
   menu: {
     locacion: string
     documentos: string
+    asociaciones: string
     proveedores: string
     contacto: string
   }
@@ -56,28 +64,25 @@ export interface LanguageState {
     parrafo: string
     button: string
   }
+  suppliersSection: Suppliers
   documentosSeccion: {
     titulo: string
+    parrafo: string
     lista: DocumentsLink[]
   }
-  proveedoresSeccion: {
+  associationsSeccion: {
     titulo: string
     mailtext: string
     contacttext: string
     phonetext: string
     webtext: string
-    proveedores: Suppliers[]
+    associations: Associations[]
   }
   contactoInfo: {
     contacto: string
     direccion: string
     telf: string
     buttonName: string
-  }
-  LocationGuide: {
-    title: string
-    categories: string
-    filters: string
   }
 }
 

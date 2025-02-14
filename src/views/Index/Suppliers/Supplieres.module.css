@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 2rem;
+  margin: 0 10rem;
+}
+
+.container button {
+  width: auto;
+  height: 2rem;
+  margin: auto 1rem;
+  padding: 0 1rem;
+  border: var(--border-primary-button);
+  border-radius: var(--radio-primary-button);
+  box-shadow: var(--button-shadow);
+  transition: all 5ms;
+}

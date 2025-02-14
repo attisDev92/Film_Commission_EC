@@ -1,16 +1,21 @@
-.container__suppliers {
+.container__associations {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 2rem;
-  width: 80%;
+  width: 100%;
   margin: auto;
   justify-content: center;
   align-items: center;
 }
 
+.container__documents {
+  text-align: justify;
+  margin: 2rem 5rem;
+}
+
 @media (max-width: 768) {
-  .container__suppliers {
+  .container {
     gap: 1rem;
     width: 100%;
   }

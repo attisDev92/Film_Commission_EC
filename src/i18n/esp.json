@@ -4,7 +4,8 @@
   "menu": {
     "locacion": "Locación",
     "documentos": "Documentos",
-    "proveedores": "Directorio",
+    "proveedores": "Servicios audiovisual",
+    "asociaciones": "Asociaciones y gremios",
     "contacto": "Contacto"
   },
   "logo": {
@@ -20,6 +21,7 @@
   },
   "documentosSeccion": {
     "titulo": "Documentos",
+    "parrafo": "Documentos de interés para empresas y personas interesadas en filmar en Ecuador.",
     "lista": [
       {
         "nombre": "Certificado de Inversión Audiovisual CIA.",
@@ -43,13 +45,13 @@
       }
     ]
   },
-  "proveedoresSeccion": {
-    "titulo": "Directorio",
+  "associationsSeccion": {
+    "titulo": "Asociaciones y gremios",
     "mailtext": "e-mail",
     "contacttext": "Contacto",
     "phonetext": "Teléfono",
     "webtext": "Página web",
-    "proveedores": [
+    "associations": [
       {
         "nombre": "Asociación de productores - COPAE",
         "email": "copae@gmail.com",
@@ -101,15 +103,16 @@
       }
     ]
   },
+  "suppliersSection": {
+    "titulo": "Servicios de producción",
+    "parrafo": "Catálogo de empresas que brindan una amplia variedad de servicios de producción cinematográfica y audiovisual. Empresas que pueden apoyar en la ejecución de proyectos audiovisuales en Ecuador.",
+    "message": "Si tienes une empresa que ofrece servicios de producción audiovisual puedes registrarla en este catálogo",
+    "button": "Registrar empresa"
+  },
   "contactoInfo": {
     "contacto": "Contacto",
     "direccion": "Dirección",
     "telf": "Teléfonos",
     "buttonName": "Más información"
-  },
-  "LocationGuide": {
-    "title": "Guía de Locaciones",
-    "categories": "Categorías",
-    "filters": "Filtros"
   }
 }

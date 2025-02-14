@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useLanguageSelected } from '../../../hooks/useLanguages'
-import { LanguageState, Suppliers } from '../../../types'
-import styles from './SuppliersCard.module.css'
+import { LanguageState, Associations } from '../../../types'
+import styles from './AssociationsCard.module.css'
 import rightArrow from '../../../assets/images/Icon-right-arrow.png'
 
-const SuppliersCard: React.FC<Suppliers> = ({
+const AssociationsCard: React.FC<Associations> = ({
   nombre,
   email,
   contacto,
@@ -32,7 +32,7 @@ const SuppliersCard: React.FC<Suppliers> = ({
 
   return (
     <>
-      <div className={styles.suppliers__containers} style={showWhenVisible}>
+      <div className={styles.associations__containers} style={showWhenVisible}>
         <div className={styles.container__info}>
           <button className={styles.close} onClick={cardVisibility}>
             {text.idioma === 'esp' ? 'cerrar' : 'close'}
@@ -42,19 +42,19 @@ const SuppliersCard: React.FC<Suppliers> = ({
 
           <ul>
             <li>
-              {text.proveedoresSeccion.contacttext}: {contacto}
+              {text.associationsSeccion.contacttext}: {contacto}
             </li>
             <li>
-              {text.proveedoresSeccion.phonetext}: {telefono}
+              {text.associationsSeccion.phonetext}: {telefono}
             </li>
             <li>
-              {text.proveedoresSeccion.webtext}:
+              {text.associationsSeccion.webtext}:
               <a target="blank" href={`http://${link}`}>
                 {link}
               </a>
             </li>
             <li>
-              {text.proveedoresSeccion.mailtext}: {email}
+              {text.associationsSeccion.mailtext}: {email}
             </li>
           </ul>
 
@@ -64,7 +64,7 @@ const SuppliersCard: React.FC<Suppliers> = ({
         </div>
       </div>
 
-      <div className={styles.suppliers__card} style={hideWhenVisible}>
+      <div className={styles.associations__card} style={hideWhenVisible}>
         <p className={styles.card__text}>{nombre}</p>
 
         <a onClick={cardVisibility} className={styles.card__link}>
@@ -76,4 +76,4 @@ const SuppliersCard: React.FC<Suppliers> = ({
   )
 }
 
-export default SuppliersCard
+export default AssociationsCard

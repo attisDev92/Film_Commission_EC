@@ -1,4 +1,4 @@
-.suppliers__card {
+.associations__card {
   display: flex;
   flex-direction: column;
   padding: 2rem 2rem;
@@ -10,7 +10,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.suppliers__card:hover {
+.associations__card:hover {
   transform: scale(1.05);
   background-color: var(--color-primary-700);
   transition: all 0.3s ease-in-out;
@@ -22,7 +22,7 @@
   text-align: center;
 }
 
-.suppliers__containers {
+.associations__containers {
   position: fixed;
   top: 0;
   right: 0;
@@ -102,13 +102,13 @@
 }
 
 @media (max-width: 768px) {
-  .suppliers__card {
+  .associations__card {
     padding: 1.5rem 1rem;
     width: 15rem;
     height: 12rem;
   }
 
-  .suppliers__card:hover {
+  .associations__card:hover {
     transform: scale(1.02);
   }
 
@@ -118,7 +118,7 @@
 }
 
 @media (max-width: 430px) {
-  .suppliers__card {
+  .associations__card {
     padding: 2rem 1rem;
     width: 100%;
     height: 12rem;
