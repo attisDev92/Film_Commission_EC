@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import { userLogin } from '../../Redux/userReducer'
 import { UserCredentials } from '../../types'
 import { AppDispatch } from '../../Redux/store'
-import { setLoader } from '../../Redux/notificationReducer'
+import { setLoader, setNotification } from '../../Redux/notificationReducer'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 import RecoverPass from './RecoverPass'
 
@@ -37,6 +37,22 @@ const LoginForm: React.FC<LoginFormProps> = ({ legend }) => {
       }
     } catch (error: unknown) {
       console.error(error)
+      if (error instanceof Error) {
+        dispatch(
+          setNotification({
+            style: 'error',
+            // @ts-expect-error error includes response and data but the unknow not contain the property
+            text: `${error.response.data.error}`,
+          }),
+        )
+      } else {
+        dispatch(
+          setNotification({
+            style: 'error',
+            text: `Error desconocido`,
+          }),
+        )
+      }
     } finally {
       dispatch(setLoader(false))
     }
