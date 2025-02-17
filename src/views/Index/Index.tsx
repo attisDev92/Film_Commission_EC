@@ -1,4 +1,3 @@
-import React from 'react'
 import AssociationsCard from './Associations/AssociationsCard'
 import VideoBanner from '../../components/VideoBanner/VideoBanner'
 import Section from '../../components/Section/Section'
