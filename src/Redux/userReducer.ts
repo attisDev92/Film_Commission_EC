@@ -39,7 +39,7 @@ export const { setUser, setLogout, setUserProfile } = userSlice.actions
 export const userLogin = (credentials: UserCredentials) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await loginUser(credentials)
+      const response = (await loginUser(credentials)) as User
       window.localStorage.setItem('FilmCommisionUser', JSON.stringify(response))
       dispatch(setUser(response))
       if (response.profile && response.userToken) {
@@ -64,6 +64,7 @@ export const userLogin = (credentials: UserCredentials) => {
           }),
         )
       }
+      throw error
     }
   }
 }

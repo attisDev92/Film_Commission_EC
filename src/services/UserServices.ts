@@ -31,13 +31,18 @@ export const getConfig = () => {
 
 export const loginUser = async (
   credentials: UserCredentials,
-): Promise<User> => {
-  const response = await axios.post<LoginResponse>(
-    `${baseURL}/login`,
-    credentials,
-  )
-  setUserToken(response.data.data.userToken)
-  return response.data.data
+): Promise<User | unknown> => {
+  try {
+    const response = await axios.post<LoginResponse>(
+      `${baseURL}/login`,
+      credentials,
+    )
+    setUserToken(response.data.data.userToken)
+    return response.data.data
+  } catch (error: unknown) {
+    console.error(error)
+    throw error
+  }
 }
 
 export const authenticateToken = async () => {
