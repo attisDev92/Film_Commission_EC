@@ -83,7 +83,7 @@ const Locations: React.FC = () => {
         ))}
       </div>
 
-      <div style={{ maxWidth: '100%', margin: '0 auto' }}>
+      <div style={{ height: 500, margin: '0 auto' }}>
         <Carousel items={locationsCarousel} />
       </div>
 

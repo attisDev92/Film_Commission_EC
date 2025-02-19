@@ -51,7 +51,7 @@ export const authenticateToken = async () => {
     return response.data.data
   } catch (error) {
     console.log(error)
-    return error
+    throw error
   }
 }
 
@@ -68,7 +68,7 @@ export const createNewUser = async (
   } catch (error: unknown) {
     if (axios.isAxiosError(error)) {
       console.error('Error Axios:', error)
-      return error
+      throw error
     } else {
       console.error('Error desconocido:', error)
       return 'Error desconocido'
@@ -84,6 +84,7 @@ export const getUserForAuthMail = async (
     return response.data
   } catch (error: unknown) {
     console.log(error)
+    throw error
   }
 }
 
@@ -95,6 +96,7 @@ export const authEmailUser = async (
     return response.data.data
   } catch (error: unknown) {
     console.error(error)
+    throw error
   }
 }
 
@@ -106,7 +108,7 @@ export const sendUserRecoverData = async (
     return response.data
   } catch (error: unknown) {
     console.error(error)
-    return error
+    throw error
   }
 }
 
@@ -118,6 +120,6 @@ export const sendNewPassForChange = async (
     return response.data
   } catch (error: unknown) {
     console.error(error)
-    return error
+    throw error
   }
 }

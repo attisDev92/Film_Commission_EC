@@ -84,6 +84,18 @@ export interface LanguageState {
     telf: string
     buttonName: string
   }
+  companyProfile: {
+    principalActivity: string
+    secondActivity: string
+    city: string
+    province: string
+    direction: string
+    description: string
+    email: string
+    phone: string
+    clients: string
+    website: string
+  }
 }
 
 export interface ErrorType extends Error {

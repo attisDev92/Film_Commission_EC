@@ -4,13 +4,23 @@ import { CompanyServiceType } from '../types'
 
 const baseURL = `${import.meta.env.VITE_API_FILMCOMMISSION_URI}/companies`
 
+export const getCompany = async (id: string) => {
+  try {
+    const response = await axios.get(`${baseURL}/${id}`)
+    return response.data
+  } catch (error: unknown) {
+    console.log(error)
+    throw error
+  }
+}
+
 export const getCompanies = async () => {
   try {
     const response = await axios.get(`${baseURL}`)
     return response.data.data
   } catch (error: unknown) {
     console.error(error)
-    return error
+    throw error
   }
 }
 
@@ -20,7 +30,7 @@ export const getUserCompanies = async () => {
     return response.data.data
   } catch (error: unknown) {
     console.error(error)
-    return error
+    throw error
   }
 }
 
@@ -30,7 +40,7 @@ export const sendNewCompanyService = async (newCompany: CompanyServiceType) => {
     return response.data.data
   } catch (error: unknown) {
     console.error(error)
-    return error
+    throw error
   }
 }
 
@@ -40,7 +50,7 @@ export const postCompanyFile = async (files: FormData) => {
     return response.data.data
   } catch (error: unknown) {
     console.error(error)
-    return error
+    throw error
   }
 }
 
@@ -54,6 +64,7 @@ export const destroyCompanyFile = async (fileId: string, companyId: string) => {
     return response.data.data
   } catch (error: unknown) {
     console.error(error)
+    throw error
   }
 }
 
@@ -67,6 +78,7 @@ export const putCompany = async (companyEdited: CompanyServiceType) => {
     return response.data.data
   } catch (error: unknown) {
     console.error(error)
+    throw error
   }
 }
 
@@ -76,5 +88,6 @@ export const destroyCompany = async (companyId: string) => {
     return response.data
   } catch (error: unknown) {
     console.error(error)
+    throw error
   }
 }

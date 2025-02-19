@@ -18,14 +18,21 @@ const CustomCarousel: React.FC<{ items: CarouselItemProps[] }> = ({
   }
 
   return (
-    <BootstrapCarousel activeIndex={index} onSelect={handleSelect}>
+    <BootstrapCarousel
+      style={{
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden',
+      }}
+      activeIndex={index}
+      onSelect={handleSelect}
+    >
       {items.map((item, index) => (
         <BootstrapCarousel.Item key={index}>
           <img
             className="d-block w-100"
             src={item.src}
             alt={item.alt || 'Slide image'}
-            style={{ overflow: 'hiden', height: '600px' }}
           />
           <BootstrapCarousel.Caption>
             {item.title && (

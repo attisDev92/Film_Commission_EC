@@ -9,7 +9,7 @@ export const sendProfileData = async (profileData: UserProfile) => {
     return response.data.data
   } catch (error: unknown) {
     console.error(error)
-    return error
+    throw error
   }
 }
 
@@ -19,6 +19,6 @@ export const getProfile = async () => {
     return response.data.data
   } catch (error: unknown) {
     console.error(error)
-    return error
+    throw error
   }
 }

@@ -114,5 +114,17 @@
     "direccion": "Dirección",
     "telf": "Teléfonos",
     "buttonName": "Más información"
+  },
+  "companyProfile": {
+    "principalActivity": "Actividad Principal",
+    "secondActivity": "Otra actividad",
+    "city": "Ciudad",
+    "province": "Provincia",
+    "direction": "Dirección",
+    "description": "Descripción",
+    "email": "E-mail",
+    "phone": "Teléfono",
+    "clients": "Clientes",
+    "website": "Sitio web"
   }
 }
