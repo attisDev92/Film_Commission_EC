@@ -1,36 +1,58 @@
 import { Card, Typography, Button } from '@mui/material'
-import { Image } from '../../../types'
+import { CompanyServiceType, Image } from '../../../types'
 import styles from '../CompanyProfile.module.css'
 
 interface DescriptionCompanCardProps {
-  logo?: Image
   language: string
-  descriptionENG: string
-  description: string
-  activeWhatsapp: boolean
+  company: CompanyServiceType
 }
 
 const DescriptionCompanCard: React.FC<DescriptionCompanCardProps> = ({
-  logo,
   language,
-  description,
-  descriptionENG,
-  activeWhatsapp,
+  company,
 }) => {
+  const handleClicWhatsapp = () => {
+    const whatsappMessage: string =
+      language === 'eng'
+        ? "Hello, I am interested in your company's services"
+        : 'Hola, estoy interesado en los servicios de su empresa'
+
+    const formattedPhoneNumber = company.phone.replace(/[^\d]/g, '')
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=+593${formattedPhoneNumber}&text=${encodeURIComponent(whatsappMessage)}`
+    window.open(whatsappUrl, '_blank')
+  }
+
+  const handleClicEmail = () => {
+    const emailSubject: string =
+      language === 'eng'
+        ? `${company.company} company information`
+        : `Información sobre la empresa ${company.company}`
+    const emailBody: string =
+      language === 'eng'
+        ? "Hello, I am interested in more information about your company's services. I found your contact through the website of the Ecuadorian Film Commission"
+        : 'Hola, me interesa más información sobre los servicios de su empresa. Encontré su contacto mediante la página web de la Comisión Fílmica del Ecuador'
+    const mailtoUrl = `mailto:${company.email}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`
+    window.location.href = mailtoUrl
+  }
+
   return (
     <Card className={styles.card__description}>
-      <div style={{ width: 200, height: 200, backgroundColor: '#fff' }}>
-        <img src={logo?.url} />
+      <div className={styles.logo__container}>
+        <img src={company.logo?.url} />
       </div>
       <Typography>
-        {language === 'eng' ? descriptionENG : description}
+        {language === 'eng' ? company.descriptionENG : company.description}
       </Typography>
-      {activeWhatsapp && (
-        <Button variant="contained" color="success">
+      {company.activeWhatsapp && (
+        <Button
+          variant="contained"
+          color="success"
+          onClick={handleClicWhatsapp}
+        >
           Contactar por WhatsApp
         </Button>
       )}
-      <Button variant="contained" color="info">
+      <Button variant="contained" color="info" onClick={handleClicEmail}>
         Contactar por email
       </Button>
     </Card>

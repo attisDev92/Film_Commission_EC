@@ -5,6 +5,8 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  max-width: 1000px;
+  margin-inline: auto;
 }
 
 .background__header {
@@ -25,12 +27,16 @@
 .card__description {
   display: flex;
   flex-flow: column nowrap;
-  gap: 2rem;
+  gap: 1rem;
   padding: 2rem;
-  align-items: center;
+  align-items: flex-start;
   text-align: justify;
   min-width: 350px;
   max-width: 50%;
+}
+
+.logo__container {
+  width: 100%;
 }
 
 .card__info {
@@ -52,6 +58,12 @@
 
 .clients {
   padding: 3rem;
+}
+
+.video__container {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
 }
 
 @media (max-width: 800px) {

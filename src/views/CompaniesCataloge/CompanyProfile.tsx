@@ -10,6 +10,7 @@ import { useCompany } from '../../hooks/useCompany'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../Redux/store'
 import { setLoader, setNotification } from '../../Redux/notificationReducer'
+import VideoCompany from './components/VideoCompany'
 
 const CompanyProfile = () => {
   const { id } = useParams()
@@ -24,6 +25,8 @@ const CompanyProfile = () => {
   if (company) {
     dispatch(setLoader(false))
   }
+
+  console.log(company)
 
   if (error) {
     dispatch(
@@ -42,20 +45,18 @@ const CompanyProfile = () => {
             <img src={background} />
           </div>
           <div className={styles.container}>
-            <Typography variant="h1" color="secondary">
-              {company.company}
+            <Typography variant="h2" color="secondary">
+              {company.company.toUpperCase()}
             </Typography>
             <div className={styles.container__content}>
-              <DescriptionCompanCard
-                language={idioma}
-                logo={company.logo}
-                description={company.description}
-                descriptionENG={company.descriptionENG}
-                activeWhatsapp={company.activeWhatsapp ?? false}
-              />
+              <DescriptionCompanCard language={idioma} company={company} />
               <InfoCompanyCard company={company} text={companyProfile} />
             </div>
             <MediaCompanyCard company={company} text={companyProfile} />
+            <VideoCompany
+              plataform={company.typeVideo}
+              urlVideo={company.urlVideo}
+            />
           </div>
         </>
       )}

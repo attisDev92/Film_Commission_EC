@@ -72,6 +72,25 @@ const UserCompanies: React.FC = () => {
       width: 200,
     },
     {
+      field: 'preview',
+      type: 'actions',
+      width: 150,
+      headerName: 'Previsualización',
+      getActions: ({ id }) => {
+        return [
+          <GridActionsCellItem
+            icon={<PreviewIcon />}
+            label="Previsualizar"
+            className="textPrimary"
+            onClick={() =>
+              window.open(`${window.location.origin}/companies/${id}`, '_blank')
+            }
+            color="inherit"
+          />,
+        ]
+      },
+    },
+    {
       field: 'actions',
       type: 'actions',
       width: 150,
@@ -97,25 +116,6 @@ const UserCompanies: React.FC = () => {
             label="Eliminar"
             className="textPrimary"
             onClick={() => handleDeleteCompany(id.toString())}
-            color="inherit"
-          />,
-        ]
-      },
-    },
-    {
-      field: 'preview',
-      type: 'actions',
-      width: 150,
-      headerName: 'Previsualización',
-      getActions: ({ id }) => {
-        return [
-          <GridActionsCellItem
-            icon={<PreviewIcon />}
-            label="Previsualizar"
-            className="textPrimary"
-            onClick={() =>
-              window.open(`${window.location.origin}/companies/${id}`, '_blank')
-            }
             color="inherit"
           />,
         ]
