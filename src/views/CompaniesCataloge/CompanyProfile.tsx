@@ -52,11 +52,11 @@ const CompanyProfile = () => {
               <DescriptionCompanCard language={idioma} company={company} />
               <InfoCompanyCard company={company} text={companyProfile} />
             </div>
-            <MediaCompanyCard company={company} text={companyProfile} />
             <VideoCompany
               plataform={company.typeVideo}
               urlVideo={company.urlVideo}
             />
+            <MediaCompanyCard company={company} text={companyProfile} />
           </div>
         </>
       )}

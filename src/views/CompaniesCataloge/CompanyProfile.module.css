@@ -36,7 +36,8 @@
 }
 
 .logo__container {
-  width: 100%;
+  width: 60%;
+  margin-inline: auto;
 }
 
 .card__info {

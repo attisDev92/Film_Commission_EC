@@ -1,5 +1,5 @@
 import { Card, Typography, Button } from '@mui/material'
-import { CompanyServiceType, Image } from '../../../types'
+import { CompanyServiceType } from '../../../types'
 import styles from '../CompanyProfile.module.css'
 
 interface DescriptionCompanCardProps {
