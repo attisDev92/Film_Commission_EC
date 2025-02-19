@@ -25,7 +25,7 @@ const VideoCompany: React.FC<{ plataform: string; urlVideo: string }> = ({
   return (
     <div className={styles.video__container}>
       <iframe
-        src={embedUrl}
+        src={`${embedUrl}${embedUrl.includes('?') ? '&' : '?'}autoplay=1&mute=1`}
         title="Video Player"
         width="100%"
         height="100%"

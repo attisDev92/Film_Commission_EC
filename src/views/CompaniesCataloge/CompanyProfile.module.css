@@ -58,6 +58,9 @@
 }
 
 .clients {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
   padding: 3rem;
 }
 

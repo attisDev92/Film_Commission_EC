@@ -5,12 +5,13 @@ import background from '../../assets/images/stacked-steps-haikei.png'
 import { Typography } from '@mui/material'
 import DescriptionCompanCard from './components/DescriptionCompanyCard'
 import InfoCompanyCard from './components/InfoCompanyCard'
-import MediaCompanyCard from './components/MediaCompanyCard'
+import ClientsListCard from './components/ClientsListCard'
 import { useCompany } from '../../hooks/useCompany'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../Redux/store'
 import { setLoader, setNotification } from '../../Redux/notificationReducer'
 import VideoCompany from './components/VideoCompany'
+import CurvedCarusel from '../../components/CurverCarousel/CurvedCarouser'
 
 const CompanyProfile = () => {
   const { id } = useParams()
@@ -37,6 +38,15 @@ const CompanyProfile = () => {
     )
   }
 
+  const imagesForCarousel = (): string[] => {
+    if (company?.photos) {
+      return company.photos
+        .map((photo) => photo.url)
+        .filter((url): url is string => url !== undefined)
+    }
+    return []
+  }
+
   return (
     <>
       {company && (
@@ -45,7 +55,7 @@ const CompanyProfile = () => {
             <img src={background} />
           </div>
           <div className={styles.container}>
-            <Typography variant="h2" color="secondary">
+            <Typography variant="h2" color="secondary" fontWeight="700">
               {company.company.toUpperCase()}
             </Typography>
             <div className={styles.container__content}>
@@ -56,7 +66,8 @@ const CompanyProfile = () => {
               plataform={company.typeVideo}
               urlVideo={company.urlVideo}
             />
-            <MediaCompanyCard company={company} text={companyProfile} />
+            <CurvedCarusel images={imagesForCarousel()} />
+            <ClientsListCard text={companyProfile} clients={company.clients} />
           </div>
         </>
       )}
