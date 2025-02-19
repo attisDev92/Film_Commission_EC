@@ -4,6 +4,7 @@ import { DataGrid, GridColDef, GridActionsCellItem } from '@mui/x-data-grid'
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/DeleteOutlined'
 import ImageIcon from '@mui/icons-material/Image'
+import PreviewIcon from '@mui/icons-material/Preview'
 import { useUserCompanies } from '../../../hooks/useCompanies'
 import styles from './UserCards.module.css'
 import { CompanyServiceType } from '../../../types'
@@ -96,6 +97,25 @@ const UserCompanies: React.FC = () => {
             label="Eliminar"
             className="textPrimary"
             onClick={() => handleDeleteCompany(id.toString())}
+            color="inherit"
+          />,
+        ]
+      },
+    },
+    {
+      field: 'preview',
+      type: 'actions',
+      width: 150,
+      headerName: 'Previsualización',
+      getActions: ({ id }) => {
+        return [
+          <GridActionsCellItem
+            icon={<PreviewIcon />}
+            label="Previsualizar"
+            className="textPrimary"
+            onClick={() =>
+              window.open(`${window.location.origin}/companies/${id}`, '_blank')
+            }
             color="inherit"
           />,
         ]
