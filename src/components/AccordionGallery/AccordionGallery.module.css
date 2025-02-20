@@ -20,12 +20,12 @@
 }
 
 .image_accordion_item:hover {
-  opacity: 0.75;
+  opacity: 1.5;
 }
 
 .image_accordion_item.active {
   width: 100%;
-  opacity: 1;
+  opacity: 2;
 }
 
 .image_accordion_item .content {
@@ -40,7 +40,12 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  background: linear-gradient(to bottom, rgb(0 0 0 / 0%), rgb(0 0 0 / 80%));
+  background: linear-gradient(
+    to bottom,
+    rgb(0 0 0 / 0%),
+    rgb(0 0 0 / 0%),
+    rgb(0 0 0 / 80%)
+  );
   transition: 0.25s;
 }
 
@@ -57,4 +62,32 @@
   translate: -50% -50%;
   height: 150%;
   filter: grayscale(0.6);
+}
+
+.popUp__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.353);
+  width: 100vw;
+  height: 100vh;
+  padding: 10%;
+  z-index: 50;
+  backdrop-filter: blur(20px);
+}
+
+.popUp__container img {
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+}
+
+.close__button {
+  position: fixed;
+  top: 10%;
+  right: 10%;
 }

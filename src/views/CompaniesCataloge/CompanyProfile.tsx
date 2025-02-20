@@ -27,8 +27,6 @@ const CompanyProfile = () => {
     dispatch(setLoader(false))
   }
 
-  console.log(company)
-
   if (error) {
     dispatch(
       setNotification({
