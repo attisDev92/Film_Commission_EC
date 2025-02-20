@@ -7,7 +7,7 @@ const ClientsListCard: React.FC<{
   text: LanguageState['companyProfile']
 }> = ({ clients, text }) => {
   return (
-    <div className={styles.card__media}>
+    <>
       {clients && (
         <Card className={styles.clients}>
           <Typography variant="h6">{text.clients}: </Typography>
@@ -16,6 +16,8 @@ const ClientsListCard: React.FC<{
             direction="row"
             divider={<Divider orientation="vertical" flexItem />}
             spacing={3}
+            useFlexGap
+            sx={{ flexWrap: 'wrap' }}
           >
             {clients.map((client, id) => (
               <Chip key={id} color="info" label={client.toUpperCase()} />
@@ -23,7 +25,7 @@ const ClientsListCard: React.FC<{
           </Stack>
         </Card>
       )}
-    </div>
+    </>
   )
 }
 

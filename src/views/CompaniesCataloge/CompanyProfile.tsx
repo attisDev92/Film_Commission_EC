@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../Redux/store'
 import { setLoader, setNotification } from '../../Redux/notificationReducer'
 import VideoCompany from './components/VideoCompany'
-import CurvedCarusel from '../../components/CurverCarousel/CurvedCarouser'
+import AccordionGallery from '../../components/AccordionGallery/AccordionGallery'
 
 const CompanyProfile = () => {
   const { id } = useParams()
@@ -66,7 +66,7 @@ const CompanyProfile = () => {
               plataform={company.typeVideo}
               urlVideo={company.urlVideo}
             />
-            <CurvedCarusel images={imagesForCarousel()} />
+            <AccordionGallery images={imagesForCarousel()} />
             <ClientsListCard text={companyProfile} clients={company.clients} />
           </div>
         </>
