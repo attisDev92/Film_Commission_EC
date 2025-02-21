@@ -30,7 +30,16 @@ const CompaniesGallery = () => {
   const filterPublicCompanies = (
     companies: CompanyServiceType[],
   ): CompanyServiceType[] => {
-    return companies.filter((company) => company.public)
+    const companiesFiltered = companies.filter((company) => company.public)
+
+    for (let i = companiesFiltered.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[companiesFiltered[i], companiesFiltered[j]] = [
+        companiesFiltered[j],
+        companiesFiltered[i],
+      ]
+    }
+    return companiesFiltered
   }
 
   let companies: CompanyServiceType[] = []

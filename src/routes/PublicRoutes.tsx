@@ -5,7 +5,7 @@ import NotFound from '../views/NotFound/NotFound'
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 import CompanyProfile from '../views/CompaniesCataloge/CompanyProfile'
-import CompaniesGallery from '../views/CompaniesCataloge/companiesGallery'
+import CompaniesGallery from '../views/CompaniesCataloge/CompaniesGallery'
 
 const PublicRoutes: React.FC = () => {
   return (
