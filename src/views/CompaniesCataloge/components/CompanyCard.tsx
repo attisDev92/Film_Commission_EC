@@ -1,4 +1,4 @@
-import { Button, Typography } from '@mui/material'
+import { Button, Divider, Typography } from '@mui/material'
 import { CompanyServiceType } from '../../../types'
 import styles from '../CompanyGallery.module.css'
 import { useLanguageSelected } from '../../../hooks/useLanguages'
@@ -35,9 +35,10 @@ const CompanyCard: React.FC<{ company: CompanyServiceType }> = ({
       <div className={styles.content}>
         <Typography variant="h5">{company.company.toUpperCase()}</Typography>
         <Typography variant="body1">{company.city}</Typography>
+        <Divider />
         <Button
           className="button"
-          variant="outlined"
+          variant="text"
           onClick={() => navigate(`/companies/${company.id}`)}
         >
           {idioma === 'esp' ? 'Ver más' : 'See more'}
