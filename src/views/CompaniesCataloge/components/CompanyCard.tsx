@@ -4,6 +4,7 @@ import styles from '../CompanyGallery.module.css'
 import { useLanguageSelected } from '../../../hooks/useLanguages'
 import { changeLanguageActionsCompanies } from '../../../Utils/changeLanguageActionsCompanies'
 import { useNavigate } from 'react-router-dom'
+import { validateImage } from '../../../Utils/validateImage'
 
 const CompanyCard: React.FC<{ company: CompanyServiceType }> = ({
   company,
@@ -13,9 +14,20 @@ const CompanyCard: React.FC<{ company: CompanyServiceType }> = ({
 
   return (
     <div className={styles.card}>
-      <img className={styles.logo} src={company.logo?.url} />
+      <img
+        className={styles.logo}
+        src={validateImage(company.logo)}
+        alt="Company Logo"
+      />
       <div className={styles.photo__container}>
-        {company.photos && <img src={company.photos[0].url} />}
+        <img
+          src={validateImage(
+            company.photos && company.photos.length > 0
+              ? company.photos[0]
+              : null,
+          )}
+          alt="Company Photo"
+        />
       </div>
       <div className={styles.content}>
         <Typography variant="h5">{company.company.toUpperCase()}</Typography>

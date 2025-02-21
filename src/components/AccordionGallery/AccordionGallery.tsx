@@ -10,6 +10,10 @@ const AccordionGallery: React.FC<{ images: string[] }> = ({ images }) => {
 
   const handleToggle = (index: number) => setActive(index)
 
+  if (images.length === 0) {
+    return null
+  }
+
   return (
     <>
       <section className={styles.image_accordion}>

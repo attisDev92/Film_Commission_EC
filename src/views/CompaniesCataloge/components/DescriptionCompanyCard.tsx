@@ -1,6 +1,7 @@
 import { Card, Typography, Button } from '@mui/material'
 import { CompanyServiceType } from '../../../types'
 import styles from '../CompanyProfile.module.css'
+import { validateImage } from '../../../Utils/validateImage'
 
 interface DescriptionCompanCardProps {
   language: string
@@ -38,7 +39,7 @@ const DescriptionCompanCard: React.FC<DescriptionCompanCardProps> = ({
   return (
     <Card className={styles.card__description}>
       <div className={styles.logo__container}>
-        <img src={company.logo?.url} />
+        <img src={validateImage(company.logo)} />
       </div>
       <Typography>
         {language === 'eng' ? company.descriptionENG : company.description}
