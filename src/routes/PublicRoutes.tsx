@@ -5,6 +5,7 @@ import NotFound from '../views/NotFound/NotFound'
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 import CompanyProfile from '../views/CompaniesCataloge/CompanyProfile'
+import CompaniesGallery from '../views/CompaniesCataloge/companiesGallery'
 
 const PublicRoutes: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const PublicRoutes: React.FC = () => {
       <Header />
       <Routes>
         <Route path="/companies/:id" element={<CompanyProfile />} />
+        <Route path="/companies" element={<CompaniesGallery />} />
         <Route path="" element={<Index />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

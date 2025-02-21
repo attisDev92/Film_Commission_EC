@@ -4,18 +4,17 @@ import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { fetchUserCompanies } from '../Redux/companiesReducer'
+import { getCompanies } from '../services/CompanyServices'
 
-interface UseUserCompaniesReturn {
+interface UseCompaniesReturn {
   companies: CompanyServiceType[]
   company: CompanyServiceType | null
   loading: boolean
   error: string | null
-  reload: () => Promise<void>
+  reload?: () => Promise<void>
 }
 
-export const useUserCompanies = (
-  companyId?: string,
-): UseUserCompaniesReturn => {
+export const useUserCompanies = (companyId?: string): UseCompaniesReturn => {
   const dispatch = useDispatch<AppDispatch>()
   const [company, setCompany] = useState<CompanyServiceType | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
@@ -56,4 +55,39 @@ export const useUserCompanies = (
   }
 
   return { companies, company, loading, error, reload }
+}
+
+export const useCompanies = (): Omit<
+  UseCompaniesReturn,
+  'reaload' | 'company'
+> => {
+  const [companies, setCompanies] = useState<CompanyServiceType[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
+  const [error, setError] = useState<string | null>(null)
+
+  const fetchCompanies = async () => {
+    try {
+      setLoading(true)
+      setError(null)
+      const response = await getCompanies()
+      if (response) {
+        setCompanies(response)
+      }
+    } catch (error: unknown) {
+      console.error(error)
+      setError('Error al cargar la información')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchCompanies()
+  }, [])
+
+  return {
+    companies,
+    loading,
+    error,
+  }
 }

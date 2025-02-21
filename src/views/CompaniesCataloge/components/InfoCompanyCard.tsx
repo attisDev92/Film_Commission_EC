@@ -14,11 +14,15 @@ import EmailIcon from '@mui/icons-material/Email'
 import LanguageIcon from '@mui/icons-material/Language'
 import styles from '../CompanyProfile.module.css'
 import { CompanyServiceType, LanguageState } from '../../../types'
+import { changeLanguageActionsCompanies } from '../../../Utils/changeLanguageActionsCompanies'
+import { useLanguageSelected } from '../../../hooks/useLanguages'
 
 const InfoCompanyCard: React.FC<{
   company: CompanyServiceType
   text: LanguageState['companyProfile']
 }> = ({ company, text }) => {
+  const { idioma } = useLanguageSelected()
+
   return (
     <Card className={styles.card__info}>
       <List>
@@ -30,7 +34,10 @@ const InfoCompanyCard: React.FC<{
           </ListItemAvatar>
           <ListItemText
             primary={text.principalActivity}
-            secondary={company.firstActivity}
+            secondary={changeLanguageActionsCompanies(
+              idioma,
+              company.firstActivity,
+            )}
           />
         </ListItem>
         <ListItem>
@@ -41,7 +48,11 @@ const InfoCompanyCard: React.FC<{
           </ListItemAvatar>
           <ListItemText
             primary={text.secondActivity}
-            secondary={company.secondActivity}
+            secondary={
+              company.secondActivity
+                ? changeLanguageActionsCompanies(idioma, company.secondActivity)
+                : ''
+            }
           />
         </ListItem>
         <ListItem>
