@@ -159,4 +159,5 @@ export interface CompanyServiceType {
   logo?: Image
   public?: boolean
   activeWhatsapp?: boolean
+  userId?: string
 }

@@ -15,6 +15,7 @@ const initialState: User = {
   userToken: null,
   email: '',
   profile: '',
+  id: '',
 }
 
 const userSlice: Slice<User> = createSlice({
@@ -40,6 +41,7 @@ export const userLogin = (credentials: UserCredentials) => {
   return async (dispatch: AppDispatch) => {
     try {
       const response = (await loginUser(credentials)) as User
+      console.log(response)
       window.localStorage.setItem('FilmCommisionUser', JSON.stringify(response))
       dispatch(setUser(response))
       if (response.profile && response.userToken) {

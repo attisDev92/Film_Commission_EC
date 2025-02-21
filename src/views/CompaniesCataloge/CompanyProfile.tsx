@@ -6,17 +6,17 @@ import { Typography } from '@mui/material'
 import DescriptionCompanCard from './components/DescriptionCompanyCard'
 import InfoCompanyCard from './components/InfoCompanyCard'
 import ClientsListCard from './components/ClientsListCard'
-import { useCompany } from '../../hooks/useCompany'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../Redux/store'
 import { setLoader, setNotification } from '../../Redux/notificationReducer'
 import VideoCompany from './components/VideoCompany'
 import AccordionGallery from '../../components/AccordionGallery/AccordionGallery'
+import { useCompanies } from '../../hooks/useCompanies'
 
 const CompanyProfile = () => {
   const { id } = useParams()
   const dispatch = useDispatch<AppDispatch>()
-  const { company, loading, error } = useCompany(id ?? null)
+  const { company, loading, error } = useCompanies(id)
   const { idioma, companyProfile } = useLanguageSelected()
 
   if (loading) {

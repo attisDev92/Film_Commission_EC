@@ -11,6 +11,7 @@ import { AppDispatch } from './Redux/store'
 import { verifyLoggedToken } from './Redux/userReducer'
 import { User } from './types'
 import { useGetUser } from './hooks/useUser'
+import { fetchAllCompanies } from './Redux/companiesReducer'
 
 const App = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>()
@@ -23,6 +24,8 @@ const App = (): JSX.Element => {
       const user: User = JSON.parse(loggedUserToken)
       dispatch(verifyLoggedToken(user))
     }
+
+    dispatch(fetchAllCompanies())
   }, [dispatch])
 
   return (

@@ -2,9 +2,9 @@ import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit'
 import { CompanyServiceType } from '../types'
 import { AppDispatch } from './store'
 import {
+  getCompanies,
   destroyCompany,
   destroyCompanyFile,
-  getUserCompanies,
   postCompanyFile,
   putCompany,
   sendNewCompanyService,
@@ -14,7 +14,7 @@ import { setNotification } from './notificationReducer'
 const initialState: CompanyServiceType[] = []
 
 const companiesSlice: Slice<CompanyServiceType[]> = createSlice({
-  name: 'userCompanies',
+  name: 'companies',
   initialState,
   reducers: {
     setCompanies: (_state, action: PayloadAction<CompanyServiceType[]>) => {
@@ -48,12 +48,12 @@ const companiesSlice: Slice<CompanyServiceType[]> = createSlice({
 export const { setCompanies, setNewCompany, updateCompany, removeCompany } =
   companiesSlice.actions
 
-export const fetchUserCompanies = () => {
+export const fetchAllCompanies = () => {
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await getUserCompanies()
+      const response = await getCompanies()
       dispatch(setCompanies(response))
-    } catch (error) {
+    } catch (error: unknown) {
       if (error instanceof Error) {
         dispatch(
           setNotification({

@@ -1,92 +1,123 @@
-import { AppDispatch, GlobalState } from '../Redux/store'
-import { CompanyServiceType } from '../types'
+import { GlobalState } from '../Redux/store'
+import { CompanyServiceType, User } from '../types'
 import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { fetchUserCompanies } from '../Redux/companiesReducer'
-import { getCompanies } from '../services/CompanyServices'
 
 interface UseCompaniesReturn {
   companies: CompanyServiceType[]
   company: CompanyServiceType | null
   loading: boolean
   error: string | null
-  reload?: () => Promise<void>
+}
+
+// Función auxiliar para filtrar empresas por userId
+const filterCompaniesByUserId = (
+  companies: CompanyServiceType[],
+  userId: string,
+): CompanyServiceType[] => {
+  return companies.filter((company) => company.userId === userId)
+}
+
+// Función auxiliar para encontrar una empresa por companyId
+const findCompanyById = (
+  companies: CompanyServiceType[],
+  companyId: string,
+): CompanyServiceType | null => {
+  return companies.find((company) => company.id === companyId) || null
 }
 
 export const useUserCompanies = (companyId?: string): UseCompaniesReturn => {
-  const dispatch = useDispatch<AppDispatch>()
+  const allCompanies = useSelector<GlobalState, CompanyServiceType[]>(
+    (state) => state.companies,
+  )
+  const user = useSelector<GlobalState, User>((state) => state.user)
+
+  const [companies, setCompanies] = useState<CompanyServiceType[]>([])
   const [company, setCompany] = useState<CompanyServiceType | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
 
-  const companies = useSelector<GlobalState, CompanyServiceType[]>(
-    (state) => state.companies,
-  )
-
-  const loadCompanies = async () => {
-    try {
+  useEffect(() => {
+    const loadUserCompanies = () => {
       setLoading(true)
       setError(null)
-      await dispatch(fetchUserCompanies())
-    } catch (error) {
-      setError('Error al cargar las empresas')
-      console.error('Error al cargar las empresas:', error)
-    } finally {
+
+      if (!allCompanies || allCompanies.length === 0) {
+        setError('No se encontraron empresas.')
+        setLoading(false)
+        return
+      }
+
+      if (!user || !user.id) {
+        setError('El userId no está definido.')
+        setLoading(false)
+        return
+      }
+
+      const userCompanies = filterCompaniesByUserId(allCompanies, user.id)
+
+      if (userCompanies.length === 0) {
+        setError('El usuario no cuenta con empresas registradas.')
+      }
+
+      setCompanies(userCompanies)
       setLoading(false)
     }
-  }
+
+    loadUserCompanies()
+  }, [allCompanies, user])
 
   useEffect(() => {
-    loadCompanies()
-  }, [dispatch])
-
-  useEffect(() => {
-    if (companyId) {
-      const companySelected = companies.find(
-        (company) => company.id === companyId,
-      )
-      setCompany(companySelected || null)
+    if (companyId && companies.length > 0) {
+      const companySelected = findCompanyById(companies, companyId)
+      setCompany(companySelected)
     }
   }, [companyId, companies])
 
-  const reload = async () => {
-    await loadCompanies()
+  return {
+    companies,
+    company,
+    loading,
+    error,
   }
-
-  return { companies, company, loading, error, reload }
 }
 
-export const useCompanies = (): Omit<
-  UseCompaniesReturn,
-  'reaload' | 'company'
-> => {
-  const [companies, setCompanies] = useState<CompanyServiceType[]>([])
+export const useCompanies = (companyId?: string): UseCompaniesReturn => {
+  const allCompanies = useSelector<GlobalState, CompanyServiceType[]>(
+    (state) => state.companies,
+  )
+
+  const [company, setCompany] = useState<CompanyServiceType | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
 
-  const fetchCompanies = async () => {
-    try {
+  useEffect(() => {
+    const fetchCompanies = () => {
       setLoading(true)
       setError(null)
-      const response = await getCompanies()
-      if (response) {
-        setCompanies(response)
+
+      if (!allCompanies || allCompanies.length === 0) {
+        setError('No se encontraron empresas.')
+        setLoading(false)
+        return
       }
-    } catch (error: unknown) {
-      console.error(error)
-      setError('Error al cargar la información')
-    } finally {
+
       setLoading(false)
     }
-  }
+
+    fetchCompanies()
+  }, [allCompanies])
 
   useEffect(() => {
-    fetchCompanies()
-  }, [])
+    if (companyId && allCompanies.length > 0) {
+      const companySelected = findCompanyById(allCompanies, companyId)
+      setCompany(companySelected)
+    }
+  }, [companyId, allCompanies])
 
   return {
-    companies,
+    companies: allCompanies,
+    company,
     loading,
     error,
   }
