@@ -50,11 +50,13 @@ const DescriptionCompanCard: React.FC<DescriptionCompanCardProps> = ({
           color="success"
           onClick={handleClicWhatsapp}
         >
-          Contactar por WhatsApp
+          {language === 'eng'
+            ? 'contact by WhatsApp'
+            : 'Contactar por WhatsApp'}
         </Button>
       )}
       <Button variant="contained" color="info" onClick={handleClicEmail}>
-        Contactar por email
+        {language === 'eng' ? 'contact by email' : 'Contactar por email'}
       </Button>
     </Card>
   )

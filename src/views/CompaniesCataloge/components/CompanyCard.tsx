@@ -14,11 +14,9 @@ const CompanyCard: React.FC<{ company: CompanyServiceType }> = ({
 
   return (
     <div className={styles.card}>
-      <img
-        className={styles.logo}
-        src={validateImage(company.logo)}
-        alt="Company Logo"
-      />
+      <div className={styles.logo}>
+        <img src={validateImage(company.logo)} alt="Company Logo" />
+      </div>
       <div className={styles.photo__container}>
         <img
           src={validateImage(
@@ -29,15 +27,17 @@ const CompanyCard: React.FC<{ company: CompanyServiceType }> = ({
           alt="Company Photo"
         />
       </div>
-      <div className={styles.content}>
-        <Typography variant="h5">{company.company.toUpperCase()}</Typography>
-        <Typography variant="h6">
+      <div className={styles.tag}>
+        <Typography variant="body2">
           {changeLanguageActionsCompanies(idioma, company.firstActivity)}
         </Typography>
+      </div>
+      <div className={styles.content}>
+        <Typography variant="h5">{company.company.toUpperCase()}</Typography>
         <Typography variant="body1">{company.city}</Typography>
         <Button
           className="button"
-          variant="contained"
+          variant="outlined"
           onClick={() => navigate(`/companies/${company.id}`)}
         >
           {idioma === 'esp' ? 'Ver más' : 'See more'}

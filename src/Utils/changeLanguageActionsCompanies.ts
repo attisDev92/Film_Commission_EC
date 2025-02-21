@@ -15,7 +15,7 @@ export const changeLanguageActionsCompanies = (
       case 'Desarrollo de Videojuegos':
         return 'Video game development'
       default:
-        return 'rental'
+        return 'Rental'
     }
   }
 
