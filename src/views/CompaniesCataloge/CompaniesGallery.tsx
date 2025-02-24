@@ -1,30 +1,21 @@
 import { Typography } from '@mui/material'
-import styles from './CompanyGallery.module.css'
 import { useCompanies } from '../../hooks/useCompanies'
 import { AppDispatch } from '../../Redux/store'
-import { setLoader, setNotification } from '../../Redux/notificationReducer'
+import { setLoader } from '../../Redux/notificationReducer'
+import styles from './CompanyGallery.module.css'
 import { useLanguageSelected } from '../../hooks/useLanguages'
 import backgroundImage from '../../assets/images/background_companies.png'
 import CompanyCard from './components/CompanyCard'
 import { CompanyServiceType } from '../../types'
 import { useDispatch } from 'react-redux'
-
+import { Fade } from 'react-awesome-reveal'
 const CompaniesGallery = () => {
-  const { companies: allCompanies, loading, error } = useCompanies()
+  const { companies: allCompanies, loading } = useCompanies()
   const { suppliersSection: text } = useLanguageSelected()
   const dispatch = useDispatch<AppDispatch>()
 
   if (loading) {
     dispatch(setLoader(true))
-  }
-
-  if (error) {
-    dispatch(
-      setNotification({
-        style: 'error',
-        text: error,
-      }),
-    )
   }
 
   const filterPublicCompanies = (
@@ -56,11 +47,13 @@ const CompaniesGallery = () => {
         <div className={styles.background}>
           <img src={backgroundImage} />
         </div>
-        <div className={styles.cards__container}>
-          {companies.map((company, i) => (
-            <CompanyCard key={i} company={company} />
-          ))}
-        </div>
+        <Fade cascade>
+          <div className={styles.cards__container}>
+            {companies.map((company, i) => (
+              <CompanyCard key={i} company={company} />
+            ))}
+          </div>
+        </Fade>
       </div>
     </>
   )

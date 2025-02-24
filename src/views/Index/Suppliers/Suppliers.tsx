@@ -1,40 +1,41 @@
 import { useNavigate } from 'react-router-dom'
-import CustomCarousel, {
-  CarouselItemProps,
-} from '../../../components/Carousel/Carousel'
 import { useLanguageSelected } from '../../../hooks/useLanguages'
 import { LanguageState } from '../../../types'
 import styles from './Supplieres.module.css'
 import service1 from '../../../assets/images/services/services1.jpg'
-import service2 from '../../../assets/images/services/services2.jpg'
-
-const carouselImages: CarouselItemProps[] = [
-  {
-    src: service1,
-    alt: 'Film ProductionServices',
-    title: 'Registra tu empresa dentro del catálogo',
-    description: '',
-  },
-  {
-    src: service2,
-    alt: 'Film ProductionServices',
-    title: 'Da a conocer tus servicios como proveedor audiovisual',
-    description: '',
-  },
-]
+import service2 from '../../../assets/images/services/film-team.jpg'
+import SimpleParalax from 'simple-parallax-js'
 
 const Suppliers = () => {
   const text: LanguageState = useLanguageSelected()
   const navigate = useNavigate()
   return (
-    <div className={styles.container}>
-      <p>{text.suppliersSection.parrafo}</p>
-      <CustomCarousel items={carouselImages} />
-      <div>
-        <p>{text.suppliersSection.message}</p>
-        <button onClick={() => navigate('/system')}>
-          {text.suppliersSection.button}
-        </button>
+    <div className={styles.section}>
+      <div className={styles.container}>
+        <div className={styles.background}>
+          <SimpleParalax scale={1.5} delay={4.7}>
+            <img src={service1} />
+          </SimpleParalax>
+        </div>
+        <div className={styles.content}>
+          <p>{text.suppliersSection.parrafo}</p>
+          <button onClick={() => navigate('/companies')}>
+            {text.menu.AVServices}
+          </button>
+        </div>
+      </div>
+      <div className={styles.container}>
+        <div className={styles.background}>
+          <SimpleParalax scale={1.5} delay={4.7}>
+            <img src={service2} />
+          </SimpleParalax>
+        </div>
+        <div className={`${styles.content} ${styles.right}`}>
+          <p>{text.suppliersSection.message}</p>
+          <button onClick={() => navigate('/system')}>
+            {text.suppliersSection.button}
+          </button>
+        </div>
       </div>
     </div>
   )

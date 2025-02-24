@@ -32,16 +32,26 @@
   align-items: flex-start;
   text-align: justify;
   min-width: 350px;
-  max-width: 50%;
+  max-width: 48%;
 }
 
 .logo__container {
-  width: 60%;
+  width: 200px;
+  height: 200px;
+  align-items: center;
   margin-inline: auto;
 }
 
+.logo__container img {
+  width: 100%;
+  height: auto;
+}
+
 .card__info {
+  display: flex;
   padding: 2rem;
+  max-width: 48%;
+  align-content: center;
 }
 
 .carousel__container {

@@ -39,17 +39,25 @@ const Footer: React.FC = () => {
           <p>{text.idioma === 'esp' ? 'Secciones' : 'Sections'}</p>
 
           <li>
-            <a href="/#locations">{text.menu.locacion}</a>
+            <a href="/#locations">{text.menu.locations}</a>
           </li>
           <li>
-            <a href="/#suppliers">{text.menu.proveedores}</a>
+            <a href="/#suppliers">{text.menu.directory}</a>
           </li>
           <li>
-            <a href="/#documents">{text.menu.documentos}</a>
+            <a href="/companies">{text.menu.AVServices}</a>
           </li>
-
           <li>
-            <a href="/#associations">{text.menu.proveedores}</a>
+            <a href="/#documents">{text.menu.documents}</a>
+          </li>
+          <li>
+            <a href="/#associations">{text.menu.associations}</a>
+          </li>
+          <li>
+            <a href="/system">LogIn</a>
+          </li>
+          <li>
+            <a href="/system/register">Regsiter</a>
           </li>
         </ul>
 

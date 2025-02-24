@@ -2,11 +2,16 @@
   "titulo": "Ecuador Film Comission",
   "idioma": "eng",
   "menu": {
-    "locacion": "Locations",
-    "documentos": "Documents",
-    "proveedores": "Production services",
-    "asociaciones": "Associations and guilds",
-    "contacto": "Contact"
+    "filmEc": "Film in EC",
+    "incentives": "Incentives",
+    "documents": "Documents and procedures",
+    "associations": "Associations",
+    "locations": "Locations",
+    "registerLocation": "Register your location",
+    "cataloge": "Find locations",
+    "directory": "Directory",
+    "AVServices": "Film services",
+    "registerCompany": "Register your company"
   },
   "logo": {
     "textoAlternativo": "film comission"

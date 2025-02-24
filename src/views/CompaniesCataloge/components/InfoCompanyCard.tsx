@@ -89,7 +89,12 @@ const InfoCompanyCard: React.FC<{
               <LanguageIcon color="primary" />
             </Avatar>
           </ListItemAvatar>
-          <span>
+          <span
+            style={{ cursor: 'pointer' }}
+            onClick={() => {
+              window.open(company.website, '__blank')
+            }}
+          >
             <ListItemText primary={text.website} secondary={company.website} />
           </span>
         </ListItem>

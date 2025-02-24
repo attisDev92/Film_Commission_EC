@@ -1,5 +1,5 @@
 .list__container {
-  padding: 2rem 3rem;
+  padding: 2rem 1rem;
   text-align: start;
   border-bottom: 1px solid var(--color-primary-0);
   transition: all 0.3s ease-in-out;
@@ -116,7 +116,7 @@
   }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 600px) {
   .list__container {
     padding: 2rem 1rem;
   }
@@ -126,7 +126,7 @@
   }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 450px) {
   .list__container {
     padding: 1rem 0;
   }

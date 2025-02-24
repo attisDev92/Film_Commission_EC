@@ -1,11 +1,11 @@
-.container {
+.section {
   display: flex;
   flex-flow: column nowrap;
   gap: 2rem;
   margin: 0 10rem;
 }
 
-.container button {
+.section button {
   width: auto;
   height: 2rem;
   margin: auto 1rem;
@@ -14,4 +14,56 @@
   border-radius: var(--radio-primary-button);
   box-shadow: var(--button-shadow);
   transition: all 5ms;
+}
+
+.container {
+  position: relative;
+  text-align: justify;
+  overflow: hidden;
+  height: 400px;
+}
+
+.content {
+  width: 50%;
+  padding: 2rem;
+}
+
+.right {
+  margin-left: auto;
+}
+
+.background {
+  position: absolute;
+  left: 0;
+  filter: brightness(0.4);
+  z-index: -1;
+}
+
+.background img {
+  filter: hue-rotate(-10);
+}
+
+@media (max-width: 900px) {
+  .container {
+    height: 300px;
+  }
+
+  .section {
+    margin-inline: 5rem;
+    gap: 1rem;
+  }
+
+  .content {
+    width: 70%;
+  }
+}
+
+@media (max-width: 550px) {
+  .content {
+    width: 100%;
+  }
+  .section {
+    margin-inline: 2rem;
+    gap: 1rem;
+  }
 }

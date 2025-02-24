@@ -47,11 +47,16 @@ export interface LanguageState {
   titulo: string
   idioma: string
   menu: {
-    locacion: string
-    documentos: string
-    asociaciones: string
-    proveedores: string
-    contacto: string
+    filmEc: string
+    incentives: string
+    documents: string
+    associations: string
+    locations: string
+    registerLocation: string
+    cataloge: string
+    directory: string
+    AVServices: string
+    registerCompany: string
   }
   logo: {
     textoAlternativo: string

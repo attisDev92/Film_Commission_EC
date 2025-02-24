@@ -38,16 +38,12 @@ const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <LanguageButton />
-
       <div className={styleMenuBar}></div>
-
       <Menu />
-
       <div className={styleLogoBar}></div>
-
       <a href="/#">
         <img
-          className={styles.header__img}
+          className={styles.logo}
           src={logoFilmCommission}
           alt={text.logo.textoAlternativo}
         />

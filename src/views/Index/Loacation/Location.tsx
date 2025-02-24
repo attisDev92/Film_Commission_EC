@@ -14,6 +14,7 @@ import img7 from '../../../assets/images/locations/22DesiertodePalmira.jpg'
 import img8 from '../../../assets/images/locations/30ExAeropuertodeUIO.jpg'
 import img9 from '../../../assets/images/locations/50Quilotoa.jpg'
 import img10 from '../../../assets/images/locations/85Seleccion2Cuenca.jpg'
+import { Fade } from 'react-awesome-reveal'
 
 const locationsCarousel: CarouselItemProps[] = [
   {
@@ -75,15 +76,17 @@ const Locations: React.FC = () => {
   return (
     <>
       <div className={styles.locations}>
-        {paragraph.map((text) => (
-          <>
-            <p>{text}</p>
-            <br />
-          </>
-        ))}
+        <Fade cascade>
+          {paragraph.map((text) => (
+            <>
+              <p>{text}</p>
+              <br />
+            </>
+          ))}
+        </Fade>
       </div>
 
-      <div style={{ height: 500, margin: '0 auto' }}>
+      <div className={styles.carousel__container}>
         <Carousel items={locationsCarousel} />
       </div>
 

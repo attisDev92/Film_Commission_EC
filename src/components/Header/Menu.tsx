@@ -8,12 +8,56 @@ const Menu: React.FC = () => {
 
   return (
     <nav className={styles.menu}>
-      <div>
-        <a href="/#locations">{menu.locacion}</a>
-        <a href="/#documents">{menu.documentos}</a>
-        <a href="/#suppliers">{menu.proveedores}</a>
-        <a href="#footer">{menu.contacto}</a>
-      </div>
+      <ul className={styles.nav__menu}>
+        <li>
+          <div className={styles.dropdown__container}>
+            <a href="#" className={styles.nav__link}>
+              {menu.filmEc}
+            </a>
+            <div className={styles.dropdown__menu}>
+              {/* <a href="#incentives">
+                <span>{menu.incentives}</span>
+              </a> */}
+              <a href="#documents">
+                <span>{menu.documents}</span>
+              </a>
+              <a href="#associations">
+                <span>{menu.associations}</span>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div className={styles.dropdown__container}>
+            <a href="#locations" className={styles.nav__link}>
+              {menu.locations}
+            </a>
+            <div className={styles.dropdown__menu}>
+              <a href="#locations">
+                <span>{menu.cataloge}</span>
+              </a>
+              {/* <a href="/system">
+                <span>{menu.registerLocation}</span>
+              </a> */}
+            </div>
+          </div>
+        </li>
+        <li>
+          <div className={styles.dropdown__container}>
+            <a href="#suppliers" className={styles.nav__link}>
+              {menu.directory}
+            </a>
+            <div className={styles.dropdown__menu}>
+              <a href="/companies">
+                <span>{menu.AVServices}</span>
+              </a>
+              <a href="/system">
+                <span>{menu.registerCompany}</span>
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
     </nav>
   )
 }

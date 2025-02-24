@@ -1,3 +1,30 @@
+.container__documents {
+  text-align: justify;
+  margin: 2rem 2rem;
+}
+
+.list__links {
+  margin: 0 auto;
+  max-width: 1000px;
+  min-width: 800px;
+}
+
+@media (max-width: 700px) {
+  .container__documents {
+    margin: 1rem;
+  }
+
+  .notfound__container {
+    padding: 10rem 2rem 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .list__links {
+    margin: 0 1rem;
+  }
+}
+
 .container__associations {
   display: flex;
   flex-direction: row;
@@ -9,14 +36,6 @@
   align-items: center;
 }
 
-.container__documents {
-  text-align: justify;
-  margin: 2rem 5rem;
-}
-
-@media (max-width: 768) {
-  .container {
-    gap: 1rem;
-    width: 100%;
-  }
+.notfound__container {
+  margin: auto;
 }

@@ -2,11 +2,16 @@
   "titulo": "Comisión Fílmica",
   "idioma": "esp",
   "menu": {
-    "locacion": "Locación",
-    "documentos": "Documentos",
-    "proveedores": "Servicios audiovisual",
-    "asociaciones": "Asociaciones y gremios",
-    "contacto": "Contacto"
+    "filmEc": "Rueda en Ecuador",
+    "incentives": "Incentivos",
+    "documents": "Documentos y procesos",
+    "associations": "Asociaciones",
+    "locations": "Locaciones",
+    "registerLocation": "Registra tu locación",
+    "cataloge": "Busca locaciones",
+    "directory": "Directorio",
+    "AVServices": "Servicios audiovisuales",
+    "registerCompany": "Registra tu empresa"
   },
   "logo": {
     "textoAlternativo": "comisión fílmica"

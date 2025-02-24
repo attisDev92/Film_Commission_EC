@@ -7,6 +7,7 @@ import { useLanguageSelected } from '../../hooks/useLanguages'
 import { LanguageState } from '../../types'
 import styles from './Index.module.css'
 import Suppliers from './Suppliers/Suppliers'
+import { Fade } from 'react-awesome-reveal'
 
 const Index: React.FC = () => {
   const text: LanguageState = useLanguageSelected()
@@ -26,14 +27,16 @@ const Index: React.FC = () => {
       <Section id="documents" title={text.documentosSeccion.titulo}>
         <div className={styles.container__documents}>
           <p>{text.documentosSeccion.parrafo}</p>
-          <ul className="list__links">
-            {text.documentosSeccion.lista.map((documento) => (
-              <DocumentList
-                nombre={documento.nombre}
-                link={documento.link}
-                key={documento.nombre}
-              />
-            ))}
+          <ul className={styles.list__links}>
+            <Fade cascade>
+              {text.documentosSeccion.lista.map((documento) => (
+                <DocumentList
+                  nombre={documento.nombre}
+                  link={documento.link}
+                  key={documento.nombre}
+                />
+              ))}
+            </Fade>
           </ul>
         </div>
       </Section>
