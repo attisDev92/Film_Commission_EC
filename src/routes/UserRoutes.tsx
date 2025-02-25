@@ -17,6 +17,7 @@ import LocationForm from '../views/UserView/RegisterLocation/components/Location
 import RegisterService from '../views/UserView/RegisterService.tsx/RegisterService'
 import CompaniesFiles from '../views/UserView/RegisterService.tsx/CompaniesFiles'
 import EditCompany from '../views/UserView/RegisterService.tsx/EditCompany'
+import Footer from '../components/Footer/Footer'
 
 const UserRoutes: React.FC = () => {
   const user: User | null = useGetUser()
@@ -67,6 +68,7 @@ const UserRoutes: React.FC = () => {
         )}
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </div>
   )
 }

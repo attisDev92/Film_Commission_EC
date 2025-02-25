@@ -18,10 +18,10 @@ const Menu: React.FC = () => {
               {/* <a href="#incentives">
                 <span>{menu.incentives}</span>
               </a> */}
-              <a href="#documents">
+              <a href="/#documents">
                 <span>{menu.documents}</span>
               </a>
-              <a href="#associations">
+              <a href="/#associations">
                 <span>{menu.associations}</span>
               </a>
             </div>
@@ -29,11 +29,11 @@ const Menu: React.FC = () => {
         </li>
         <li>
           <div className={styles.dropdown__container}>
-            <a href="#locations" className={styles.nav__link}>
+            <a href="/#locations" className={styles.nav__link}>
               {menu.locations}
             </a>
             <div className={styles.dropdown__menu}>
-              <a href="#locations">
+              <a href="/#locations">
                 <span>{menu.cataloge}</span>
               </a>
               {/* <a href="/system">
@@ -44,7 +44,7 @@ const Menu: React.FC = () => {
         </li>
         <li>
           <div className={styles.dropdown__container}>
-            <a href="#suppliers" className={styles.nav__link}>
+            <a href="/#suppliers" className={styles.nav__link}>
               {menu.directory}
             </a>
             <div className={styles.dropdown__menu}>
