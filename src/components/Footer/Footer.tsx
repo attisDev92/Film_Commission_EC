@@ -68,6 +68,14 @@ const Footer: React.FC = () => {
             agosto
           </p>
           <p>Quito - Ecuador</p>
+          <p>
+            Soperte:{' '}
+            {
+              <a href="mailto:audiovisuales.ifci@creatividad.gob.ec">
+                audiovisuales.ifci@creatividad.gob.ec
+              </a>
+            }
+          </p>
         </div>
       </div>
 
