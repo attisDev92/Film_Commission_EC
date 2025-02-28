@@ -1,7 +1,7 @@
 import { Avatar, ListItem, ListItemAvatar, ListItemText } from '@mui/material'
 import { useState } from 'react'
 import EditButton from './EditButton'
-import styles from '../RegisterServices.module.css'
+import styles from './formikStyles.module.css'
 
 interface EditFieldProps {
   label: string

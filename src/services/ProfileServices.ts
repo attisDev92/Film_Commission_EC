@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { getConfig } from './UserServices'
 import { UserProfile } from '../types'
-const baseURL = `${import.meta.env.VITE_API_FILMCOMMISSION_URI}/profile`
+import { BASE_URI } from '../config/envConfig'
+const baseURL = `${BASE_URI}/profile`
 
 export const sendProfileData = async (profileData: UserProfile) => {
   try {

@@ -12,6 +12,7 @@ import { verifyLoggedToken } from './Redux/userReducer'
 import { User } from './types'
 import { useGetUser } from './hooks/useUser'
 import { fetchAllCompanies } from './Redux/companiesReducer'
+import { fetchAllProjects } from './Redux/audiovisualProjectReducer'
 
 const App = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>()
@@ -26,6 +27,7 @@ const App = (): JSX.Element => {
     }
 
     dispatch(fetchAllCompanies())
+    dispatch(fetchAllProjects())
   }, [dispatch])
 
   return (

@@ -30,15 +30,25 @@
   display: flex;
   flex-flow: row nowrap;
   padding: 1rem;
-  width: 25rem;
+  gap: 1rem;
+  width: 100%;
+  margin-inline: 10%;
   min-width: 10rem;
   gap: 1rem;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.content {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 30%;
+  justify-content: center;
   align-items: center;
 }
 
 .imgContainer {
-  width: 40%;
-  height: auto;
+  height: 5rem;
 }
 
 .textContainer {

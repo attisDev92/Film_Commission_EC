@@ -4,6 +4,7 @@ import { WeatherTypes } from './data/weatherList'
 import { AccessibilityTypes } from './data/accessibilityList'
 import { Areas, NaturalArea, RuralArea, UrbanArea } from './data/categories'
 import { CompanyServices } from './data/companyServiceList'
+import { SubGenre } from './data/genresList'
 
 export interface User {
   id?: string
@@ -123,7 +124,13 @@ export type UserProfile = {
   genre: 'Masculino' | 'Femenino' | 'No especificado'
 }
 
+export interface Image {
+  url?: string
+  _id?: string
+}
+
 export interface LocationTypes {
+  id?: string
   name: string
   type: 'Público' | 'Privado'
   category: Areas
@@ -137,11 +144,12 @@ export interface LocationTypes {
   contactName: string
   email: string
   phone: string
-}
-
-export interface Image {
-  url?: string
-  _id?: string
+  direction?: string
+  cordinates: string[]
+  photos?: Image[]
+  public?: boolean
+  activeWhatsapp?: boolean
+  userId?: string
 }
 
 export interface CompanyServiceType {
@@ -165,4 +173,36 @@ export interface CompanyServiceType {
   public?: boolean
   activeWhatsapp?: boolean
   userId?: string
+}
+
+export interface AudiovisualProject {
+  id?: string
+  name: string
+  director: string
+  producer: string
+  productionCompany: string
+  sinopsis: string
+  sinopsisEng: string
+  country: string
+  coproducers: string[]
+  year: string
+  runTime: string
+  genre: 'Ficción' | 'Documental'
+  subGenres: SubGenre[]
+  currentSituation: 'Producción' | 'Post-Producción' | 'Distribución'
+  needs: string
+  needsENG: string
+  email: string
+  phone: string
+  website?: string
+  recognitions?: string[]
+  directorPhoto?: Image
+  producerPhoto?: Image
+  afiche?: Image
+  stills?: Image[]
+  dossier?: Image
+  trailer?: string
+  userId?: string
+  public?: boolean
+  activeWhatsapp?: boolean
 }

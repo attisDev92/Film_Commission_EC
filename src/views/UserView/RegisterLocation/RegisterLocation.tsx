@@ -4,39 +4,16 @@ import { locationSchema } from '../../../Utils/validationSchemas'
 import { Button, Card, SelectChangeEvent, Typography } from '@mui/material'
 import styles from './Loactions.module.css'
 import TextInput from '../../../components/FormikInputs/TextInput'
-import SelectInput from '../../../components/FormikInputs/SelectInpu'
+import SelectInput from '../../../components/FormikInputs/SelectInput'
 import { Areas, categories } from '../../../data/categories'
 import { weatherList } from '../../../data/weatherList'
 import { accessibilityList } from '../../../data/accessibilityList'
 import filterSubcategories from '../../../Utils/filterSubcategories'
 import { initialValues } from '../../../Utils/initialValiuesFormLocation'
-import { postLocationInfo } from '../../../services/LoacationServices'
-import { useDispatch } from 'react-redux'
-import { AppDispatch } from '../../../Redux/store'
-import { setLoader, setNotification } from '../../../Redux/notificationReducer'
-import { useNavigate } from 'react-router-dom'
 
 const RegisterLoacation: React.FC = () => {
-  const dispatch = useDispatch<AppDispatch>()
-  const navigate = useNavigate()
-
   const onSubmit = async (values: LocationTypes) => {
-    dispatch(setLoader(true))
-    try {
-      const response = await postLocationInfo(values)
-      console.log(response)
-      navigate(`/system/locations/map/${response.id}`)
-    } catch (error: unknown) {
-      console.log(error)
-      dispatch(
-        setNotification({
-          text: 'Error al crear locación, vuelve a intentar',
-          style: 'error',
-        }),
-      )
-    } finally {
-      dispatch(setLoader(false))
-    }
+    console.log(values)
   }
 
   const formik = useFormik({

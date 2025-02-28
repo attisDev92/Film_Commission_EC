@@ -10,51 +10,52 @@ const RegisterServiceLocationCard: React.FC = () => {
   return (
     <div className={styles.container}>
       <Card className={styles.card}>
-        <div className={styles.imgContainer}>
-          <img src={locationImg} />
-        </div>
-        <div className={styles.textContainer}>
-          <Typography variant="h6">Registrar una nueva locación</Typography>
-          {/* <Button
+        <div className={styles.content}>
+          <div className={styles.imgContainer}>
+            <img src={locationImg} />
+          </div>
+          <div className={styles.textContainer}>
+            <Typography variant="h6">Registrar una nueva locación</Typography>
+            {/* <Button
             variant="contained"
             onClick={() => navigate('/system/register_location')}
           >
             Registrar Locación
           </Button> */}
-          <Typography variant="h5">Muy pronto</Typography>
+            <Typography variant="h5">Muy pronto</Typography>
+          </div>
         </div>
-      </Card>
-      <Card className={styles.card}>
-        <div className={styles.imgContainer}>
-          <img src={audiovisualImg} />
+        <div className={styles.content}>
+          <div className={styles.imgContainer}>
+            <img src={audiovisualImg} />
+          </div>
+          <div className={styles.textContainer}>
+            <Typography variant="h6">
+              Registrar servicios audiovisuales
+            </Typography>
+            <Button
+              variant="contained"
+              onClick={() => navigate('/system/register_service')}
+            >
+              Registrar Servicio
+            </Button>
+          </div>
         </div>
-        <div className={styles.textContainer}>
-          <Typography variant="h6">
-            Registrar servicios audiovisuales
-          </Typography>
-          <Button
-            variant="contained"
-            onClick={() => navigate('/system/register_service')}
-          >
-            Registrar Servicio
-          </Button>
-        </div>
-      </Card>
-      <Card className={styles.card}>
-        <div className={styles.imgContainer}>
-          <img src={workProgessImg} />
-        </div>
-        <div className={styles.textContainer}>
-          <Typography variant="h6">
-            Registra Proyectos Work in Progress
-          </Typography>
-          {/* <Button
-            variant="contained"
-            onClick={() => navigate('/system/register_location')}
-          >
-            Registrar Locación
-          </Button> */}
-          <Typography variant="h5">Muy pronto</Typography>
+        <div className={styles.content}>
+          <div className={styles.imgContainer}>
+            <img src={workProgessImg} />
+          </div>
+          <div className={styles.textContainer}>
+            <Typography variant="h6">
+              Registra Proyectos Work in Progress
+            </Typography>
+            <Button
+              variant="contained"
+              onClick={() => navigate('/system/register_project')}
+            >
+              Registrar Proyecto
+            </Button>
+          </div>
         </div>
       </Card>
     </div>

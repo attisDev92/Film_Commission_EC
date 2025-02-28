@@ -11,6 +11,7 @@ import Profile from './Profile/Profile'
 //import UserLocations from './components/UserLoations'
 import RegisterServiceLocationCard from './RegisterCard/RegisterServicesLocationCard'
 import UserCompanies from './components/UserCompanies'
+import UserProjects from './components/userProjects'
 
 const IndexUser: React.FC = () => {
   const user: User | null = useGetUser()
@@ -39,7 +40,8 @@ const IndexUser: React.FC = () => {
           <Profile />
           <RegisterServiceLocationCard />
           {/* <UserLocations /> */}
-          <UserCompanies />s
+          <UserCompanies />
+          <UserProjects />
         </>
       ) : (
         <>

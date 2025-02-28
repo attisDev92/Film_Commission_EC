@@ -18,6 +18,9 @@ import RegisterService from '../views/UserView/RegisterService.tsx/RegisterServi
 import CompaniesFiles from '../views/UserView/RegisterService.tsx/CompaniesFiles'
 import EditCompany from '../views/UserView/RegisterService.tsx/EditCompany'
 import Footer from '../components/Footer/Footer'
+import RegisterProject from '../views/UserView/RegisterProject/RegisterProject'
+import ProjectFiles from '../views/UserView/RegisterProject/ProjectFiles'
+import EditProject from '../views/UserView/RegisterProject/EditProject'
 
 const UserRoutes: React.FC = () => {
   const user: User | null = useGetUser()
@@ -61,9 +64,12 @@ const UserRoutes: React.FC = () => {
             )}
             <Route path="locations/map/:id" element={<LocationForm />} />
             <Route path="services/files/:id" element={<CompaniesFiles />} />
+            <Route path="projects/files/:id" element={<ProjectFiles />} />
             <Route path="services/edit/:id" element={<EditCompany />} />
+            <Route path="projects/edit/:id" element={<EditProject />} />
             <Route path="register_location" element={<RegisterLoacation />} />
             <Route path="register_service" element={<RegisterService />} />
+            <Route path="register_project" element={<RegisterProject />} />
           </>
         )}
         <Route path="*" element={<NotFound />} />
