@@ -8,6 +8,8 @@ import { LanguageState } from '../../types'
 import styles from './Index.module.css'
 import Suppliers from './Suppliers/Suppliers'
 import { Fade } from 'react-awesome-reveal'
+import About from './About/About'
+import Incentives from './Incentives/Incentives'
 
 const Index: React.FC = () => {
   const text: LanguageState = useLanguageSelected()
@@ -15,6 +17,12 @@ const Index: React.FC = () => {
   return (
     <>
       <VideoBanner />
+
+      <Section id="aboutEC" title="Ecuador">
+        <About />
+      </Section>
+
+      <Incentives />
 
       <Section id="locations" title={text.locacionSeccion.titulo}>
         <Locations />

@@ -1,0 +1,43 @@
+.carousel {
+  height: 150vh;
+  background-color: black;
+}
+
+.contentContainer {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.images {
+  display: flex;
+  gap: 2rem;
+}
+
+.imagesItem {
+  width: 70vw;
+}
+
+.imageContainer {
+  width: 100%;
+}
+
+.image {
+  height: auto;
+  width: 100%;
+}
+
+@media (max-width: 800px) {
+  .imagesItem {
+    width: 90vw;
+  }
+}
+@media (max-width: 500px) {
+  .imagesItem {
+    width: 100vw;
+  }
+}

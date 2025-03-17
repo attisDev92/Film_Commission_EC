@@ -15,9 +15,12 @@ const Menu: React.FC = () => {
               {menu.filmEc}
             </a>
             <div className={styles.dropdown__menu}>
-              {/* <a href="#incentives">
+              <a href="/#aboutEC">
+                <span>{menu.aboutEc}</span>
+              </a>
+              <a href="/#incentives">
                 <span>{menu.incentives}</span>
-              </a> */}
+              </a>
               <a href="/#documents">
                 <span>{menu.documents}</span>
               </a>

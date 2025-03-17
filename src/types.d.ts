@@ -44,11 +44,18 @@ export interface Suppliers {
   button: string
 }
 
+export interface AboutEcuador {
+  source: string
+  title: string
+  text: string
+}
+
 export interface LanguageState {
   titulo: string
   idioma: string
   menu: {
     filmEc: string
+    aboutEc: string
     incentives: string
     documents: string
     associations: string
@@ -70,6 +77,7 @@ export interface LanguageState {
     parrafo: string
     button: string
   }
+  aboutEcuador: AboutEcuador[]
   suppliersSection: Suppliers
   documentosSeccion: {
     titulo: string

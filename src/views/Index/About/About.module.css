@@ -1,0 +1,35 @@
+.imgContainer {
+  height: 60vh;
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: justify;
+}
+
+.imgContainer > div {
+  width: 400px;
+  height: 500px;
+  margin: 10px;
+  overflow: hidden;
+}
+
+.imgContainer img {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+  justify-self: center;
+}
+
+@media (max-width: 500px) {
+  .imgContainer > div {
+    width: 150px;
+    height: 200px;
+  }
+
+  .imgContainer img {
+    width: 150px;
+    height: 200px;
+  }
+}

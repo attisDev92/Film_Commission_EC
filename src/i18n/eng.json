@@ -3,6 +3,7 @@
   "idioma": "eng",
   "menu": {
     "filmEc": "Film in EC",
+    "aboutEc": "About Ecuador",
     "incentives": "Incentives",
     "documents": "Documents and procedures",
     "associations": "Associations",
@@ -131,5 +132,32 @@
     "phone": "Phone",
     "clients": "Clients",
     "website": "Website"
-  }
+  },
+  "aboutEcuador": [
+    {
+      "source": "src/assets/images/about/historic.jpg",
+      "title": "Cultural and Historical Richness",
+      "text": "Ecuador’s colonial cities, such as Quito and Cuenca (both UNESCO World Heritage Sites), along with its vibrant indigenous traditions, provide authentic and visually stunning backdrops for any production."
+    },
+    {
+      "source": "src/assets/images/about/natural.jpg",
+      "title": "Diverse Locations in a Compact Territory",
+      "text": "From the Andes Mountains and the Amazon Rainforest to the Pacific Coast and the iconic Galapagos Islands, Ecuador offers an incredible variety of landscapes within a relatively small area. This allows productions to shoot multiple scenes without the need for extensive travel."
+    },
+    {
+      "source": "src/assets/images/about/filmakers.jpg",
+      "title": "Growing Film Industry Infrastructure",
+      "text": "Ecuador’s film industry is rapidly developing, with local crews, equipment rentals, and post-production facilities available to support international projects."
+    },
+    {
+      "source": "src/assets/images/about/city.jpg",
+      "title": "Government Incentives and Support:",
+      "text": "Ecuador offers attractive incentives for international productions, including tax exemptions, streamlined permits, and logistical support through institutions like the Ecuador Film Commission."
+    },
+    {
+      "source": "src/assets/images/about/people.jpg",
+      "title": "Warm and Welcoming Culture",
+      "text": "Ecuadorians are known for their hospitality and willingness to collaborate, ensuring a smooth and enjoyable filming experience."
+    }
+  ]
 }
