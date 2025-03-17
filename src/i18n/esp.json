@@ -135,27 +135,27 @@
   },
   "aboutEcuador": [
     {
-      "source": "src/assets/images/about/historic.jpg",
+      "source": "/images/historic.jpg",
       "title": "Riqueza cultural e histórica",
       "text": "Las ciudades coloniales de Ecuador, como Quito y Cuenca (ambas Patrimonio de la Humanidad por la UNESCO), junto con sus vibrantes tradiciones indígenas, ofrecen escenarios auténticos y visualmente impresionantes para cualquier producción."
     },
     {
-      "source": "src/assets/images/about/natural.jpg",
+      "source": "/images/natural.jpg",
       "title": "Diversidad de locaciones en un territorio compacto",
       "text": "Desde los Andes y la Amazonía hasta la costa del Pacífico y las icónicas Islas Galápagos, Ecuador ofrece una increíble variedad de paisajes en un área relativamente pequeña, permitiendo grabar múltiples escenas sin necesidad de viajes extensos."
     },
     {
-      "source": "src/assets/images/about/filmakers.jpg",
+      "source": "/images/filmakers.jpg",
       "title": "Infraestructura en crecimiento",
       "text": "La industria cinematográfica de Ecuador está en pleno desarrollo, con equipos locales, alquiler de equipos y servicios de postproducción disponibles para apoyar proyectos internacionales."
     },
     {
-      "source": "src/assets/images/about/city.jpg",
+      "source": "/images/city.jpg",
       "title": "Incentivos gubernamentales y apoyo logístico",
       "text": "Ecuador ofrece incentivos atractivos para producciones internacionales, como exenciones fiscales, permisos simplificados y apoyo logístico a través de instituciones como la Comisión Fílmica de Ecuador."
     },
     {
-      "source": "src/assets/images/about/people.jpg",
+      "source": "/images/people.jpg",
       "title": "Cultura cálida y acogedora",
       "text": "Los ecuatorianos son conocidos por su hospitalidad y disposición para colaborar, asegurando una experiencia de filmación fluida y agradable."
     }
