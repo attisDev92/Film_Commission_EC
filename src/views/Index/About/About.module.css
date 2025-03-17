@@ -23,13 +23,13 @@
 }
 
 @media (max-width: 500px) {
-  .imgContainer > div {
-    width: 150px;
-    height: 200px;
+  .imgContainer {
+    height: 50vh;
   }
 
-  .imgContainer img {
-    width: 150px;
-    height: 200px;
+  .imgContainer > div {
+    width: 250px;
+    height: 350px;
+    margin: 1rem;
   }
 }
