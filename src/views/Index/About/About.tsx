@@ -34,7 +34,7 @@ const About = () => {
   const content = useLanguageSelected().aboutEcuador
 
   return (
-    <div>
+    <div className={styles.aboutEcuador}>
       {content.map((item, i) => (
         <AboutCard
           key={i}

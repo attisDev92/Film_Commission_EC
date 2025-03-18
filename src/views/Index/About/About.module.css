@@ -1,17 +1,24 @@
+.aboutEcuador {
+  overflow: hidden;
+}
+
 .imgContainer {
   height: 60vh;
+  max-width: 700px;
   scroll-snap-align: start;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   text-align: justify;
+  margin: auto;
+  margin-bottom: 10rem;
 }
 
 .imgContainer > div {
-  width: 400px;
-  height: 500px;
-  margin: 10px;
+  height: 100%;
+  width: 50%;
+  margin: 1rem;
   overflow: hidden;
 }
 
@@ -25,11 +32,10 @@
 @media (max-width: 500px) {
   .imgContainer {
     height: 50vh;
+    width: 100%;
   }
 
   .imgContainer > div {
-    width: 250px;
-    height: 350px;
     margin: 1rem;
   }
 }

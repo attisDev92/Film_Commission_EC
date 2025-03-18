@@ -1,5 +1,6 @@
 .container__sections {
   padding: 10rem 0rem 4rem;
+  overflow: hidden;
 }
 
 .container__sections h2 {
