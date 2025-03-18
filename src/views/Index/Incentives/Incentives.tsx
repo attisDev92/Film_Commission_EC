@@ -25,7 +25,7 @@ const images: string[] = [
 const Incentives = () => {
   const targetRef = useRef(null)
   const { scrollYProgress } = useScroll({ target: targetRef })
-  const x = useTransform(scrollYProgress, [0, 1], ['10%', '-100%'])
+  const x = useTransform(scrollYProgress, [0, 1], ['10%', '-80%'])
 
   return (
     <section id="incentives">
