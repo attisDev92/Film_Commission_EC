@@ -82,7 +82,7 @@ const UserProjects: React.FC = () => {
             label="Previsualizar"
             className="textPrimary"
             onClick={() =>
-              window.open(`${window.location.origin}/projects/${id}`, '_blank')
+              window.open(`https://cinemaec.com/projects/${id}`, '_blank')
             }
             color="inherit"
           />,
