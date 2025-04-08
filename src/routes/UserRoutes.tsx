@@ -13,7 +13,7 @@ import RecoverPassForm from '../components/RecoverPassForm/RecoverPassForm'
 import ChangePass from '../components/RecoverPassForm/ChangePassForm'
 import RegisterProfile from '../views/UserView/RegisterProfile/RegisterProfile'
 import RegisterLoacation from '../views/UserView/RegisterLocation/RegisterLocation'
-import LocationForm from '../views/UserView/RegisterLocation/components/LocationForm'
+import LocationFiles from '../views/UserView/RegisterLocation/LocationFiles'
 import RegisterService from '../views/UserView/RegisterService.tsx/RegisterService'
 import CompaniesFiles from '../views/UserView/RegisterService.tsx/CompaniesFiles'
 import EditCompany from '../views/UserView/RegisterService.tsx/EditCompany'
@@ -62,7 +62,8 @@ const UserRoutes: React.FC = () => {
             {!user?.profile && (
               <Route path="register_profile" element={<RegisterProfile />} />
             )}
-            <Route path="locations/map/:id" element={<LocationForm />} />
+
+            <Route path="locations/files/:id" element={<LocationFiles />} />
             <Route path="services/files/:id" element={<CompaniesFiles />} />
             <Route path="projects/files/:id" element={<ProjectFiles />} />
             <Route path="services/edit/:id" element={<EditCompany />} />

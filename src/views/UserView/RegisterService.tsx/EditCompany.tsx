@@ -131,7 +131,8 @@ const EditCompany: React.FC = () => {
                 />
                 {formik.values.public ? (
                   <Typography variant="body2" color="success">
-                    El perfil está disponible dentro del catálogo de empresas{' '}
+                    El perfil está disponible dentro del catálogo de
+                    empresas{' '}
                   </Typography>
                 ) : (
                   <Typography variant="body2" color="error">

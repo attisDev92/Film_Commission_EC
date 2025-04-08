@@ -1,23 +1,23 @@
 import axios from 'axios'
-import { getConfig } from './UserServices'
 import { LocationTypes } from '../types'
+import { getConfig } from './UserServices'
 import { BASE_URI } from '../config/envConfig'
 
 const baseURL = `${BASE_URI}/locations`
 
-export const getLocation = async (id: string) => {
+export const getLocations = async () => {
   try {
-    const response = await axios.get(`${baseURL}/${id}`)
-    return response.data
+    const response = await axios.get(baseURL)
+    return response.data.data
   } catch (error: unknown) {
     console.error(error)
     throw error
   }
 }
 
-export const getLocations = async () => {
+export const getLocation = async (id: string) => {
   try {
-    const response = await axios.get(`${baseURL}`)
+    const response = await axios.get(`${baseURL}/${id}`)
     return response.data.data
   } catch (error: unknown) {
     console.error(error)
@@ -31,13 +31,14 @@ export const postLocation = async (newLocation: LocationTypes) => {
     return response.data.data
   } catch (error: unknown) {
     console.error(error)
+    throw error
   }
 }
 
 export const putLocation = async (locationEdited: LocationTypes) => {
   try {
     const response = await axios.put(
-      `${baseURL}/edit`,
+      `${baseURL}/${locationEdited.id}`,
       locationEdited,
       getConfig(),
     )
@@ -48,24 +49,21 @@ export const putLocation = async (locationEdited: LocationTypes) => {
   }
 }
 
-export const postLocationFiles = async (files: FormData) => {
+export const destroyLocation = async (locationId: string) => {
   try {
-    const response = await axios.put(`${baseURL}/files`, files, getConfig())
-    return response.data.data
+    const response = await axios.delete(`${baseURL}/${locationId}`, getConfig())
+    return response.data
   } catch (error: unknown) {
     console.error(error)
     throw error
   }
 }
 
-export const deleteLocationFiles = async (
-  fileId: string,
-  locationId: string,
-) => {
+export const postLocationFile = async (formData: FormData) => {
   try {
-    const response = await axios.put(
-      `${baseURL}/files/delete`,
-      { fileId, locationId },
+    const response = await axios.post(
+      `${baseURL}/upload`,
+      formData,
       getConfig(),
     )
     return response.data.data
@@ -75,10 +73,16 @@ export const deleteLocationFiles = async (
   }
 }
 
-export const destroyLocation = async (LocationId: string) => {
+export const destroyLocationFile = async (
+  locationId: string,
+  fileId: string,
+) => {
   try {
-    const response = await axios.delete(`${baseURL}/${LocationId}`, getConfig())
-    return response
+    const response = await axios.delete(
+      `${baseURL}/${locationId}/files/${fileId}`,
+      getConfig(),
+    )
+    return response.data
   } catch (error: unknown) {
     console.error(error)
     throw error

@@ -147,7 +147,12 @@ export const locationSchema = yup.object().shape({
   description: yup
     .string()
     .min(100, `${100} ${errorValidationMessage.min}`)
-    .max(500, `${500} ${errorValidationMessage.max}`)
+    .max(1000, `${1000} ${errorValidationMessage.max}`)
+    .required(errorValidationMessage.required),
+  descriptionEn: yup
+    .string()
+    .min(100, `${100} ${errorValidationMessage.min}`)
+    .max(1000, `${1000} ${errorValidationMessage.max}`)
     .required(errorValidationMessage.required),
   province: yup.string().oneOf(provinciaList),
   city: yup
@@ -157,7 +162,13 @@ export const locationSchema = yup.object().shape({
   requestInformation: yup
     .string()
     .min(100, `${100} ${errorValidationMessage.min}`)
-    .max(500, `${500} ${errorValidationMessage.max}`),
+    .max(1000, `${1000} ${errorValidationMessage.max}`)
+    .required(errorValidationMessage.required),
+  requestInformationEn: yup
+    .string()
+    .min(100, `${100} ${errorValidationMessage.min}`)
+    .max(1000, `${1000} ${errorValidationMessage.max}`)
+    .required(errorValidationMessage.required),
   contactName: validationName,
   email: validationEmail,
   phone: validationCellPhone,

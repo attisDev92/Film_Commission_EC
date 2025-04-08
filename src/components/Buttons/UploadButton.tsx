@@ -1,56 +1,33 @@
-import Box from '@mui/material/Box'
-import CircularProgress from '@mui/material/CircularProgress'
-import { green } from '@mui/material/colors'
-import Fab from '@mui/material/Fab'
-import CheckIcon from '@mui/icons-material/Check'
-import SaveIcon from '@mui/icons-material/Save'
+import { Button } from '@mui/material'
+import { CloudUpload } from '@mui/icons-material'
 
 interface UploadButtonProps {
-  loading: boolean
-  success: boolean
-  handleClick?: () => void
-  type: 'button' | 'submit' | 'reset'
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  loading?: boolean
+  success?: boolean
 }
 
 const UploadButton: React.FC<UploadButtonProps> = ({
-  loading,
-  success,
-  handleClick,
-  type,
+  onChange,
+  loading = false,
+  success = false,
 }) => {
-  const buttonSx = {
-    ...(success && {
-      bgcolor: green[500],
-      '&:hover': {
-        bgcolor: green[700],
-      },
-    }),
-  }
-
   return (
-    <Box sx={{ m: 1, position: 'relative' }}>
-      <Fab
-        aria-label="save"
-        color="primary"
-        sx={buttonSx}
-        type={type as 'button' | 'submit' | 'reset'}
-        onClick={handleClick}
-      >
-        {success ? <CheckIcon /> : <SaveIcon />}
-      </Fab>
-      {loading && (
-        <CircularProgress
-          size={68}
-          sx={{
-            color: green[500],
-            position: 'absolute',
-            top: -6,
-            left: -6,
-            zIndex: 1,
-          }}
-        />
-      )}
-    </Box>
+    <Button
+      variant="contained"
+      startIcon={<CloudUpload />}
+      disabled={loading}
+      color={success ? 'success' : 'primary'}
+      component="label"
+    >
+      {loading ? 'Cargando...' : 'Seleccionar archivo'}
+      <input
+        type="file"
+        accept=".jpg, .png, .webp"
+        onChange={onChange}
+        style={{ display: 'none' }}
+      />
+    </Button>
   )
 }
 

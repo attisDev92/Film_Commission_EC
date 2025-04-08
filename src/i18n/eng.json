@@ -10,9 +10,11 @@
     "locations": "Locations",
     "registerLocation": "Register your location",
     "cataloge": "Find locations",
-    "directory": "Directory",
+    "directory": "Projects",
     "AVServices": "Film services",
-    "registerCompany": "Register your company"
+    "registerCompany": "Register your company",
+    "projects": "Work in progress",
+    "registerProject": "Register project"
   },
   "logo": {
     "textoAlternativo": "film comission"
@@ -137,7 +139,7 @@
     {
       "source": "/images/historic.jpg",
       "title": "Cultural and Historical Richness",
-      "text": "Ecuador’s colonial cities, such as Quito and Cuenca (both UNESCO World Heritage Sites), along with its vibrant indigenous traditions, provide authentic and visually stunning backdrops for any production."
+      "text": "Ecuador's colonial cities, such as Quito and Cuenca (both UNESCO World Heritage Sites), along with its vibrant indigenous traditions, provide authentic and visually stunning backdrops for any production."
     },
     {
       "source": "/images/natural.jpg",
@@ -147,7 +149,7 @@
     {
       "source": "/images/filmakers.jpg",
       "title": "Growing Film Industry Infrastructure",
-      "text": "Ecuador’s film industry is rapidly developing, with local crews, equipment rentals, and post-production facilities available to support international projects."
+      "text": "Ecuador's film industry is rapidly developing, with local crews, equipment rentals, and post-production facilities available to support international projects."
     },
     {
       "source": "/images/city.jpg",

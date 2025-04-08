@@ -65,6 +65,10 @@ export interface LanguageState {
     directory: string
     AVServices: string
     registerCompany: string
+    services: string
+    registerService: string
+    projects: string
+    registerProject: string
   }
   logo: {
     textoAlternativo: string
@@ -144,9 +148,11 @@ export interface LocationTypes {
   category: Areas
   subCategory: (UrbanArea | RuralArea | NaturalArea)[]
   description: string
+  descriptionEn: string
   province: ProvinciasEcuador
   city: string
   requestInformation: string
+  requestInformationEn: string
   weather: WeatherTypes
   accessibilities: AccessibilityTypes[]
   contactName: string
@@ -154,7 +160,8 @@ export interface LocationTypes {
   phone: string
   direction?: string
   cordinates: string[]
-  photos?: Image[]
+  photos?: { url: string; _id: string }[]
+  poster?: { url: string }
   public?: boolean
   activeWhatsapp?: boolean
   userId?: string

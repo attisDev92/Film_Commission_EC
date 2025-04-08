@@ -8,7 +8,7 @@ import { Card, Button, Typography } from '@mui/material'
 import styles from './Index.module.css'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 import Profile from './Profile/Profile'
-//import UserLocations from './components/UserLoations'
+import UserLocations from './components/UserLocations'
 import RegisterServiceLocationCard from './RegisterCard/RegisterServicesLocationCard'
 import UserCompanies from './components/UserCompanies'
 import UserProjects from './components/userProjects'
@@ -39,7 +39,7 @@ const IndexUser: React.FC = () => {
         <>
           <Profile />
           <RegisterServiceLocationCard />
-          {/* <UserLocations /> */}
+          <UserLocations />
           <UserCompanies />
           <UserProjects />
         </>

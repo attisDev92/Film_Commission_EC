@@ -39,16 +39,16 @@ const Menu: React.FC = () => {
               <a href="/#locations">
                 <span>{menu.cataloge}</span>
               </a>
-              {/* <a href="/system">
+              <a href="/system">
                 <span>{menu.registerLocation}</span>
-              </a> */}
+              </a>
             </div>
           </div>
         </li>
         <li>
           <div className={styles.dropdown__container}>
-            <a href="/#suppliers" className={styles.nav__link}>
-              {menu.directory}
+            <a href="/#services" className={styles.nav__link}>
+              {menu.AVServices}
             </a>
             <div className={styles.dropdown__menu}>
               <a href="/companies">
@@ -56,6 +56,21 @@ const Menu: React.FC = () => {
               </a>
               <a href="/system">
                 <span>{menu.registerCompany}</span>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div className={styles.dropdown__container}>
+            <a href="/#projects" className={styles.nav__link}>
+              {menu.projects}
+            </a>
+            <div className={styles.dropdown__menu}>
+              <a href="https://cinemaec.com/projects">
+                <span>{menu.directory}</span>
+              </a>
+              <a href="/system">
+                <span>{menu.registerProject}</span>
               </a>
             </div>
           </div>

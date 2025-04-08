@@ -8,7 +8,9 @@ export const initialValues: LocationTypes = {
   category: '',
   subCategory: [],
   description: '',
+  descriptionEn: '',
   requestInformation: '',
+  requestInformationEn: '',
   //@ts-expect-error initial value it's must be a void string
   weather: [],
   accessibilities: [],
@@ -16,4 +18,5 @@ export const initialValues: LocationTypes = {
   email: '',
   phone: '',
   activeWhatsapp: false,
+  cordinates: [],
 }

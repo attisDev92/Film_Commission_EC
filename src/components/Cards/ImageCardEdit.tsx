@@ -1,36 +1,47 @@
 import { useState } from 'react'
 import DeleteButton from '../Buttons/DeleteFileButton'
 import { ImageListItem } from '@mui/material'
-import { Image } from '../../types'
 
 interface ImageCardEditProps {
-  item: Image
-  deleteImageFunc: (fileId: string) => void
+  imageUrl: string
+  onDelete: () => void
 }
 
-const ImagesCardEdit: React.FC<ImageCardEditProps> = ({
-  item,
-  deleteImageFunc,
+const ImageCardEdit: React.FC<ImageCardEditProps> = ({
+  imageUrl,
+  onDelete,
 }) => {
   const [loading, setLoading] = useState<boolean>(false)
+  const [success, setSuccess] = useState<boolean>(false)
 
-  const handleDelete = (fileId: string) => {
+  const handleDelete = async () => {
     setLoading(true)
-    deleteImageFunc(fileId)
+    try {
+      await onDelete()
+      setSuccess(true)
+    } catch (error) {
+      console.error('Error al eliminar la imagen:', error)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
     <ImageListItem>
-      <img src={item.url} />
+      <img
+        src={imageUrl}
+        alt="Location"
+        style={{ width: '100%', height: 'auto' }}
+      />
       <DeleteButton
         loading={loading}
-        label="Borrar"
-        success={false}
+        success={success}
+        label="Eliminar"
+        handleClick={handleDelete}
         type="button"
-        handleClick={() => item._id && handleDelete(item._id)}
       />
     </ImageListItem>
   )
 }
 
-export default ImagesCardEdit
+export default ImageCardEdit

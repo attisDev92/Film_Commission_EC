@@ -5,6 +5,7 @@ import {
   AudiovisualProject,
   CompanyServiceType,
   LanguageState,
+  LocationTypes,
   User,
   UserProfile,
 } from '../types'
@@ -14,6 +15,7 @@ import notification from './notificationReducer'
 import userProfile from './profileReducer'
 import companies from './companiesReducer'
 import audiovisualProjects from './audiovisualProjectReducer'
+import locations from './locationReducer'
 
 export interface GlobalState {
   user: User
@@ -22,6 +24,7 @@ export interface GlobalState {
   userProfile: UserProfile
   companies: CompanyServiceType[]
   audiovisualProjects: AudiovisualProject[]
+  locations: LocationTypes[]
 }
 
 const store = configureStore({
@@ -32,6 +35,7 @@ const store = configureStore({
     companies,
     notification,
     audiovisualProjects,
+    locations,
   },
   middleware: (getDefaultMddleware) => getDefaultMddleware().concat(thunk),
 })

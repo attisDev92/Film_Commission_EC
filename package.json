@@ -22,7 +22,7 @@
     "@react-leaflet/core": "^3.0.0",
     "@reduxjs/toolkit": "^2.5.1",
     "@types/json-server": "^0.14.7",
-    "@types/leaflet": "^1.9.16",
+    "@types/leaflet": "^1.9.17",
     "@types/yup": "^0.32.0",
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",

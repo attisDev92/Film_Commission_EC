@@ -10,9 +10,11 @@
     "locations": "Locaciones",
     "registerLocation": "Registra tu locación",
     "cataloge": "Busca locaciones",
-    "directory": "Directorio",
+    "directory": "Proyectos",
     "AVServices": "Servicios audiovisuales",
-    "registerCompany": "Registra tu empresa"
+    "registerCompany": "Registra tu empresa",
+    "projects": "Work in progress",
+    "registerProject": "Registrar proyecto"
   },
   "logo": {
     "textoAlternativo": "comisión fílmica"

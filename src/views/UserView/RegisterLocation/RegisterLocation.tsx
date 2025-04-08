@@ -10,10 +10,24 @@ import { weatherList } from '../../../data/weatherList'
 import { accessibilityList } from '../../../data/accessibilityList'
 import filterSubcategories from '../../../Utils/filterSubcategories'
 import { initialValues } from '../../../Utils/initialValiuesFormLocation'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '../../../Redux/store'
+import { postNewLocation } from '../../../Redux/locationReducer'
+import { useNavigate } from 'react-router-dom'
 
-const RegisterLoacation: React.FC = () => {
+const RegisterLocation: React.FC = () => {
+  const dispatch = useDispatch<AppDispatch>()
+  const navigate = useNavigate()
+
   const onSubmit = async (values: LocationTypes) => {
-    console.log(values)
+    try {
+      const response = await dispatch(postNewLocation(values))
+      if (response && response.id) {
+        navigate(`/system/locations/files/${response.id}`)
+      }
+    } catch (error) {
+      console.error('Error al crear la locación:', error)
+    }
   }
 
   const formik = useFormik({
@@ -77,7 +91,19 @@ const RegisterLoacation: React.FC = () => {
             {...formik.getFieldProps('description')}
             touchedHelper={formik.touched.description}
             errorHelper={formik.errors.description}
-            helperText="min 100 caracteres, max 300 caracteres"
+            helperText="min 100 caracteres, max 1000 caracteres"
+          />
+          <TextInput
+            id="descriptionEn"
+            type="text"
+            label="Descripción del lugar (inglés)"
+            placeholder="The space is ..."
+            multiline={true}
+            rows={3}
+            {...formik.getFieldProps('descriptionEn')}
+            touchedHelper={formik.touched.descriptionEn}
+            errorHelper={formik.errors.descriptionEn}
+            helperText="min 100 caracteres, max 1000 caracteres"
           />
           <TextInput
             id="requestInformation"
@@ -89,7 +115,19 @@ const RegisterLoacation: React.FC = () => {
             {...formik.getFieldProps('requestInformation')}
             touchedHelper={formik.touched.requestInformation}
             errorHelper={formik.errors.requestInformation}
-            helperText="min 100 caracteres, max 300 caracteres"
+            helperText="min 100 caracteres, max 1000 caracteres"
+          />
+          <TextInput
+            id="requestInformationEn"
+            type="text"
+            label="Proceso para solicitar la locación (inglés)"
+            placeholder="To request the location you must ..."
+            multiline={true}
+            rows={3}
+            {...formik.getFieldProps('requestInformationEn')}
+            touchedHelper={formik.touched.requestInformationEn}
+            errorHelper={formik.errors.requestInformationEn}
+            helperText="min 100 caracteres, max 1000 caracteres"
           />
           <span>
             <SelectInput
@@ -109,37 +147,35 @@ const RegisterLoacation: React.FC = () => {
               required={true}
             />
           </span>
-          <span>
-            <TextInput
-              id="contactName"
-              type="text"
-              label="Nombre de Contacto"
-              placeholder="Nombre Apellido"
-              {...formik.getFieldProps('contactName')}
-              touchedHelper={formik.touched.contactName}
-              errorHelper={formik.errors.contactName}
-            />
-            <TextInput
-              id="email"
-              type="text"
-              label="Correo de contacto"
-              placeholder="info@mail.com"
-              {...formik.getFieldProps('email')}
-              touchedHelper={formik.touched.email}
-              errorHelper={formik.errors.email}
-            />
-            <TextInput
-              id="phone"
-              type="text"
-              label="Teléfono de contacto"
-              placeholder="0999999999"
-              {...formik.getFieldProps('phone')}
-              touchedHelper={formik.touched.phone}
-              errorHelper={formik.errors.phone}
-            />
-          </span>
+          <TextInput
+            id="contactName"
+            type="text"
+            label="Nombre de contacto"
+            placeholder="Nombre"
+            {...formik.getFieldProps('contactName')}
+            touchedHelper={formik.touched.contactName}
+            errorHelper={formik.errors.contactName}
+          />
+          <TextInput
+            id="email"
+            type="email"
+            label="Correo electrónico"
+            placeholder="ejemplo@correo.com"
+            {...formik.getFieldProps('email')}
+            touchedHelper={formik.touched.email}
+            errorHelper={formik.errors.email}
+          />
+          <TextInput
+            id="phone"
+            type="tel"
+            label="Teléfono"
+            placeholder="0999999999"
+            {...formik.getFieldProps('phone')}
+            touchedHelper={formik.touched.phone}
+            errorHelper={formik.errors.phone}
+          />
           <Button type="submit" variant="contained">
-            Crear locación
+            Registrar locación
           </Button>
         </form>
       </Card>
@@ -147,4 +183,4 @@ const RegisterLoacation: React.FC = () => {
   )
 }
 
-export default RegisterLoacation
+export default RegisterLocation
