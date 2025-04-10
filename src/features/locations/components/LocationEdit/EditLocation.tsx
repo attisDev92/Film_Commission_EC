@@ -33,6 +33,10 @@ import TextInput from '../../../../common/components/FormikInputs/TextInput'
 import SelectInput from '../../../../common/components/FormikInputs/SelectInput'
 import AccessibleIcon from '@mui/icons-material/Accessible'
 import CloudIcon from '@mui/icons-material/Cloud'
+import { categories } from '../../utils/categories'
+import filterSubcategories from '../../utils/filterSubcategories'
+import { accessibilityList } from '../../utils/accessibilityList'
+import { weatherList } from '../../utils/weatherList'
 
 const EditLocation = () => {
   const { id } = useParams()
@@ -161,7 +165,7 @@ const EditLocation = () => {
                 <SelectInput
                   id="category"
                   label="Categoría"
-                  options={['Público', 'Privado']}
+                  options={categories}
                   {...formik.getFieldProps('category')}
                 />
               </EditField>
@@ -176,7 +180,7 @@ const EditLocation = () => {
                 <SelectInput
                   id="subCategory"
                   label="Subcategoría"
-                  options={['Público', 'Privado']}
+                  options={filterSubcategories(formik.values.category)}
                   {...formik.getFieldProps('subCategory')}
                 />
               </EditField>
@@ -253,7 +257,7 @@ const EditLocation = () => {
                 <SelectInput
                   id="weather"
                   label="Clima"
-                  options={['Público', 'Privado']}
+                  options={weatherList}
                   {...formik.getFieldProps('weather')}
                 />
               </EditField>
@@ -268,7 +272,7 @@ const EditLocation = () => {
                 <SelectInput
                   id="accessibility"
                   label="Accesibilidad"
-                  options={['Público', 'Privado']}
+                  options={accessibilityList}
                   {...formik.getFieldProps('accessibility')}
                 />
               </EditField>
