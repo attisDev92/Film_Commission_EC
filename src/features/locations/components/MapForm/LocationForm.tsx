@@ -15,15 +15,33 @@ export interface MapboxContext {
   text: string
 }
 
+// Coordenadas por defecto (Quito, Ecuador)
+const DEFAULT_COORDINATES: [number, number] = [-0.1807, -78.4678]
+
+const isValidCoordinate = (value: any): value is number => {
+  return typeof value === 'number' && !isNaN(value) && isFinite(value)
+}
+
+const getValidCoordinates = (
+  coordinates?: [number, number],
+): [number, number] => {
+  if (!coordinates || !Array.isArray(coordinates) || coordinates.length !== 2) {
+    return DEFAULT_COORDINATES
+  }
+
+  const [lat, lng] = coordinates
+  if (!isValidCoordinate(lat) || !isValidCoordinate(lng)) {
+    return DEFAULT_COORDINATES
+  }
+
+  return [lat, lng]
+}
+
 const LocationForm = ({ location }: { location: LocationTypes }) => {
   const dispatch = useDispatch<AppDispatch>()
 
-  const initialPosition = (() => {
-    if (location?.coordinates) {
-      return location.coordinates
-    }
-    return [-0.1807, -78.4678] as [number, number]
-  })()
+  // Initialize position from location
+  const initialPosition = getValidCoordinates(location?.coordinates)
 
   const [position, setPosition] = useState<[number, number]>(initialPosition)
   const [address, setAddress] = useState(location?.address || '')
@@ -37,12 +55,12 @@ const LocationForm = ({ location }: { location: LocationTypes }) => {
 
   useEffect(() => {
     if (location?.coordinates) {
-      const coords = location.coordinates
-      setPosition(coords)
+      const newPosition = getValidCoordinates(location.coordinates)
+      setPosition(newPosition)
       setViewState((prev) => ({
         ...prev,
-        latitude: coords[0],
-        longitude: coords[1],
+        latitude: newPosition[0],
+        longitude: newPosition[1],
       }))
     }
   }, [location])
@@ -53,14 +71,15 @@ const LocationForm = ({ location }: { location: LocationTypes }) => {
     newCity: string,
     newProvince: string,
   ) => {
+    const validCoordinates = getValidCoordinates(coordinates)
     setAddress(newAddress)
     setCity(newCity)
     setProvince(newProvince)
-    setPosition(coordinates)
+    setPosition(validCoordinates)
     setViewState((prev) => ({
       ...prev,
-      latitude: coordinates[0],
-      longitude: coordinates[1],
+      latitude: validCoordinates[0],
+      longitude: validCoordinates[1],
     }))
   }
 
