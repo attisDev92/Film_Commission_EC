@@ -1,6 +1,6 @@
 import { Card, Typography } from '@mui/material'
 import styles from './UserLocations.module.css'
-import { useLocations } from '../../hooks/useLocations'
+import { useUserLocations } from '../../hooks/useLocations'
 import { useEffect, useState } from 'react'
 import { LocationTypes } from '../../types/LocationTypes'
 import { useNavigate } from 'react-router-dom'
@@ -15,7 +15,7 @@ import ImageIcon from '@mui/icons-material/Image'
 import PreviewIcon from '@mui/icons-material/Preview'
 
 const UserLocations: React.FC = () => {
-  const { locations } = useLocations()
+  const { locations } = useUserLocations()
   const navigate = useNavigate()
   const [rows, setRows] = useState<LocationTypes[]>(locations)
   const dispatch = useDispatch<AppDispatch>()

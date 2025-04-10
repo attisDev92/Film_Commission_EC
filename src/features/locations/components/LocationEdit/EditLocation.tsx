@@ -273,7 +273,7 @@ const EditLocation = () => {
                   id="accessibility"
                   label="Accesibilidad"
                   options={accessibilityList}
-                  {...formik.getFieldProps('accessibility')}
+                  {...formik.getFieldProps('accessibilities')}
                 />
               </EditField>
               <EditField

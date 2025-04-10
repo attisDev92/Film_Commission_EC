@@ -9,7 +9,6 @@ const LocationFiles: React.FC = () => {
   const navigate = useNavigate()
   const locationId = useParams().id || ''
   const { location } = useUserLocations(locationId)
-  console.log(location)
 
   if (!location) {
     return (

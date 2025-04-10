@@ -8,8 +8,7 @@ import Map, { Marker, NavigationControl, MarkerDragEvent } from 'react-map-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { LocationTypes } from '../../types/LocationTypes'
 import AddressAutocomplete from './AddressAutocomplete'
-
-const mapboxToken = import.meta.env.VITE_MAPBOX_TOKEN
+import { MAPBOX_CONFIG } from '../../../../config/mapbox'
 
 export interface MapboxContext {
   id: string
@@ -80,7 +79,7 @@ const LocationForm = ({ location }: { location: LocationTypes }) => {
   const reverseGeocode = async (lat: number, lng: number) => {
     try {
       const response = await fetch(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?access_token=${mapboxToken}`,
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?access_token=${MAPBOX_CONFIG.token}`,
       )
       const data = await response.json()
 
@@ -166,9 +165,9 @@ const LocationForm = ({ location }: { location: LocationTypes }) => {
           {...viewState}
           onMove={(evt) => setViewState(evt.viewState)}
           style={{ width: '100%', height: '100%' }}
-          mapStyle="mapbox://styles/mapbox/streets-v12"
+          mapStyle={MAPBOX_CONFIG.style}
           onClick={handleMapClick}
-          mapboxAccessToken={mapboxToken}
+          mapboxAccessToken={MAPBOX_CONFIG.token}
         >
           <Marker
             latitude={position[0]}

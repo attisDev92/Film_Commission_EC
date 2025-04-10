@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
 import { TextField, Autocomplete, CircularProgress } from '@mui/material'
 import { MapboxContext } from './LocationForm'
+import { MAPBOX_CONFIG } from '../../../../config/mapbox'
 
 interface AddressAutocompleteProps {
   value: string
@@ -18,8 +19,6 @@ interface Suggestion {
   center: [number, number]
   context: MapboxContext[]
 }
-
-const mapboxToken = import.meta.env.VITE_MAPBOX_TOKEN
 
 const AddressAutocomplete = ({
   value,
@@ -52,7 +51,7 @@ const AddressAutocomplete = ({
         const response = await fetch(
           `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
             query,
-          )}.json?access_token=${mapboxToken}&country=ec&types=address,place,locality,region`,
+          )}.json?access_token=${MAPBOX_CONFIG.token}&country=${MAPBOX_CONFIG.country}&types=${MAPBOX_CONFIG.types}`,
           { signal: controllerRef.current.signal },
         )
 
