@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { Card, Typography, Button } from '@mui/material'
+import { Card, Typography, Button, CircularProgress } from '@mui/material'
 import { AppDispatch } from '../../../../app/store/store'
 import { editLocation } from '../../slices/editLocation'
 import styles from './LocationForm.module.css'
@@ -18,7 +18,7 @@ export interface MapboxContext {
 // Coordenadas por defecto (Quito, Ecuador)
 const DEFAULT_COORDINATES: [number, number] = [-0.1807, -78.4678]
 
-const isValidCoordinate = (value: any): value is number => {
+const isValidCoordinate = (value: unknown): value is number => {
   return typeof value === 'number' && !isNaN(value) && isFinite(value)
 }
 
@@ -39,9 +39,12 @@ const getValidCoordinates = (
 
 const LocationForm = ({ location }: { location: LocationTypes }) => {
   const dispatch = useDispatch<AppDispatch>()
+  const [isLoading, setIsLoading] = useState(true)
 
   // Initialize position from location
-  const initialPosition = getValidCoordinates(location?.coordinates)
+  const initialPosition = location?.coordinates
+    ? location.coordinates
+    : DEFAULT_COORDINATES
 
   const [position, setPosition] = useState<[number, number]>(initialPosition)
   const [address, setAddress] = useState(location?.address || '')
@@ -53,16 +56,21 @@ const LocationForm = ({ location }: { location: LocationTypes }) => {
     zoom: 13,
   })
 
+  // Handle initial load and location changes
   useEffect(() => {
-    if (location?.coordinates) {
-      const newPosition = getValidCoordinates(location.coordinates)
+    if (location) {
+      const newPosition = location.coordinates || DEFAULT_COORDINATES
       setPosition(newPosition)
       setViewState((prev) => ({
         ...prev,
         latitude: newPosition[0],
         longitude: newPosition[1],
       }))
+      setAddress(location.address || '')
+      setCity(location.city || '')
+      setProvince(location.province || '')
     }
+    setIsLoading(false)
   }, [location])
 
   const handleAddressSelect = (
@@ -71,27 +79,36 @@ const LocationForm = ({ location }: { location: LocationTypes }) => {
     newCity: string,
     newProvince: string,
   ) => {
-    const validCoordinates = getValidCoordinates(coordinates)
+    setPosition(coordinates)
+    setViewState((prev) => ({
+      ...prev,
+      latitude: coordinates[0],
+      longitude: coordinates[1],
+    }))
     setAddress(newAddress)
     setCity(newCity)
     setProvince(newProvince)
-    setPosition(validCoordinates)
-    setViewState((prev) => ({
-      ...prev,
-      latitude: validCoordinates[0],
-      longitude: validCoordinates[1],
-    }))
   }
 
   const handleMapClick = useCallback((e: mapboxgl.MapMouseEvent) => {
     const newPosition: [number, number] = [e.lngLat.lat, e.lngLat.lng]
     setPosition(newPosition)
+    setViewState((prev) => ({
+      ...prev,
+      latitude: newPosition[0],
+      longitude: newPosition[1],
+    }))
     reverseGeocode(newPosition[0], newPosition[1])
   }, [])
 
   const handleMarkerDragEnd = useCallback((e: MarkerDragEvent) => {
     const newPosition: [number, number] = [e.lngLat.lat, e.lngLat.lng]
     setPosition(newPosition)
+    setViewState((prev) => ({
+      ...prev,
+      latitude: newPosition[0],
+      longitude: newPosition[1],
+    }))
     reverseGeocode(newPosition[0], newPosition[1])
   }, [])
 
@@ -180,22 +197,31 @@ const LocationForm = ({ location }: { location: LocationTypes }) => {
       </div>
 
       <div className={styles.mapContainer}>
-        <Map
-          {...viewState}
-          onMove={(evt) => setViewState(evt.viewState)}
-          style={{ width: '100%', height: '100%' }}
-          mapStyle={MAPBOX_CONFIG.style}
-          onClick={handleMapClick}
-          mapboxAccessToken={MAPBOX_CONFIG.token}
-        >
-          <Marker
-            latitude={position[0]}
-            longitude={position[1]}
-            draggable={true}
-            onDragEnd={handleMarkerDragEnd}
-          />
-          <NavigationControl position="top-right" />
-        </Map>
+        {isLoading ? (
+          <div className={styles.loaderContainer}>
+            <CircularProgress />
+            <Typography variant="body2" style={{ marginTop: '1rem' }}>
+              Cargando mapa...
+            </Typography>
+          </div>
+        ) : (
+          <Map
+            {...viewState}
+            onMove={(evt) => setViewState(evt.viewState)}
+            style={{ width: '100%', height: '100%' }}
+            mapStyle={MAPBOX_CONFIG.style}
+            onClick={handleMapClick}
+            mapboxAccessToken={MAPBOX_CONFIG.token}
+          >
+            <Marker
+              latitude={position[0]}
+              longitude={position[1]}
+              draggable={true}
+              onDragEnd={handleMarkerDragEnd}
+            />
+            <NavigationControl position="top-right" />
+          </Map>
+        )}
       </div>
 
       <Button
