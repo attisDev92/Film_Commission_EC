@@ -21,19 +21,28 @@ const DEFAULT_COORDINATES: [number, number] = [-0.1807, -78.4678]
 const LocationForm = ({ location }: { location: LocationTypes }) => {
   const dispatch = useDispatch<AppDispatch>()
   const [isLoading, setIsLoading] = useState(true)
-  const [isInitialized, setIsInitialized] = useState(false)
 
-  // Estados para las coordenadas y la vista
-  const [position, setPosition] =
-    useState<[number, number]>(DEFAULT_COORDINATES)
-  const [address, setAddress] = useState('')
-  const [city, setCity] = useState('')
-  const [province, setProvince] = useState('')
-  const [viewState, setViewState] = useState({
-    latitude: DEFAULT_COORDINATES[0],
-    longitude: DEFAULT_COORDINATES[1],
-    zoom: 13,
+  // Inicialización de estados con valores guardados
+  const [position, setPosition] = useState<[number, number]>(() => {
+    if (
+      location?.coordinates &&
+      Array.isArray(location.coordinates) &&
+      location.coordinates.length === 2
+    ) {
+      return location.coordinates
+    }
+    return DEFAULT_COORDINATES
   })
+
+  const [address, setAddress] = useState(() => location?.address ?? '')
+  const [city, setCity] = useState(() => location?.city ?? '')
+  const [province, setProvince] = useState(() => location?.province ?? '')
+
+  const [viewState, setViewState] = useState(() => ({
+    latitude: location?.coordinates?.[0] ?? DEFAULT_COORDINATES[0],
+    longitude: location?.coordinates?.[1] ?? DEFAULT_COORDINATES[1],
+    zoom: 13,
+  }))
 
   // Función para validar coordenadas
   const validateCoordinates = (coordinates: [number, number]): boolean => {
@@ -55,29 +64,24 @@ const LocationForm = ({ location }: { location: LocationTypes }) => {
     )
   }
 
-  // Función para inicializar el estado con las coordenadas guardadas
-  const initializeWithSavedCoordinates = () => {
-    if (location?.coordinates && validateCoordinates(location.coordinates)) {
-      setPosition(location.coordinates)
-      setViewState((prev) => ({
-        ...prev,
-        latitude: location.coordinates?.[0] ?? DEFAULT_COORDINATES[0],
-        longitude: location.coordinates?.[1] ?? DEFAULT_COORDINATES[1],
-      }))
+  // Efecto para manejar cambios en la ubicación
+  useEffect(() => {
+    if (location) {
+      const savedCoordinates = location.coordinates
+      if (savedCoordinates && validateCoordinates(savedCoordinates)) {
+        setPosition(savedCoordinates)
+        setViewState((prev) => ({
+          ...prev,
+          latitude: savedCoordinates[0],
+          longitude: savedCoordinates[1],
+        }))
+      }
       setAddress(location.address ?? '')
       setCity(location.city ?? '')
-      setProvince(location.province || '')
+      setProvince(location.province ?? '')
     }
-    setIsInitialized(true)
     setIsLoading(false)
-  }
-
-  // Efecto para la inicialización
-  useEffect(() => {
-    if (!isInitialized && location) {
-      initializeWithSavedCoordinates()
-    }
-  }, [location, isInitialized])
+  }, [location])
 
   const handleAddressSelect = (
     newAddress: string,
