@@ -22,7 +22,7 @@ export interface LocationTypes {
   requestInformationEn?: string
   weather: WeatherTypes[]
   accessibilities: AccessibilityTypes[]
-  coordinates?: string[]
+  coordinates?: [number, number]
   contactName?: string
   email: string
   phone: string

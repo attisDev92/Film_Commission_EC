@@ -19,12 +19,12 @@ export const audiovisualProjectSchema = yup.object().shape({
   sinopsis: yup
     .string()
     .min(100, `${100} ${errorValidationMessage.min}`)
-    .max(300, `${300} ${errorValidationMessage.max}`)
+    .max(300, `${1000} ${errorValidationMessage.max}`)
     .required(errorValidationMessage.required),
   sinopsisEng: yup
     .string()
     .min(100, `${100} ${errorValidationMessage.min}`)
-    .max(300, `${300} ${errorValidationMessage.max}`)
+    .max(300, `${1000} ${errorValidationMessage.max}`)
     .required(errorValidationMessage.required),
   country: yup.string().oneOf(countriesList),
   coproducers: yup.array(),
@@ -38,12 +38,12 @@ export const audiovisualProjectSchema = yup.object().shape({
   needs: yup
     .string()
     .min(50, `${50} ${errorValidationMessage.min}`)
-    .max(150, `${150} ${errorValidationMessage.max}`)
+    .max(150, `${300} ${errorValidationMessage.max}`)
     .required(errorValidationMessage.required),
   needsENG: yup
     .string()
     .min(50, `${50} ${errorValidationMessage.min}`)
-    .max(150, `${150} ${errorValidationMessage.max}`)
+    .max(150, `${300} ${errorValidationMessage.max}`)
     .required(errorValidationMessage.required),
   email: validationEmail,
   phone: validationCellPhone,

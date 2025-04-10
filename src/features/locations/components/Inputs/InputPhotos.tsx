@@ -85,7 +85,7 @@ const InputPhotos: React.FC<InputPhotosProps> = ({ locationId, photos }) => {
       </ImageList>
       {photos.length < MAX_PHOTOS && (
         <>
-          <UploadButton onChange={handleFileSelect} />
+          <UploadButton onChange={handleFileSelect} type="submit" />
           {selectedFile && (
             <Button
               variant="contained"

@@ -169,7 +169,7 @@ const RegisterProject: React.FC = () => {
           {...formik.getFieldProps('sinopsis')}
           touchedHelper={formik.touched.sinopsis}
           errorHelper={formik.errors.sinopsis}
-          helperText="min 100 caracteres, max 300 caracteres"
+          helperText="min 100 caracteres, max 1000 caracteres"
         />
         <TextInput
           id="sinopsisEng"
@@ -181,7 +181,7 @@ const RegisterProject: React.FC = () => {
           {...formik.getFieldProps('sinopsisEng')}
           touchedHelper={formik.touched.sinopsisEng}
           errorHelper={formik.errors.sinopsisEng}
-          helperText="min 100 caracteres, max 300 caracteres"
+          helperText="min 100 caracteres, max 1000 caracteres"
         />
         <span>
           <SelectInput
@@ -210,7 +210,7 @@ const RegisterProject: React.FC = () => {
           {...formik.getFieldProps('needs')}
           touchedHelper={formik.touched.needs}
           errorHelper={formik.errors.needs}
-          helperText="min 50 caracteres, max 150 caracteres"
+          helperText="min 50 caracteres, max 300 caracteres"
         />
         <TextInput
           id="needsENG"
@@ -222,7 +222,7 @@ const RegisterProject: React.FC = () => {
           {...formik.getFieldProps('needsENG')}
           touchedHelper={formik.touched.needsENG}
           errorHelper={formik.errors.needsENG}
-          helperText="min 50 caracteres, max 150 caracteres"
+          helperText="min 50 caracteres, max 300 caracteres"
         />
         <TextInput
           id="trailer"

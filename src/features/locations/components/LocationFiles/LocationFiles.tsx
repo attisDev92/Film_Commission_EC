@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import { GlobalState } from '../../../../app/store/store'
 import { LocationTypes } from '../../types/LocationTypes'
 import ImagesForm from '../Inputs/ImagesForm'
-import LocationForm from '../Inputs/LocationForm'
+import LocationForm from '../MapForm/LocationForm'
 
 const LocationFiles: React.FC = () => {
   const navigate = useNavigate()
@@ -31,8 +31,8 @@ const LocationFiles: React.FC = () => {
       <Typography variant="h4">Edición de locación</Typography>
       <Divider />
       <LocationForm
+        coordinates={location.coordinates || [0, 0]}
         locationId={locationId}
-        coordinates={location.coordinates || []}
       />
       <Divider />
       <ImagesForm locationId={locationId} photos={location.photos || []} />
