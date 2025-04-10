@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { CloudUpload } from '@mui/icons-material'
-import { Button, ImageList, Typography } from '@mui/material'
+import { Button, ImageList, styled, Typography } from '@mui/material'
 import { setNotification } from '../../../../app/store/slices/setNotification'
 import { AppDispatch } from '../../../../app/store/store'
 import UploadButton from '../../../../common/components/Buttons/UploadButton'
@@ -10,96 +10,134 @@ import { deleteFile } from '../../slices/deleteFile'
 import { editFile } from '../../slices/editFile'
 import ImageCardEdit from '../../../../common/components/Cards/ImageCardEdit'
 import { Image } from '../../../../common/types/types'
+import { useNavigate } from 'react-router-dom'
 
 interface InputPhotosProps {
-  locationId: string
   photos: Image[]
+  locationId: string
 }
 
-const MAX_PHOTOS = 10
-
-const InputPhotos: React.FC<InputPhotosProps> = ({ locationId, photos }) => {
+const InputPhotos: React.FC<InputPhotosProps> = ({
+  locationId,
+  photos = [],
+}) => {
+  const [loading, setLoading] = useState<boolean>(false)
+  const [success, setSuccess] = useState<boolean>(false)
+  const [filename, setFilename] = useState<string>('')
+  const [file, setFile] = useState<File | null>()
   const dispatch = useDispatch<AppDispatch>()
-  const [selectedFile, setSelectedFile] = useState<File | null>(null)
+  const navigate = useNavigate()
 
-  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
+  const VisuallyHiddenInput = styled('input')({
+    clip: 'rect(0 0 0 0)',
+    height: 1,
+    overflow: 'hidden',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    whiteSpace: 'nowrap',
+    width: 1,
+  })
+
+  const handleChangeFile = ({
+    target,
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    setSuccess(false)
+    if (!target.files) return
+    const selectedFile = target.files[0]
+    const maxSizeInBytes = 5 * 1024 * 1024
+
+    if (selectedFile.size > maxSizeInBytes) {
+      dispatch(
+        setNotification({
+          text: 'El archivo pesa más de 5mb',
+          style: 'error',
+        }),
+      )
+      return
+    }
+    setFile(selectedFile)
+    setFilename(selectedFile.name)
+  }
+
+  const handleUploadFile = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setLoading(true)
+    if (!file) {
+      dispatch(
+        setNotification({
+          text: 'No se ha seleccionado ningún archivo',
+          style: 'error',
+        }),
+      )
+    }
+
+    const formData = new FormData()
     if (file) {
-      if (photos.length >= MAX_PHOTOS) {
-        dispatch(
-          setNotification({
-            style: 'error',
-            text: 'Has alcanzado el límite máximo de 10 fotos',
-          }),
-        )
-        return
-      }
-
-      if (file.type.startsWith('image/')) {
-        setSelectedFile(file)
-      } else {
-        dispatch(
-          setNotification({
-            style: 'error',
-            text: 'Por favor seleccione un archivo de imagen válido',
-          }),
-        )
-      }
+      formData.append('photo', file)
     }
-  }
+    formData.append('locationId', locationId)
 
-  const handleUpload = async () => {
-    if (selectedFile) {
-      const formData = new FormData()
-      formData.append('file', selectedFile)
-      formData.append('type', 'photo')
-      formData.append('locationId', locationId)
-
-      try {
-        await dispatch(editFile(formData))
-        setSelectedFile(null)
-      } catch (error) {
-        console.error('Error al subir el archivo:', error)
-      }
-    }
-  }
-
-  const handleDelete = async (photoId: string) => {
     try {
-      await dispatch(deleteFile(locationId, photoId))
-    } catch (error) {
-      console.error('Error al eliminar la foto:', error)
+      await dispatch(editFile(formData))
+      setSuccess(true)
+    } finally {
+      setLoading(false)
     }
+  }
+
+  const handleDeleteImages = (fileId: string) => {
+    dispatch(deleteFile(locationId, fileId)).then(() => {
+      navigate(`/system/locations/files/${locationId}`)
+    })
   }
 
   return (
-    <div className={styles.photos_container}>
-      <ImageList sx={{ width: '100%' }} cols={3}>
-        {photos.map((photo) => (
-          <ImageCardEdit
-            key={photo._id}
-            imageUrl={photo.url || ''}
-            onDelete={() => handleDelete(photo._id || '')}
-          />
-        ))}
-      </ImageList>
-      {photos.length < MAX_PHOTOS && (
-        <>
-          <UploadButton onChange={handleFileSelect} type="submit" />
-          {selectedFile && (
-            <Button
-              variant="contained"
-              startIcon={<CloudUpload />}
-              onClick={handleUpload}
-            >
-              Subir imagen
-            </Button>
-          )}
-        </>
+    <div className={styles.editImagesContainer}>
+      <form onSubmit={handleUploadFile} encType="multipart/form-data">
+        <Typography variant="body1">
+          {photos.length >= 10
+            ? 'Número máximo de fotogramas, debe eliminar un archivo antes de subir uno nuevo'
+            : 'Seleccionar archivo:'}
+        </Typography>
+        <span>
+          <Typography>
+            {file ? filename : 'No se ha seleccionado ningún archivo'}
+          </Typography>
+          <Button
+            component="label"
+            variant="contained"
+            role={undefined}
+            tabIndex={-1}
+            startIcon={<CloudUpload />}
+            disabled={photos.length >= 10 ? true : false}
+          >
+            Subir imagen
+            <VisuallyHiddenInput
+              type="file"
+              onChange={handleChangeFile}
+              accept="image/*"
+            />
+          </Button>
+        </span>
+        <span>
+          <UploadButton loading={loading} success={success} type="submit" />
+          <Typography>Guardar imagen</Typography>
+        </span>
+      </form>
+      {photos.length > 0 ? (
+        <ImageList cols={2} rowHeight={200}>
+          {photos.map((photo) => (
+            <ImageCardEdit
+              key={photo._id}
+              imageUrl={photo}
+              onDelete={() => handleDeleteImages(photo._id || '')}
+            />
+          ))}
+        </ImageList>
+      ) : (
+        <p>No cuenta con fotografías guardadas</p>
       )}
-      <Typography variant="caption" color="textSecondary">
-        {photos.length} de {MAX_PHOTOS} fotos
-      </Typography>
     </div>
   )
 }

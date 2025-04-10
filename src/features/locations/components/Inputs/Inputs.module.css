@@ -1,0 +1,33 @@
+.card {
+  margin: 2rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.editImagesContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 2rem;
+}
+
+.editImagesContainer form {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 50%;
+  min-width: 50%;
+  gap: 2rem;
+}
+
+.editImagesContainer span {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+}
+
+.editFieldContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1rem;
+}

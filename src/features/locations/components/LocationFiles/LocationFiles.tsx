@@ -1,19 +1,15 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import styles from './LocationFiles.module.css'
 import { Card, Divider, Typography, Button } from '@mui/material'
-import { useSelector } from 'react-redux'
-import { GlobalState } from '../../../../app/store/store'
-import { LocationTypes } from '../../types/LocationTypes'
 import ImagesForm from '../Inputs/ImagesForm'
 import LocationForm from '../MapForm/LocationForm'
+import { useUserLocations } from '../../hooks/useLocations'
 
 const LocationFiles: React.FC = () => {
   const navigate = useNavigate()
   const locationId = useParams().id || ''
-
-  const location = useSelector<GlobalState, LocationTypes | undefined>(
-    (state) => state.locations.find((loc) => loc.id === locationId),
-  )
+  const { location } = useUserLocations(locationId)
+  console.log(location)
 
   if (!location) {
     return (
@@ -28,12 +24,9 @@ const LocationFiles: React.FC = () => {
 
   return (
     <Card className={styles.card}>
-      <Typography variant="h4">Edición de locación</Typography>
+      <Typography variant="h4">Edición de ubicación y fotografías</Typography>
       <Divider />
-      <LocationForm
-        coordinates={location.coordinates || [0, 0]}
-        locationId={locationId}
-      />
+      <LocationForm location={location} />
       <Divider />
       <ImagesForm locationId={locationId} photos={location.photos || []} />
       <Divider />

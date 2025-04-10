@@ -134,7 +134,7 @@ const InputPhotos: React.FC<InputPhotosProps> = ({
             <ImagesCardEdit
               key={i}
               imageUrl={item}
-              onDelete={() => handleDeleteImages(item.url || '')}
+              onDelete={() => handleDeleteImages(item._id || '')}
             />
           ))}
         </ImageList>

@@ -1,39 +1,26 @@
 import { useState, useCallback } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Card, Typography, Button } from '@mui/material'
-import { AppDispatch, GlobalState } from '../../../../app/store/store'
+import { AppDispatch } from '../../../../app/store/store'
 import { editLocation } from '../../slices/editLocation'
 import styles from './LocationForm.module.css'
 import Map, { Marker, NavigationControl, MarkerDragEvent } from 'react-map-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { LocationTypes } from '../../types/LocationTypes'
 
-const mapboxToken =
-  'pk.eyJ1IjoiaWZjaSIsImEiOiJjbTZneXNla3UwNnNlMmpwbmRvbW9hY29zIn0.z6uQThQ45q7stY_RNDnmww'
-
-interface LocationFormProps {
-  locationId: string
-  coordinates: [number, number]
-}
+const mapboxToken = import.meta.env.VITE_MAPBOX_TOKEN
 
 interface MapboxContext {
   id: string
   text: string
 }
 
-const LocationForm: React.FC<LocationFormProps> = ({
-  locationId,
-  coordinates,
-}) => {
+const LocationForm = ({ location }: { location: LocationTypes }) => {
   const dispatch = useDispatch<AppDispatch>()
-  const location = useSelector<GlobalState, LocationTypes | undefined>(
-    (state) => state.locations.find((loc) => loc.id === locationId),
-  )
   const [position, setPosition] = useState<[number, number]>(() => {
-    if (coordinates.length === 2) {
-      return [coordinates[0], coordinates[1]]
+    if ('latitude' in location && 'longitude' in location) {
+      return [Number(location.latitude), Number(location.longitude)]
     }
-    // Default coordinates (Ecuador)
     return [-0.1807, -78.4678]
   })
   const [address, setAddress] = useState(location?.address || '')
@@ -94,6 +81,7 @@ const LocationForm: React.FC<LocationFormProps> = ({
           province,
         }),
       )
+      window.alert('Ubicación actualizada correctamente')
     } catch (error) {
       console.error('Error al guardar las coordenadas:', error)
     }

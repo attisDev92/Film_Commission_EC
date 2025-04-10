@@ -129,7 +129,7 @@ const InputPhotoProducer: React.FC<InputPhotoProducerProps> = ({
         producerPhoto.url.trim() !== '' ? (
           <img src={producerPhoto.url} />
         ) : (
-          <Typography>No tiene una foto del director guardada</Typography>
+          <Typography>No tiene una foto del productor guardada</Typography>
         )}
       </Card>
     </div>

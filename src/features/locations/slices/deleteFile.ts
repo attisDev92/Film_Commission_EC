@@ -6,7 +6,7 @@ import { updateLocation } from './location.slice'
 export const deleteFile = (locationId: string, fileId: string) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await destroyLocationFile(fileId, locationId)
+      const response = await destroyLocationFile(locationId, fileId)
       const updatedLocation = response.data
       dispatch(updateLocation(updatedLocation))
     } catch (error) {
