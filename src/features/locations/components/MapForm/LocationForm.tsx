@@ -18,60 +18,66 @@ export interface MapboxContext {
 // Coordenadas por defecto (Quito, Ecuador)
 const DEFAULT_COORDINATES: [number, number] = [-0.1807, -78.4678]
 
-const isValidCoordinate = (value: unknown): value is number => {
-  return typeof value === 'number' && !isNaN(value) && isFinite(value)
-}
-
-const getValidCoordinates = (
-  coordinates?: [number, number],
-): [number, number] => {
-  if (!coordinates || !Array.isArray(coordinates) || coordinates.length !== 2) {
-    return DEFAULT_COORDINATES
-  }
-
-  const [lat, lng] = coordinates
-  if (!isValidCoordinate(lat) || !isValidCoordinate(lng)) {
-    return DEFAULT_COORDINATES
-  }
-
-  return [lat, lng]
-}
-
 const LocationForm = ({ location }: { location: LocationTypes }) => {
   const dispatch = useDispatch<AppDispatch>()
   const [isLoading, setIsLoading] = useState(true)
+  const [isInitialized, setIsInitialized] = useState(false)
 
-  // Initialize position from location
-  const initialPosition = location?.coordinates
-    ? location.coordinates
-    : DEFAULT_COORDINATES
-
-  const [position, setPosition] = useState<[number, number]>(initialPosition)
-  const [address, setAddress] = useState(location?.address || '')
-  const [city, setCity] = useState(location?.city || '')
-  const [province, setProvince] = useState(location?.province || '')
+  // Estados para las coordenadas y la vista
+  const [position, setPosition] =
+    useState<[number, number]>(DEFAULT_COORDINATES)
+  const [address, setAddress] = useState('')
+  const [city, setCity] = useState('')
+  const [province, setProvince] = useState('')
   const [viewState, setViewState] = useState({
-    latitude: initialPosition[0],
-    longitude: initialPosition[1],
+    latitude: DEFAULT_COORDINATES[0],
+    longitude: DEFAULT_COORDINATES[1],
     zoom: 13,
   })
 
-  // Handle initial load and location changes
-  useEffect(() => {
-    if (location) {
-      const newPosition = location.coordinates || DEFAULT_COORDINATES
-      setPosition(newPosition)
+  // Función para validar coordenadas
+  const validateCoordinates = (coordinates: [number, number]): boolean => {
+    if (
+      !coordinates ||
+      !Array.isArray(coordinates) ||
+      coordinates.length !== 2
+    ) {
+      return false
+    }
+    const [lat, lng] = coordinates
+    return (
+      typeof lat === 'number' &&
+      !isNaN(lat) &&
+      isFinite(lat) &&
+      typeof lng === 'number' &&
+      !isNaN(lng) &&
+      isFinite(lng)
+    )
+  }
+
+  // Función para inicializar el estado con las coordenadas guardadas
+  const initializeWithSavedCoordinates = () => {
+    if (location?.coordinates && validateCoordinates(location.coordinates)) {
+      setPosition(location.coordinates)
       setViewState((prev) => ({
         ...prev,
-        latitude: newPosition[0],
-        longitude: newPosition[1],
+        latitude: location.coordinates?.[0] ?? DEFAULT_COORDINATES[0],
+        longitude: location.coordinates?.[1] ?? DEFAULT_COORDINATES[1],
       }))
-      setAddress(location.address || '')
-      setCity(location.city || '')
+      setAddress(location.address ?? '')
+      setCity(location.city ?? '')
       setProvince(location.province || '')
     }
+    setIsInitialized(true)
     setIsLoading(false)
-  }, [location])
+  }
+
+  // Efecto para la inicialización
+  useEffect(() => {
+    if (!isInitialized && location) {
+      initializeWithSavedCoordinates()
+    }
+  }, [location, isInitialized])
 
   const handleAddressSelect = (
     newAddress: string,
@@ -79,37 +85,43 @@ const LocationForm = ({ location }: { location: LocationTypes }) => {
     newCity: string,
     newProvince: string,
   ) => {
-    setPosition(coordinates)
-    setViewState((prev) => ({
-      ...prev,
-      latitude: coordinates[0],
-      longitude: coordinates[1],
-    }))
-    setAddress(newAddress)
-    setCity(newCity)
-    setProvince(newProvince)
+    if (validateCoordinates(coordinates)) {
+      setPosition(coordinates)
+      setViewState((prev) => ({
+        ...prev,
+        latitude: coordinates[0],
+        longitude: coordinates[1],
+      }))
+      setAddress(newAddress)
+      setCity(newCity)
+      setProvince(newProvince)
+    }
   }
 
   const handleMapClick = useCallback((e: mapboxgl.MapMouseEvent) => {
     const newPosition: [number, number] = [e.lngLat.lat, e.lngLat.lng]
-    setPosition(newPosition)
-    setViewState((prev) => ({
-      ...prev,
-      latitude: newPosition[0],
-      longitude: newPosition[1],
-    }))
-    reverseGeocode(newPosition[0], newPosition[1])
+    if (validateCoordinates(newPosition)) {
+      setPosition(newPosition)
+      setViewState((prev) => ({
+        ...prev,
+        latitude: newPosition[0],
+        longitude: newPosition[1],
+      }))
+      reverseGeocode(newPosition[0], newPosition[1])
+    }
   }, [])
 
   const handleMarkerDragEnd = useCallback((e: MarkerDragEvent) => {
     const newPosition: [number, number] = [e.lngLat.lat, e.lngLat.lng]
-    setPosition(newPosition)
-    setViewState((prev) => ({
-      ...prev,
-      latitude: newPosition[0],
-      longitude: newPosition[1],
-    }))
-    reverseGeocode(newPosition[0], newPosition[1])
+    if (validateCoordinates(newPosition)) {
+      setPosition(newPosition)
+      setViewState((prev) => ({
+        ...prev,
+        latitude: newPosition[0],
+        longitude: newPosition[1],
+      }))
+      reverseGeocode(newPosition[0], newPosition[1])
+    }
   }, [])
 
   const reverseGeocode = async (lat: number, lng: number) => {
