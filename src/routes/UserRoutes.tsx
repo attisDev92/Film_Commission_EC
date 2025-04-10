@@ -1,26 +1,27 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { useGetUser } from '../hooks/useUser'
-import UserLogin from '../views/UserView/UserLogin'
-import HeaderSystem from '../components/HeaderSystem/HeaderSyste'
-import IndexUser from '../views/UserView/Index'
-import NotFound from '../views/NotFound/NotFound'
+import { useGetUser } from '../features/users/hooks/useUser'
+import UserLogin from '../features/auth/components/LoginCard/UserLogin'
+import HeaderSystem from '../layouts/HeaderSystem/HeaderSyste'
+import IndexUser from '../pages/UserProfile/UserProfile'
+import NotFound from '../pages/NotFound/NotFound'
 import ProtectRoutes from './ProtectRoutes'
-import { User } from '../types'
-import UserRegister from '../views/UserView/Register/UserRegister'
-import UserAuth from '../views/UserView/Register/UserAuth'
-import RecoverPassForm from '../components/RecoverPassForm/RecoverPassForm'
-import ChangePass from '../components/RecoverPassForm/ChangePassForm'
-import RegisterProfile from '../views/UserView/RegisterProfile/RegisterProfile'
-import RegisterLoacation from '../views/UserView/RegisterLocation/RegisterLocation'
-import LocationFiles from '../views/UserView/RegisterLocation/LocationFiles'
-import RegisterService from '../views/UserView/RegisterService.tsx/RegisterService'
-import CompaniesFiles from '../views/UserView/RegisterService.tsx/CompaniesFiles'
-import EditCompany from '../views/UserView/RegisterService.tsx/EditCompany'
-import Footer from '../components/Footer/Footer'
-import RegisterProject from '../views/UserView/RegisterProject/RegisterProject'
-import ProjectFiles from '../views/UserView/RegisterProject/ProjectFiles'
-import EditProject from '../views/UserView/RegisterProject/EditProject'
+import { User } from '../features/users/types/User'
+import UserRegister from '../features/users/components/NewUserForm/UserRegister'
+import UserAuth from '../features/auth/components/AutenticateUser/UserAuth'
+import RecoverPassForm from '../features/auth/components/RecoverPassForm/RecoverPassForm'
+import ChangePass from '../features/auth/components/RecoverPassForm/ChangePassForm'
+import RegisterProfile from '../features/users/components/RegisterProfile/RegisterProfile'
+import RegisterLocation from '../features/locations/components/LocationForm/RegisterLocation'
+import LocationFiles from '../features/locations/components/LocationFiles/LocationFiles'
+import RegisterService from '../features/companies/components/CompanyForm/RegisterService'
+import CompaniesFiles from '../features/companies/components/CompanyFiles/CompaniesFiles'
+import EditCompany from '../features/companies/components/EditCompany/EditCompany'
+import Footer from '../layouts/Footer/Footer'
+import RegisterProject from '../features/projects/components/ProjectsForm/RegisterProject'
+import ProjectFiles from '../features/projects/components/ProjectFiles/ProjectFiles'
+import EditProject from '../features/projects/components/EditProjects/EditProject'
+import EditLocation from '../features/locations/components/LocationEdit/EditLocation'
 
 const UserRoutes: React.FC = () => {
   const user: User | null = useGetUser()
@@ -62,13 +63,13 @@ const UserRoutes: React.FC = () => {
             {!user?.profile && (
               <Route path="register_profile" element={<RegisterProfile />} />
             )}
-
             <Route path="locations/files/:id" element={<LocationFiles />} />
             <Route path="services/files/:id" element={<CompaniesFiles />} />
             <Route path="projects/files/:id" element={<ProjectFiles />} />
             <Route path="services/edit/:id" element={<EditCompany />} />
             <Route path="projects/edit/:id" element={<EditProject />} />
-            <Route path="register_location" element={<RegisterLoacation />} />
+            <Route path="locations/edit/:id" element={<EditLocation />} />
+            <Route path="register_location" element={<RegisterLocation />} />
             <Route path="register_service" element={<RegisterService />} />
             <Route path="register_project" element={<RegisterProject />} />
           </>

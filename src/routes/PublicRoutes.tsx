@@ -1,11 +1,11 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Index from '../views/Index/Index'
-import NotFound from '../views/NotFound/NotFound'
-import Header from '../components/Header/Header'
-import Footer from '../components/Footer/Footer'
-import CompanyProfile from '../views/CompaniesCataloge/CompanyProfile'
-import CompaniesGallery from '../views/CompaniesCataloge/CompaniesGallery'
+import Index from '../pages/Home/Index'
+import NotFound from '../pages/NotFound/NotFound'
+import Header from '../layouts/Header/Header'
+import Footer from '../layouts/Footer/Footer'
+import CompanyProfile from '../features/companies/components/CompanyView/CompanyProfile/CompanyProfile'
+import CompaniesGallery from '../pages/CompaniesCataloge/CompaniesGallery'
 
 const PublicRoutes: React.FC = () => {
   return (

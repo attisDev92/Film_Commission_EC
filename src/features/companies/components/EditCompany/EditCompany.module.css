@@ -1,0 +1,16 @@
+.card {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+  max-width: 900px;
+  margin: 2rem auto 3rem;
+  padding: 2rem;
+  background-color: var(--color-primary-0);
+}
+
+@media (max-width: 900px) {
+  .card {
+    margin: 2rem 5%;
+    max-width: none;
+  }
+}

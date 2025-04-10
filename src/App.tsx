@@ -2,18 +2,18 @@ import { Routes, Route } from 'react-router-dom'
 import PublicRoutes from './routes/PublicRoutes'
 import AdminRoutes from './routes/AdminRoutes'
 import UserRoutes from './routes/UserRoutes'
-import './App.css'
-import Notification from './components/Notification/Notification'
-import Loader from './components/Loader/Loader'
+import './styles/App.css'
+import Notification from './common/components/Notification/Notification'
+import Loader from './common/components/Loader/Loader'
 import { useEffect, JSX } from 'react'
 import { useDispatch } from 'react-redux'
-import { AppDispatch } from './Redux/store'
-import { verifyLoggedToken } from './Redux/userReducer'
-import { User } from './types'
-import { useGetUser } from './hooks/useUser'
-import { fetchAllCompanies } from './Redux/companiesReducer'
-import { fetchAllProjects } from './Redux/audiovisualProjectReducer'
-
+import { AppDispatch } from './app/store/store'
+import { verifyLoggedToken } from './features/auth/slices/verifyLoggedToken'
+import { User } from './features/users/types/User'
+import { useGetUser } from './features/users/hooks/useUser'
+import { fetchAllCompanies } from './features/companies/slices/fetchAllCompanies'
+import { fetchAllProjects } from './features/projects/slices/fetchAllProjects'
+import { fetchAllLocations } from './features/locations/slices/fetchAllLocations'
 const App = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>()
   const user = useGetUser()
@@ -28,6 +28,7 @@ const App = (): JSX.Element => {
 
     dispatch(fetchAllCompanies())
     dispatch(fetchAllProjects())
+    dispatch(fetchAllLocations())
   }, [dispatch])
 
   return (

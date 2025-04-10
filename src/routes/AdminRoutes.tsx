@@ -1,11 +1,11 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import AdminLogin from '../views/AdminView/AdminLogin'
-import HeaderSystem from '../components/HeaderSystem/HeaderSyste'
-import IndexAdmin from '../views/AdminView/Index'
+import AdminLogin from '../features/admin/components/Login/AdminLogin'
+import HeaderSystem from '../layouts/HeaderSystem/HeaderSyste'
+import IndexAdmin from '../pages/Admin/Index'
 import ProtectRoutes from './ProtectRoutes'
-import NotFound from '../views/NotFound/NotFound'
-import { useGetUser } from '../hooks/useUser'
+import NotFound from '../pages/NotFound/NotFound'
+import { useGetUser } from '../features/users/hooks/useUser'
 
 const AdminRoutes: React.FC = () => {
   const user = useGetUser()

@@ -1,5 +1,5 @@
 import { NavigateFunction, Outlet, useNavigate } from 'react-router-dom'
-import { useGetUser } from '../hooks/useUser'
+import { useGetUser } from '../features/users/hooks/useUser'
 import React, { useEffect } from 'react'
 
 interface ProtectRoutesProps {

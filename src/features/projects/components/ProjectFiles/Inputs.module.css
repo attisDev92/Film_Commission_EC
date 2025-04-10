@@ -1,0 +1,42 @@
+.card {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+  max-width: 900px;
+  margin: 2rem auto 3rem;
+  padding: 2rem;
+  background-color: var(--color-primary-0);
+}
+
+@media (max-width: 900px) {
+  .card {
+    margin: 2rem 5%;
+    max-width: none;
+  }
+}
+
+.editImagesContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 2rem;
+}
+
+.editImagesContainer form {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 50%;
+  min-width: 50%;
+  gap: 2rem;
+}
+
+.editImagesContainer span {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+}
+
+.editFieldContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1rem;
+}
