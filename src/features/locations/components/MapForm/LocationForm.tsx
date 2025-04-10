@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { Card, Typography, Button } from '@mui/material'
 import { AppDispatch } from '../../../../app/store/store'
@@ -17,15 +17,35 @@ interface MapboxContext {
 
 const LocationForm = ({ location }: { location: LocationTypes }) => {
   const dispatch = useDispatch<AppDispatch>()
-  const [position, setPosition] = useState<[number, number]>(() => {
-    if ('latitude' in location && 'longitude' in location) {
-      return [Number(location.latitude), Number(location.longitude)]
+
+  const initialPosition = (() => {
+    if (location?.coordinates) {
+      return location.coordinates
     }
-    return [-0.1807, -78.4678]
-  })
+    return [-0.1807, -78.4678] as [number, number]
+  })()
+
+  const [position, setPosition] = useState<[number, number]>(initialPosition)
   const [address, setAddress] = useState(location?.address || '')
   const [city, setCity] = useState(location?.city || '')
   const [province, setProvince] = useState(location?.province || '')
+  const [viewState, setViewState] = useState({
+    latitude: initialPosition[0],
+    longitude: initialPosition[1],
+    zoom: 13,
+  })
+
+  useEffect(() => {
+    if (location?.coordinates) {
+      const coords = location.coordinates
+      setPosition(coords)
+      setViewState((prev) => ({
+        ...prev,
+        latitude: coords[0],
+        longitude: coords[1],
+      }))
+    }
+  }, [location])
 
   const reverseGeocode = async (lat: number, lng: number) => {
     try {
@@ -131,11 +151,8 @@ const LocationForm = ({ location }: { location: LocationTypes }) => {
 
       <div className={styles.mapContainer}>
         <Map
-          initialViewState={{
-            latitude: position[0],
-            longitude: position[1],
-            zoom: 13,
-          }}
+          {...viewState}
+          onMove={(evt) => setViewState(evt.viewState)}
           style={{ width: '100%', height: '100%' }}
           mapStyle="mapbox://styles/mapbox/streets-v12"
           onClick={handleMapClick}
