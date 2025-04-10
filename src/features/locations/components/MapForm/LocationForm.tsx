@@ -7,10 +7,11 @@ import styles from './LocationForm.module.css'
 import Map, { Marker, NavigationControl, MarkerDragEvent } from 'react-map-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { LocationTypes } from '../../types/LocationTypes'
+import AddressAutocomplete from './AddressAutocomplete'
 
 const mapboxToken = import.meta.env.VITE_MAPBOX_TOKEN
 
-interface MapboxContext {
+export interface MapboxContext {
   id: string
   text: string
 }
@@ -47,6 +48,35 @@ const LocationForm = ({ location }: { location: LocationTypes }) => {
     }
   }, [location])
 
+  const handleAddressSelect = (
+    newAddress: string,
+    coordinates: [number, number],
+    newCity: string,
+    newProvince: string,
+  ) => {
+    setAddress(newAddress)
+    setCity(newCity)
+    setProvince(newProvince)
+    setPosition(coordinates)
+    setViewState((prev) => ({
+      ...prev,
+      latitude: coordinates[0],
+      longitude: coordinates[1],
+    }))
+  }
+
+  const handleMapClick = useCallback((e: mapboxgl.MapMouseEvent) => {
+    const newPosition: [number, number] = [e.lngLat.lat, e.lngLat.lng]
+    setPosition(newPosition)
+    reverseGeocode(newPosition[0], newPosition[1])
+  }, [])
+
+  const handleMarkerDragEnd = useCallback((e: MarkerDragEvent) => {
+    const newPosition: [number, number] = [e.lngLat.lat, e.lngLat.lng]
+    setPosition(newPosition)
+    reverseGeocode(newPosition[0], newPosition[1])
+  }, [])
+
   const reverseGeocode = async (lat: number, lng: number) => {
     try {
       const response = await fetch(
@@ -75,18 +105,6 @@ const LocationForm = ({ location }: { location: LocationTypes }) => {
       console.error('Error al obtener la dirección:', error)
     }
   }
-
-  const handleMapClick = useCallback((e: mapboxgl.MapMouseEvent) => {
-    const newPosition: [number, number] = [e.lngLat.lat, e.lngLat.lng]
-    setPosition(newPosition)
-    reverseGeocode(newPosition[0], newPosition[1])
-  }, [])
-
-  const handleMarkerDragEnd = useCallback((e: MarkerDragEvent) => {
-    const newPosition: [number, number] = [e.lngLat.lat, e.lngLat.lng]
-    setPosition(newPosition)
-    reverseGeocode(newPosition[0], newPosition[1])
-  }, [])
 
   const handleSave = async () => {
     if (!location) return
@@ -117,13 +135,7 @@ const LocationForm = ({ location }: { location: LocationTypes }) => {
       <div className={styles.form}>
         <div className={styles.inputGroup}>
           <label htmlFor="address">Dirección</label>
-          <input
-            id="address"
-            type="text"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            placeholder="Ingrese la dirección"
-          />
+          <AddressAutocomplete value={address} onChange={handleAddressSelect} />
         </div>
 
         <div className={styles.inputGroup}>
