@@ -27,12 +27,14 @@ const ImageCardEdit: React.FC<ImageCardEditProps> = ({
   }
 
   return (
-    <ImageListItem>
-      <img
-        src={imageUrl.url}
-        alt="Location"
-        style={{ width: '100%', height: 'auto' }}
-      />
+    <ImageListItem style={{ width: '200px', height: '250px' }}>
+      <div style={{ width: '200px', height: '200px', overflow: 'hidden' }}>
+        <img
+          src={imageUrl.url}
+          alt="Location"
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+      </div>
       <DeleteButton
         loading={loading}
         success={success}
