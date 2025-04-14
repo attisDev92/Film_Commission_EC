@@ -1,12 +1,11 @@
 import { Image } from '../../../common/types/types'
-import { AccessibilityTypes } from './common/utils/seeds/accessibilityList'
 import {
-  Areas,
-  UrbanArea,
-  RuralArea,
-  NaturalArea,
-} from './common/utils/seeds/categories'
-import { WeatherTypes } from './common/utils/seeds/weatherList'
+  AccessibilityTypes,
+  servicesLocation,
+  nearbyServices,
+} from '../utils/accessibilityList'
+import { Areas, UrbanArea, RuralArea, NaturalArea } from '../utils/categories'
+import { WeatherTypes } from '../utils/weatherList'
 
 export interface LocationTypes {
   id?: string
@@ -22,6 +21,8 @@ export interface LocationTypes {
   requestInformationEn?: string
   weather: WeatherTypes[]
   accessibilities: AccessibilityTypes[]
+  services: servicesLocation[]
+  nearbyServices: nearbyServices[]
   coordinates?: [number, number]
   contactName?: string
   email: string

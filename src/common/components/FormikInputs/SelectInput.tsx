@@ -4,6 +4,7 @@ import {
   MenuItem,
   Select,
   SelectChangeEvent,
+  FormHelperText,
 } from '@mui/material'
 
 interface SelectInputProps {
@@ -13,6 +14,7 @@ interface SelectInputProps {
   onChange?: (e: SelectChangeEvent<unknown>) => void
   required?: boolean
   multiple?: boolean
+  helperText?: string
 }
 
 const SelectInput: React.FC<SelectInputProps> = ({
@@ -22,6 +24,7 @@ const SelectInput: React.FC<SelectInputProps> = ({
   required,
   multiple,
   onChange,
+  helperText,
   ...props
 }) => {
   return (
@@ -41,6 +44,7 @@ const SelectInput: React.FC<SelectInputProps> = ({
           </MenuItem>
         ))}
       </Select>
+      {helperText && <FormHelperText>{helperText}</FormHelperText>}
     </FormControl>
   )
 }

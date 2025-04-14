@@ -36,7 +36,7 @@ const Menu: React.FC = () => {
               {menu.locations}
             </a>
             <div className={styles.dropdown__menu}>
-              <a href="/#locations">
+              <a href="/locations">
                 <span>{menu.cataloge}</span>
               </a>
               <a href="/system">

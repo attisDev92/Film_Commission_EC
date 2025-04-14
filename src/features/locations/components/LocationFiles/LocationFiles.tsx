@@ -7,7 +7,7 @@ import { useUserLocations } from '../../hooks/useLocations'
 
 const LocationFiles: React.FC = () => {
   const navigate = useNavigate()
-  const locationId = useParams().id || ''
+  const locationId = useParams().id as string
   const { location } = useUserLocations(locationId)
 
   if (!location) {

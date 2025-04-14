@@ -1,0 +1,39 @@
+.locationCard {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.locationCard:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+.imageContainer {
+  width: 300px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: var(--radio-card);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.categoryContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radio-card);
+  background-color: var(--color-secondary-700);
+  padding: 0 0.5rem;
+}

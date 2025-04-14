@@ -1,13 +1,25 @@
 import { useFormik } from 'formik'
 import { LocationTypes } from '../../types/LocationTypes'
 import { locationSchema } from '../../utils/locationSchema'
-import { Button, Card, SelectChangeEvent, Typography } from '@mui/material'
+import {
+  Button,
+  Card,
+  Checkbox,
+  FormControlLabel,
+  SelectChangeEvent,
+  Switch,
+  Typography,
+} from '@mui/material'
 import styles from './Loactions.module.css'
 import TextInput from '../../../../common/components/FormikInputs/TextInput'
 import SelectInput from '../../../../common/components/FormikInputs/SelectInput'
 import { Areas, categories } from '../../utils/categories'
 import { weatherList } from '../../utils/weatherList'
-import { accessibilityList } from '../../utils/accessibilityList'
+import {
+  accessibilityList,
+  nearbyServicesList,
+  servicesLocation,
+} from '../../utils/accessibilityList'
 import filterSubcategories from '../../utils/filterSubcategories'
 import { initialValues } from '../../utils/initialValiuesFormLocation'
 import { useDispatch } from 'react-redux'
@@ -15,14 +27,27 @@ import { AppDispatch } from '../../../../app/store/store'
 import { postNewLocation } from '../../slices/postNewLocation'
 import { useNavigate } from 'react-router-dom'
 import { setLoader } from '../../../../app/store/slices/notiffication.slice'
+import { useState } from 'react'
+import { setNotification } from '../../../../app/store/slices/setNotification'
 
 const RegisterLocation: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>()
   const navigate = useNavigate()
+  const [checkForm, setCheckForm] = useState(false)
 
   const onSubmit = async (values: LocationTypes) => {
     dispatch(setLoader(true))
     try {
+      if (!checkForm) {
+        dispatch(setLoader(false))
+        dispatch(
+          setNotification({
+            text: 'Debe aceptar las condiciones para registrar la locación',
+            style: 'error',
+          }),
+        )
+        return
+      }
       const response = await dispatch(postNewLocation(values))
       if (response && response.id) {
         navigate(`/system/locations/files/${response.id}`)
@@ -112,7 +137,7 @@ const RegisterLocation: React.FC = () => {
           <TextInput
             id="requestInformation"
             type="text"
-            label="Proceso para solicitar la locación"
+            label="Condiciones de uso"
             placeholder="Para solicitar la locación se debe ..."
             multiline={true}
             rows={3}
@@ -124,7 +149,7 @@ const RegisterLocation: React.FC = () => {
           <TextInput
             id="requestInformationEn"
             type="text"
-            label="Proceso para solicitar la locación (inglés)"
+            label="Condiciones de uso (inglés)"
             placeholder="To request the location you must ..."
             multiline={true}
             rows={3}
@@ -141,14 +166,36 @@ const RegisterLocation: React.FC = () => {
               {...formik.getFieldProps('weather')}
               required={true}
               multiple={true}
+              helperText="Clima de la locación"
             />
             <SelectInput
               id="accessibilities"
-              label="Accesibilidad"
+              label="Medios de acceso a la locación"
               options={accessibilityList}
               {...formik.getFieldProps('accessibilities')}
               multiple={true}
               required={true}
+              helperText="Cómo se puede acceder a la locación"
+            />
+          </span>
+          <span>
+            <SelectInput
+              id="services"
+              label="Servicios de la locación"
+              options={servicesLocation}
+              {...formik.getFieldProps('services')}
+              required={true}
+              multiple={true}
+              helperText="Servicios que ofrece la locación"
+            />
+            <SelectInput
+              id="nearbyServices"
+              label="Servicios cercanos"
+              options={nearbyServicesList}
+              {...formik.getFieldProps('nearbyServices')}
+              multiple={true}
+              required={true}
+              helperText="Servicios cercanos a la locación"
             />
           </span>
           <TextInput
@@ -169,6 +216,25 @@ const RegisterLocation: React.FC = () => {
             touchedHelper={formik.touched.email}
             errorHelper={formik.errors.email}
           />
+          <span>
+            <FormControlLabel
+              control={
+                <Switch
+                  color="success"
+                  checked={formik.values.activeWhatsapp || false}
+                  onChange={(e) =>
+                    formik.setFieldValue('activeWhatsapp', e.target.checked)
+                  }
+                />
+              }
+              label="Pueden contactarlo por WhatsApp y/o teléfono celular."
+            />
+            <Typography variant="body2">
+              *IMPORTANTE: Si no marca esta casilla su teléfono celular
+              permanecerá oculto a otros usuarios. Solo el e-mail será visible
+              para otros usuarios.
+            </Typography>
+          </span>
           <TextInput
             id="phone"
             type="tel"
@@ -178,6 +244,23 @@ const RegisterLocation: React.FC = () => {
             touchedHelper={formik.touched.phone}
             errorHelper={formik.errors.phone}
           />
+          <div className={styles.checkInput}>
+            <Typography variant="h6">
+              El usuario <strong>DECLARA</strong> que la información aquí
+              consignada es real y verídica y <strong>AUTORIZA</strong> que la
+              misma sea publicada en la presente página web.
+            </Typography>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  color="success"
+                  checked={checkForm}
+                  onChange={(e) => setCheckForm(e.target.checked)}
+                />
+              }
+              label="ACEPTA LAS CONDICIONES"
+            />
+          </div>
           <Button type="submit" variant="contained">
             Registrar locación
           </Button>

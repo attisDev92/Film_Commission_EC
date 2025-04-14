@@ -14,7 +14,11 @@ const Notification: React.FC = () => {
   }
 
   return (
-    <Alert variant="filled" severity={notificationInfo.style}>
+    <Alert
+      variant="filled"
+      severity={notificationInfo.style}
+      style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000 }}
+    >
       {notificationInfo.text}
     </Alert>
   )

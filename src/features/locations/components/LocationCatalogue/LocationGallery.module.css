@@ -1,0 +1,26 @@
+.locationGallery {
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  padding: 15rem 1rem;
+}
+
+.galleryContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.backgroundLines {
+  position: absolute;
+  backdrop-filter: blur(10px);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}

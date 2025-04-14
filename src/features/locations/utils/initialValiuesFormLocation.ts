@@ -3,6 +3,7 @@ import { LocationTypes } from '../types/LocationTypes'
 export const initialValues: LocationTypes = {
   name: '',
   type: 'Privado',
+  // @ts-expect-error initialValues is not used in the form
   category: '',
   subCategory: [],
   description: '',
@@ -11,6 +12,8 @@ export const initialValues: LocationTypes = {
   requestInformationEn: '',
   weather: [],
   accessibilities: [],
+  services: [],
+  nearbyServices: [],
   contactName: '',
   email: '',
   phone: '',

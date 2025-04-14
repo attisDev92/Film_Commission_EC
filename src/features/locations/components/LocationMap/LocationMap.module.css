@@ -1,0 +1,13 @@
+.mapContainer {
+  width: 100%;
+  height: 400px;
+  margin: 2rem 0;
+  border-radius: var(--radio-card);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}

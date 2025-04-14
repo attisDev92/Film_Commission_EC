@@ -22,7 +22,6 @@ import MapIcon from '@mui/icons-material/Map'
 import LocationCityIcon from '@mui/icons-material/LocationCity'
 import PinDropIcon from '@mui/icons-material/PinDrop'
 import DescriptionIcon from '@mui/icons-material/Description'
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt'
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail'
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone'
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions'
@@ -35,7 +34,11 @@ import AccessibleIcon from '@mui/icons-material/Accessible'
 import CloudIcon from '@mui/icons-material/Cloud'
 import { categories } from '../../utils/categories'
 import filterSubcategories from '../../utils/filterSubcategories'
-import { accessibilityList } from '../../utils/accessibilityList'
+import {
+  accessibilityList,
+  nearbyServicesList,
+  servicesLocation,
+} from '../../utils/accessibilityList'
 import { weatherList } from '../../utils/weatherList'
 
 const EditLocation = () => {
@@ -182,6 +185,7 @@ const EditLocation = () => {
                   label="Subcategoría"
                   options={filterSubcategories(formik.values.category)}
                   {...formik.getFieldProps('subCategory')}
+                  multiple={true}
                 />
               </EditField>
               <EditField
@@ -259,10 +263,11 @@ const EditLocation = () => {
                   label="Clima"
                   options={weatherList}
                   {...formik.getFieldProps('weather')}
+                  multiple={true}
                 />
               </EditField>
               <EditField
-                label="Accesibilidad"
+                label="Medios de acceso a la locación"
                 avatar={<AccessibleIcon />}
                 value={formik.values.accessibilities}
                 onSave={(newValue) =>
@@ -271,25 +276,42 @@ const EditLocation = () => {
               >
                 <SelectInput
                   id="accessibility"
-                  label="Accesibilidad"
+                  label="Medios de acceso a la locación"
                   options={accessibilityList}
                   {...formik.getFieldProps('accessibilities')}
+                  multiple={true}
                 />
               </EditField>
               <EditField
-                label="Nombre de contacto"
-                avatar={<PeopleAltIcon />}
-                value={formik.values.contactName}
+                label="Servicios de la locación"
+                avatar={<SubscriptionsIcon />}
+                value={formik.values.services}
                 onSave={(newValue) =>
-                  formik.setFieldValue('contactName', newValue)
+                  formik.setFieldValue('services', newValue)
                 }
               >
-                <TextInput
-                  id="contactName"
-                  label="Nombre de contacto"
-                  placeholder="Nombre de contacto"
-                  type="text"
-                  {...formik.getFieldProps('contactName')}
+                <SelectInput
+                  id="services"
+                  label="Servicios de la locación"
+                  options={servicesLocation}
+                  {...formik.getFieldProps('services')}
+                  multiple={true}
+                />
+              </EditField>
+              <EditField
+                label="Servicios cercanos"
+                avatar={<SubscriptionsIcon />}
+                value={formik.values.nearbyServices}
+                onSave={(newValue) =>
+                  formik.setFieldValue('nearbyServices', newValue)
+                }
+              >
+                <SelectInput
+                  id="nearbyServices"
+                  label="Servicios cercanos"
+                  options={nearbyServicesList}
+                  {...formik.getFieldProps('nearbyServices')}
+                  multiple={true}
                 />
               </EditField>
               <EditField

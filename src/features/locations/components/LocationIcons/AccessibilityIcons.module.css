@@ -1,0 +1,12 @@
+.iconContainer {
+  background: transparent;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radio-card);
+  margin-bottom: 0.5rem;
+}
+
+.icon {
+  font-size: 1.25rem;
+  color: var(--color-primary-500);
+  background: transparent;
+}
