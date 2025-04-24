@@ -4,7 +4,7 @@ import { User } from '../../features/users/types/User'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../app/store/store'
 import { setNotification } from '../../app/store/slices/setNotification'
-import { Card, Button, Typography } from '@mui/material'
+import { Card, Button, Typography, CircularProgress } from '@mui/material'
 import styles from './UserProfile.module.css'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 import Profile from '../../features/users/components/Profile/Profile'
@@ -17,21 +17,33 @@ const IndexUser: React.FC = () => {
   const user: User | null = useGetUser()
   const dispatch = useDispatch<AppDispatch>()
   const [isUserProfile, setIsUserProfile] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const navigate: NavigateFunction = useNavigate()
 
   useEffect(() => {
-    if (user?.profile && user?.profile?.length > 0) {
-      setIsUserProfile(true)
-    } else {
-      dispatch(
-        setNotification({
-          style: 'warning',
-          text: 'Debe completar la información de perfil',
-        }),
-      )
-      setIsUserProfile(false)
+    if (user) {
+      setIsLoading(false)
+      if (user.profile) {
+        setIsUserProfile(true)
+      } else {
+        dispatch(
+          setNotification({
+            style: 'warning',
+            text: 'Debe completar la información de perfil',
+          }),
+        )
+        setIsUserProfile(false)
+      }
     }
   }, [user, dispatch])
+
+  if (isLoading) {
+    return (
+      <div className={styles.loadingContainer}>
+        <CircularProgress />
+      </div>
+    )
+  }
 
   return (
     <div style={{ height: '100%', marginBlockEnd: 20 }}>

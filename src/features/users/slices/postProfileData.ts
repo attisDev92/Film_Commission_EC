@@ -11,6 +11,12 @@ export const postProfileData = (profileData: UserProfile) => {
       const response = await sendProfileData(profileData)
       dispatch(setProfile(response))
       dispatch(setUserProfile(response.id))
+      dispatch(
+        setNotification({
+          style: 'success',
+          text: 'Perfil actualizado correctamente',
+        }),
+      )
     } catch (error) {
       if (error instanceof Error) {
         dispatch(
