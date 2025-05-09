@@ -8,8 +8,8 @@ import {
 } from '../../../common/utils/validations/validations'
 
 export const userProfileSchema = yup.object().shape({
-  firstName: validationName,
-  lastName: validationName,
+  firstName: validationName.required(errorValidationMessage.required),
+  lastName: validationName.required(errorValidationMessage.required),
   typeIdentification: yup.string().oneOf(['Cédula', 'RUC', 'Pasaporte']),
   identification: validateIdentification,
   nationality: yup
@@ -17,8 +17,8 @@ export const userProfileSchema = yup.object().shape({
     .min(5, `${5} ${errorValidationMessage.min}`)
     .max(100, `${100} ${errorValidationMessage.max}`)
     .required(errorValidationMessage.required),
-  residenceCity: validationName,
+  residenceCity: validationName.required(errorValidationMessage.required),
   birthdate: validationBirthdate,
-  cellPhone: validationCellPhone,
+  cellPhone: validationCellPhone.required(errorValidationMessage.required),
   genre: yup.string().oneOf(['Masculino', 'Femenino', 'No especificado']),
 })

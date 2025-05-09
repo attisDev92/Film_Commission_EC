@@ -25,8 +25,10 @@ export interface LocationTypes {
   nearbyServices: nearbyServices[]
   coordinates?: [number, number]
   contactName?: string
-  email: string
-  phone: string
+  email?: string
+  phone?: string
+  phoneNumber?: string
+  website?: string
   address?: string
   photos?: Image[]
   public?: boolean

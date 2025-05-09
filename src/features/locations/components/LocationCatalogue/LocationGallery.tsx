@@ -4,6 +4,8 @@ import { useLocations } from '../../hooks/useLocations'
 import { useEffect, useState } from 'react'
 import { LocationTypes } from '../../types/LocationTypes'
 import BackgroundAnimateLines from '../../../../common/components/BackgroundLinesAnimate/BackgroundAnimateLines'
+import { Typography } from '@mui/material'
+import { Button } from '@mui/material'
 
 const LocationGallery = () => {
   const { locations, loading, error } = useLocations()
@@ -18,10 +20,27 @@ const LocationGallery = () => {
 
   if (loading) return null
 
-  if (error) return <div>Error al cargar las locaciones</div>
+  if (error)
+    return (
+      <div className={styles.locationGallery}>
+        <div className={styles.errorContainer}>
+          <Typography variant="h6">Error al cargar las locaciones</Typography>
+          <Button
+            variant="contained"
+            color="error"
+            onClick={() => window.location.reload()}
+          >
+            Reintentar
+          </Button>
+        </div>
+      </div>
+    )
 
   return (
     <div className={styles.locationGallery}>
+      <Typography variant="h3" color="primary">
+        Locaciones
+      </Typography>
       <div className={styles.galleryContainer}>
         {locationsList &&
           locationsList.map((location: LocationTypes) => (

@@ -13,7 +13,6 @@ export const validationName = yup
   .string()
   .min(3, `${3} ${errorValidationMessage.min}`)
   .max(40, `${3} ${errorValidationMessage.max}`)
-  .required(errorValidationMessage.required)
 
 const cedulaSchema = yup
   .string()
@@ -60,7 +59,11 @@ export const validationCellPhone = yup
   .string()
   .length(10, `${10} ${errorValidationMessage.length}`)
   .matches(/^0\d{9}$/, errorValidationMessage.specialCharacters)
-  .required(errorValidationMessage.required)
+
+export const validationPhone = yup
+  .string()
+  .length(9, `${9} ${errorValidationMessage.length}`)
+  .matches(/^0\d{9}$/, errorValidationMessage.specialCharacters)
 
 export const validationBirthdate = yup
   .date()
@@ -80,7 +83,6 @@ export const validationEmail = yup
     /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
     'El pasaporte puede contener letras y números',
   )
-  .required(errorValidationMessage.required)
 
 export const validationUrl = yup
   .string()

@@ -23,7 +23,6 @@ const LocationPage = () => {
   const { id } = useParams()
   const { location, loading, error } = useLocations(id)
   const language = useLanguageSelected()
-  console.log(language)
 
   if (loading) return <div>Loading...</div>
   if (error) return <div>Error: {error}</div>
@@ -96,23 +95,39 @@ const LocationPage = () => {
             </Typography>
           </AccordionSummary>
           <AccordionDetails className={styles.content__card}>
-            <Typography variant="body1">{location?.contactName}</Typography>
+            {location?.contactName && (
+              <Typography variant="body1">{location?.contactName}</Typography>
+            )}
             {location?.activeWhatsapp && (
               <Button
                 variant="contained"
                 color="success"
                 href={`https://wa.me/${location?.phone}`}
               >
-                Contactar por whatsapp
+                {language.idioma === 'es' ? 'Contacto' : 'Contact'}
               </Button>
             )}
-            <Button
-              variant="contained"
-              color="info"
-              href={`mailto:${location?.email}`}
-            >
-              Email
-            </Button>
+            {location?.email && (
+              <Button
+                variant="contained"
+                color="info"
+                href={`mailto:${location?.email}`}
+              >
+                Email
+              </Button>
+            )}
+            {location?.phoneNumber && (
+              <Typography variant="body1">
+                {language.idioma === 'es' ? 'Teléfono' : 'Phone number'}:{' '}
+                {location?.phoneNumber}
+              </Typography>
+            )}
+            {location?.website && (
+              <Typography variant="body1">
+                {language.idioma === 'es' ? 'Página web' : 'website'}:{' '}
+                {location?.website}
+              </Typography>
+            )}
           </AccordionDetails>
         </Accordion>
         <Accordion>
@@ -127,9 +142,9 @@ const LocationPage = () => {
           </AccordionSummary>
           <AccordionDetails className={styles.content__card}>
             <Typography variant="body1">
-              {language.idioma === 'en'
-                ? location?.requestInformationEn
-                : location?.requestInformation}
+              {language.idioma === 'es'
+                ? location?.requestInformation
+                : location?.requestInformationEn}
             </Typography>
           </AccordionDetails>
         </Accordion>

@@ -236,6 +236,24 @@ const RegisterLocation: React.FC = () => {
             </Typography>
           </span>
           <TextInput
+            id="phoneNumber"
+            type="tel"
+            label="Teléfono fijo"
+            placeholder="022110000"
+            {...formik.getFieldProps('phoneNumber')}
+            touchedHelper={formik.touched.phoneNumber}
+            errorHelper={formik.errors.phoneNumber}
+          />
+          <TextInput
+            id="website"
+            type="text"
+            label="Sitio web"
+            placeholder="www.locacion.com"
+            {...formik.getFieldProps('website')}
+            touchedHelper={formik.touched.website}
+            errorHelper={formik.errors.website}
+          />
+          <TextInput
             id="phone"
             type="tel"
             label="Teléfono"

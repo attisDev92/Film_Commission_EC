@@ -22,7 +22,7 @@ const LocationCard = ({ location }: { location: LocationTypes }) => {
       }}
     >
       <div className={styles.imageContainer}>
-        <img src={location.photos?.[1]?.url} alt={location.name} />
+        <img src={location.photos?.[0]?.url} alt={location.name} />
       </div>
       <div className={styles.categoryContainer}>
         <Category category={location.category} />

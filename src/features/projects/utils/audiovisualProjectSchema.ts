@@ -12,10 +12,10 @@ import {
 } from '../../../common/utils/validations/validations'
 
 export const audiovisualProjectSchema = yup.object().shape({
-  name: validationName,
-  director: validationName,
-  producer: validationName,
-  productionCompany: validationName,
+  name: validationName.required(errorValidationMessage.required),
+  director: validationName.required(errorValidationMessage.required),
+  producer: validationName.required(errorValidationMessage.required),
+  productionCompany: validationName.required(errorValidationMessage.required),
   sinopsis: yup
     .string()
     .min(100, `${100} ${errorValidationMessage.min}`)
@@ -45,9 +45,9 @@ export const audiovisualProjectSchema = yup.object().shape({
     .min(50, `${50} ${errorValidationMessage.min}`)
     .max(150, `${300} ${errorValidationMessage.max}`)
     .required(errorValidationMessage.required),
-  email: validationEmail,
-  phone: validationCellPhone,
-  website: validationUrl,
+  email: validationEmail.required(errorValidationMessage.required),
+  phone: validationCellPhone.required(errorValidationMessage.required),
+  website: validationUrl.required(errorValidationMessage.required),
   recognitions: yup.array(),
   trailer: validationUrlVideo,
 })

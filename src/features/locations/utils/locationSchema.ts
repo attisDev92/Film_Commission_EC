@@ -6,10 +6,12 @@ import {
   errorValidationMessage,
   validationEmail,
   validationCellPhone,
+  validationUrl,
+  validationPhone,
 } from '../../../common/utils/validations/validations'
 
 export const locationSchema = yup.object().shape({
-  name: validationName,
+  name: validationName.required(errorValidationMessage.required),
   type: yup.string().oneOf(['Público', 'Privado']),
   category: yup.string().oneOf(categories),
   description: yup
@@ -40,4 +42,6 @@ export const locationSchema = yup.object().shape({
   contactName: validationName,
   email: validationEmail,
   phone: validationCellPhone,
+  phoneNumber: validationPhone,
+  website: validationUrl,
 })

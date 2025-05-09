@@ -11,7 +11,7 @@ import {
 } from '../../../common/utils/validations/validations'
 
 export const companySchema = yup.object().shape({
-  company: validationName,
+  company: validationName.required(errorValidationMessage.required),
   firstActivity: yup.string().oneOf(companyServices),
   secondActivity: yup.string().oneOf(companyServices),
   province: yup.string().oneOf(provinciaList),
@@ -31,8 +31,8 @@ export const companySchema = yup.object().shape({
     .max(1000, `${1000} ${errorValidationMessage.max}`)
     .required(errorValidationMessage.required),
   clients: yup.array(),
-  email: validationEmail,
-  phone: validationCellPhone,
+  email: validationEmail.required(errorValidationMessage.required),
+  phone: validationCellPhone.required(errorValidationMessage.required),
   website: validationUrl,
   urlVideo: validationUrlVideo,
   typeVideo: yup.string().oneOf(['YouTube', 'Vimeo']),
