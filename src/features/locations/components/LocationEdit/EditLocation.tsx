@@ -365,6 +365,22 @@ const EditLocation = () => {
                   {...formik.getFieldProps('phone')}
                 />
               </EditField>
+              <EditField
+                label="Teléfono fijo"
+                avatar={<PhoneIphoneIcon />}
+                value={formik.values.phoneNumber}
+                onSave={(newValue) =>
+                  formik.setFieldValue('phoneNumber', newValue)
+                }
+              >
+                <TextInput
+                  id="phoneNumber"
+                  label="Teléfono fijo"
+                  placeholder="Teléfono fijo"
+                  type="tel"
+                  {...formik.getFieldProps('phoneNumber')}
+                />
+              </EditField>
             </List>
             <Button type="submit" variant="contained">
               Guardar todos los cambios

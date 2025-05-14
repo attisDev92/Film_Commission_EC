@@ -14,6 +14,8 @@ import { useGetUser } from './features/users/hooks/useUser'
 import { fetchAllCompanies } from './features/companies/slices/fetchAllCompanies'
 import { fetchAllProjects } from './features/projects/slices/fetchAllProjects'
 import { fetchAllLocations } from './features/locations/slices/fetchAllLocations'
+import ScrollToTop from './common/components/ScrollToTop'
+
 const App = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>()
   const user = useGetUser()
@@ -33,6 +35,7 @@ const App = (): JSX.Element => {
 
   return (
     <div style={{ height: '100%' }}>
+      <ScrollToTop />
       <Notification />
       <Loader />
       <Routes>

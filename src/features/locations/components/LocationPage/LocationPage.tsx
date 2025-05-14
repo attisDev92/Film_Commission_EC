@@ -118,7 +118,7 @@ const LocationPage = () => {
             )}
             {location?.phoneNumber && (
               <Typography variant="body1">
-                {language.idioma === 'es' ? 'Teléfono' : 'Phone number'}:{' '}
+                {language.idioma === 'es' ? 'Teléfono' : 'Phone number'}: +593{' '}
                 {location?.phoneNumber}
               </Typography>
             )}
