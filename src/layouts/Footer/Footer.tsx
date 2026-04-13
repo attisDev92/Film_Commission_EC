@@ -110,7 +110,7 @@ const Footer: React.FC = () => {
       </div>
 
       <div className={styles.logos__org}>
-        <img src={logoICCA} />
+        <img src={logoICCA} className={styles['icca-logo']} alt="ICCA logo" />
       </div>
     </footer>
   )

@@ -64,15 +64,22 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  width: auto;
-  padding: 2rem;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  padding: 2rem 2rem 2rem 0;
   gap: 2rem;
 }
 
-.logos__org img {
-  height: 2rem;
+/* ICCA logo style */
+.icca-logo {
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  height: 4rem;
   width: auto;
   object-fit: contain;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .sections__list a {
