@@ -7,13 +7,7 @@ import {
 import styles from './AssociationsCard.module.css'
 import rightArrow from '../../../../assets/images/Icon-right-arrow.png'
 
-const AssociationsCard: React.FC<Associations> = ({
-  nombre,
-  email,
-  contacto,
-  telefono,
-  link,
-}) => {
+const AssociationsCard: React.FC<Associations> = ({ nombre, email, link }) => {
   const text: LanguageState = useLanguageSelected()
   const [visible, setVisible] = useState<boolean>(false)
   const hideWhenVisible: React.CSSProperties = {
@@ -44,12 +38,6 @@ const AssociationsCard: React.FC<Associations> = ({
           <h3>{nombre}</h3>
 
           <ul>
-            <li>
-              {text.associationsSeccion.contacttext}: {contacto}
-            </li>
-            <li>
-              {text.associationsSeccion.phonetext}: {telefono}
-            </li>
             <li>
               {text.associationsSeccion.webtext}:
               <a target="blank" href={`http://${link}`}>

@@ -2,14 +2,16 @@ import AssociationsCard from '../../features/public/components/Associations/Asso
 import VideoBanner from '../../features/public/components/VideoBanner/VideoBanner'
 import Section from '../../common/components/Section/Section'
 import Locations from '../../features/public/components/Loacation/Location'
-import DocumentList from '../../features/public/components/DocumentsList/DocumentsList'
+// import DocumentList from '../../features/public/components/DocumentsList/DocumentsList'
 import { useLanguageSelected } from '../../common/hooks/useLanguages'
 import { LanguageState } from '../../common/types/LanguageState'
 import styles from './Index.module.css'
 import Suppliers from '../../features/public/components/Suppliers/Suppliers'
-import { Fade } from 'react-awesome-reveal'
+// import { Fade } from 'react-awesome-reveal'
 import About from '../../features/public/components/About/About'
-import Incentives from '../../features/public/components/Incentives/Incentives'
+import PermissionsAccordion from '../../features/public/components/Permissions/PermissionsAccordion'
+import IncentivesAccordion from '../../features/public/components/Incentives/IncentivesAccordion'
+import SecuritySlider from '../../features/public/components/Security/SecuritySlider'
 
 const Index: React.FC = () => {
   const text: LanguageState = useLanguageSelected()
@@ -18,11 +20,27 @@ const Index: React.FC = () => {
     <>
       <VideoBanner />
 
-      <Section id="aboutEC" title="Ecuador">
+      <Section id="aboutEC" title="¿Por qué Ecuador?">
         <About />
       </Section>
 
-      <Incentives />
+      <Section id="film-commission" title={text.filmCommission.titulo}>
+        <>
+          <p>{text.filmCommission.parrafo}</p>
+          <img
+            src="src/assets/images/information/infografía2.png"
+            alt="Infografía"
+          />
+        </>
+      </Section>
+
+      <Section id="incentives" title={text.incentivesSection.titulo}>
+        <IncentivesAccordion />
+      </Section>
+
+      <Section id="permissions" title={text.permissionsSection.titulo}>
+        <PermissionsAccordion />
+      </Section>
 
       <Section id="locations" title={text.locacionSeccion.titulo}>
         <Locations />
@@ -32,7 +50,7 @@ const Index: React.FC = () => {
         <Suppliers />
       </Section>
 
-      <Section id="documents" title={text.documentosSeccion.titulo}>
+      {/* <Section id="documents" title={text.documentosSeccion.titulo}>
         <div className={styles.container__documents}>
           <p>{text.documentosSeccion.parrafo}</p>
           <ul className={styles.list__links}>
@@ -47,7 +65,7 @@ const Index: React.FC = () => {
             </Fade>
           </ul>
         </div>
-      </Section>
+      </Section> */}
 
       <Section id="associations" title={text.associationsSeccion.titulo}>
         <div className={styles.container__associations}>
@@ -55,6 +73,10 @@ const Index: React.FC = () => {
             <AssociationsCard {...association} key={association.nombre} />
           ))}
         </div>
+      </Section>
+
+      <Section id="security" title={text.securitySection.titulo}>
+        <SecuritySlider />
       </Section>
     </>
   )

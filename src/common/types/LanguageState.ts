@@ -1,3 +1,10 @@
+export interface SecuritySection {
+  titulo: string
+}
+export interface PermissionAccordionItem {
+  key: string
+  titulo: string
+}
 export interface DocumentsLink {
   nombre: string
   link: string
@@ -6,8 +13,6 @@ export interface DocumentsLink {
 export interface Associations {
   nombre: string
   email: string
-  contacto: string
-  telefono: string
   link: string
 }
 
@@ -44,6 +49,10 @@ export interface LanguageState {
     projects: string
     registerProject: string
   }
+  incentivesSection: {
+    titulo: string
+    incentives: []
+  }
   logo: {
     textoAlternativo: string
   }
@@ -56,6 +65,10 @@ export interface LanguageState {
     button: string
   }
   aboutEcuador: AboutEcuador[]
+  filmCommission: {
+    titulo: string
+    parrafo: string
+  }
   suppliersSection: Suppliers
   documentosSeccion: {
     titulo: string
@@ -88,4 +101,14 @@ export interface LanguageState {
     clients: string
     website: string
   }
+  permissionsSection: {
+    titulo: string
+    permissions: PermissionAccordionItem[]
+  }
+  securitySection: SecuritySection
+}
+
+export interface Incentive {
+  key: string
+  titulo: string
 }

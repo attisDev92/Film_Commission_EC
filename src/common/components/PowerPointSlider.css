@@ -1,0 +1,52 @@
+.ppt-slider-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  padding: 16px 0 8px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ppt-slider-viewer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ppt-slider-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+.ppt-slider-controls button {
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.ppt-slider-controls button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+.ppt-slider-controls span {
+  font-size: 1rem;
+  color: #333;
+}
+@media (max-width: 600px) {
+  .ppt-slider-container {
+    padding: 8px 0 4px 0;
+  }
+  .ppt-slider-controls {
+    gap: 8px;
+  }
+}

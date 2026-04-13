@@ -15,6 +15,7 @@ import img8 from '../../../../assets/images/locations/30ExAeropuertodeUIO.jpg'
 import img9 from '../../../../assets/images/locations/50Quilotoa.jpg'
 import img10 from '../../../../assets/images/locations/85Seleccion2Cuenca.jpg'
 import { Fade } from 'react-awesome-reveal'
+import ImageSlider from '../../../../common/components/ImageSlider'
 
 const locationsCarousel: CarouselItemProps[] = [
   {
@@ -84,6 +85,24 @@ const Locations: React.FC = () => {
             </>
           ))}
         </Fade>
+      </div>
+
+      {/* Slider de locaciones tipo presentación */}
+      <div style={{ margin: '2rem 0' }}>
+        <ImageSlider
+          images={[
+            '/images/information/Locaciones/page1.png',
+            '/images/information/Locaciones/page2.png',
+            '/images/information/Locaciones/page3.png',
+            '/images/information/Locaciones/page4.png',
+            '/images/information/Locaciones/page5.png',
+            '/images/information/Locaciones/page6.png',
+            '/images/information/Locaciones/page7.png',
+            '/images/information/Locaciones/page8.png',
+            '/images/information/Locaciones/page9.png',
+            '/images/information/Locaciones/page10.png',
+          ]}
+        />
       </div>
 
       <div className={styles.carousel__container}>

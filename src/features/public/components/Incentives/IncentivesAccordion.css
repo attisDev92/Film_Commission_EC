@@ -1,0 +1,57 @@
+.accordion-incentive-item {
+  margin-bottom: 20px;
+}
+
+.accordion-incentive-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color-bg, #181919);
+  color: var(--color-text, #fff);
+  border: 1px solid var(--color-primary, #6c38cc);
+  border-radius: 10px;
+  font-family: var(--font-family, 'Helvetica Neue', Arial, sans-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 1.1rem 1.5rem;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border 0.2s;
+  outline: none;
+  box-shadow: none;
+}
+
+.accordion-incentive-btn.open {
+  background: var(--color-primary, #6c38cc);
+  color: #fff;
+}
+
+.accordion-incentive-title {
+  flex: 1;
+  text-align: left;
+}
+
+.accordion-incentive-arrow {
+  margin-left: 1rem;
+  font-size: 1.1em;
+}
+
+.accordion-incentive-panel {
+  background: var(--color-bg, #181919);
+  border-radius: 0 0 10px 10px;
+  border-top: none;
+  margin-top: 0;
+  padding: 1.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .accordion-incentive-btn {
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+  }
+  .accordion-incentive-panel {
+    padding: 1rem 0.2rem 0.2rem 0.2rem;
+  }
+}

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { LanguageState } from '../../common/types/LanguageState'
 import logoFilmCommision from '../../assets/images/filmcomissionEC_blanco.svg'
-import logoIFCI from '../../assets/images/IFCI_logo_blanco.svg'
-import logoMCYP from '../../assets/images/MCYP_logo_blanco.svg'
+import logoICCA from '../../assets/images/logo icca.png'
 import styles from './Footer.module.css'
 import { useLanguageSelected } from '../../common/hooks/useLanguages'
 
@@ -37,7 +36,6 @@ const Footer: React.FC = () => {
       <div className={styles.container__footer}>
         <ul className={styles.sections__list}>
           <p>{text.idioma === 'esp' ? 'Secciones' : 'Sections'}</p>
-
           <li>
             <a href="/#locations">{text.menu.locations}</a>
           </li>
@@ -61,21 +59,42 @@ const Footer: React.FC = () => {
           </li>
         </ul>
 
-        <div className={styles.contact__info}>
-          <p>{text.contactoInfo.telf}: +593 2-393-1250</p>
-          <p>
-            {text.contactoInfo.direccion}: Av. Atahualpa OE1-109 y Av. 10 de
-            agosto
-          </p>
-          <p>Quito - Ecuador</p>
-          <p>
-            Soperte:{' '}
-            {
-              <a href="mailto:audiovisuales.ifci@creatividad.gob.ec">
-                audiovisuales.ifci@creatividad.gob.ec
+        <div>
+          <ul>
+            <p>Ecuador Film Commission (gestionada por el ICCA)</p>
+            <li>
+              {' '}
+              Sitio web:{' '}
+              <a href="https://ecuadorfilmcommission.com/">
+                https://ecuadorfilmcommission.com/
               </a>
-            }
-          </p>
+            </li>
+            <li>
+              Correo electrónico:{' '}
+              <a href="mailto:info@ecuadorfilmcommission.com">
+                info@ecuadorfilmcommission.com
+              </a>
+            </li>
+          </ul>
+          <hr />
+          <ul>
+            <p>Instituto de Fomento a la Creatividad y la Innovación - ICCA</p>
+            <li>Dirección: Av. Colón E5-34 y Juan León Mera</li>
+            <li>Código Postal: 170524</li>
+            <li>Quito - Ecuador</li>
+            <li>
+              Sitio web:{' '}
+              <a href="https://www.cineyaudiovisual.gob.ec/">
+                https://www.cineyaudiovisual.gob.ec/
+              </a>
+            </li>
+            <li>
+              Correo electrónico:{' '}
+              <a href="mailto:servicios@cineyaudiovisual.gob.ec">
+                servicios@cineyaudiovisual.gob.ec
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
 
@@ -91,8 +110,7 @@ const Footer: React.FC = () => {
       </div>
 
       <div className={styles.logos__org}>
-        <img src={logoIFCI} />
-        <img src={logoMCYP} />
+        <img src={logoICCA} />
       </div>
     </footer>
   )

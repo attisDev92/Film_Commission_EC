@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react'
 import { LocationTypes } from '../../types/LocationTypes'
 import BackgroundAnimateLines from '../../../../common/components/BackgroundLinesAnimate/BackgroundAnimateLines'
 import { Typography } from '@mui/material'
-import { Button } from '@mui/material'
 
 const LocationGallery = () => {
   const { locations, loading, error } = useLocations()
@@ -24,14 +23,7 @@ const LocationGallery = () => {
     return (
       <div className={styles.locationGallery}>
         <div className={styles.errorContainer}>
-          <Typography variant="h6">Error al cargar las locaciones</Typography>
-          <Button
-            variant="contained"
-            color="error"
-            onClick={() => window.location.reload()}
-          >
-            Reintentar
-          </Button>
+          <Typography variant="h6">Loading Locations</Typography>
         </div>
       </div>
     )

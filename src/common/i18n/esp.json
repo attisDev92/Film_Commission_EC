@@ -24,7 +24,7 @@
   },
   "locacionSeccion": {
     "titulo": "Locación",
-    "parrafo": "Ecuador es uno de los lugares con mayor biodiversidad del planeta, con paisajes que van desde la alta montaña hasta el bosque tropical.<br>Los Andes, el Amazonas y las Islas Galápagos son todos parte de Ecuador. Estas locaciones tan diversas están muy cerca unas de otras y tienen excelentes y constantes condiciones climáticas, durante todo el año. El Ecuador tiene una arquitectura muy rica y variada, que recuerda a distintas y pasadas épocas.<br>Contamos con 21 aeropuertos operativos en el país, 3 de ellos, internacionales.",
+    "parrafo": "Los paisajes de Ecuador, sus sitios declarados patrimonio por la UNESCO y su biodiversidad extraordinaria ofrecen una amplia gama de posibilidades narrativas con desplazamientos mínimos.",
     "button": "Ver más locaciones"
   },
   "documentosSeccion": {
@@ -54,60 +54,42 @@
     ]
   },
   "associationsSeccion": {
-    "titulo": "Asociaciones y gremios",
+    "titulo": "Asociaciones Profesionales Locales",
     "mailtext": "e-mail",
     "contacttext": "Contacto",
     "phonetext": "Teléfono",
     "webtext": "Página web",
     "associations": [
       {
-        "nombre": "Asociación de productores - COPAE",
-        "email": "copae@gmail.com",
-        "contacto": "Mariana Andrade",
-        "telefono": "+593 99-973-3887",
-        "link": "www.copae.ec"
-      },
-      {
-        "nombre": "Asociación de productoras - APAE",
+        "nombre": "Asociación de Productores Audiovisuales del Ecuador (APAE)",
         "email": "info@apae.ec",
-        "contacto": "Nhora Salgado",
-        "telefono": "+593 991373625",
-        "link": "filminecuador.com"
+        "telefono": "+593 99-973-3887",
+        "link": " https://apae.ec/"
       },
       {
-        "nombre": "Asociación de técnicos - AETC",
-        "email": "aetccomunicacion@gmail.com",
-        "contacto": "",
-        "telefono": "",
-        "link": ""
+        "nombre": "Corporación de Productores Audiovisuales del Ecuador (COPAE)",
+        "email": "copae.ecuador@gmail.com",
+        "link": "https://www.copae.ec/incentivos.html"
       },
       {
-        "nombre": "Asociación de documentalistas - ADEC",
+        "nombre": "Asociación de Documentalistas del Ecuador (ADEC)",
         "email": "adececuador@gmail.com",
-        "contacto": "Marcela Camacho",
-        "telefono": "0984374307",
         "link": "https://www.adececuador.org/"
       },
       {
-        "nombre": "Asociación de actores y actrices - UNIACTORES",
-        "email": "afiliadosuniactores@gmail.com",
-        "contacto": "Alex Altamirano",
-        "telefono": "+593 994221100",
-        "link": "https://www.instagram.com/uniactores_ec?igsh=bGU0eXd2ZzNvZjY0"
+        "nombre": "Asociación Ecuatoriana de Técnicos Cinematográficos (AETC)",
+        "email": "comunicacion@aetcecuador.com",
+        "link": "https://aetcecuador.com/"
       },
       {
-        "nombre": "Asociación de directores y directoras - ADG",
-        "email": "adgecuadorcine@gmail.com",
-        "contacto": "",
-        "telefono": "",
-        "link": "https://www.facebook.com/ADGECUADOR"
+        "nombre": "Uniarte",
+        "email": "",
+        "link": "https://uniarte-ec.org"
       },
       {
-        "nombre": "Trabajadores audiovisuales del Ecuador - TAE",
-        "email": "trabajadoresaudiovisualesec@gmail.com",
-        "contacto": "Gabriela Jaramillo",
-        "telefono": "+593 999004024",
-        "link": "https://www.facebook.com/share/g52efzhCVSFUG51q/?mibextid=LQQJ4d"
+        "nombre": "Asociación de Productores Audiovisuales Kichwas (APAK)",
+        "email": "",
+        "link": "https://apak.tv/asociacion/"
       }
     ]
   },
@@ -161,5 +143,39 @@
       "title": "Cultura cálida y acogedora",
       "text": "Los ecuatorianos son conocidos por su hospitalidad y disposición para colaborar, asegurando una experiencia de filmación fluida y agradable."
     }
-  ]
+  ],
+  "filmCommission": {
+    "titulo": "Ecuador Film Commission",
+    "parrafo": "La Comisión Fílmica , gestionada por el Instituto de Cine y Creación Audiovisual (ICCA), es el enlace oficial para producciones internacionales en Ecuador. Brindamos información y asesoría técnica, garantizando un proceso de rodaje ágil y eficiente."
+  },
+  "incentivesSection": {
+    "titulo": "Incentivos financieros",
+    "incentives": [
+      {
+        "key": "cia",
+        "titulo": "Certificado de Inversión Audiovisual 37% (CIA)"
+      },
+      { "key": "iva0", "titulo": "IVA 0%" },
+      { "key": "devolucion50", "titulo": "Devolución del 50% del IVA" },
+      {
+        "key": "deducibilidad150",
+        "titulo": "Deducibilidad del 150% (patrocinio cultural)"
+      }
+    ]
+  },
+  "permissionsSection": {
+    "titulo": "Ingresos y permisos",
+    "permissions": [
+      { "key": "filmacion", "titulo": "Permisos de filmación" },
+      {
+        "key": "migracion",
+        "titulo": "Migración: Visas de Equipo y Autorizaciones de Permanencia"
+      },
+      { "key": "equipos", "titulo": "Ingreso de equipos" },
+      { "key": "drones", "titulo": "Operación de Drones en Ecuador" }
+    ]
+  },
+  "securitySection": {
+    "titulo": "Seguridad, Protección y Respuesta a Emergencias"
+  }
 }
