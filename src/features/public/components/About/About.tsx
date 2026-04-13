@@ -12,7 +12,7 @@ const About = () => {
       </p>
       <img
         style={{ maxWidth: '90%', margin: 'auto' }}
-        src="public/images/information/infografia1.png"
+        src="/images/information/infografia1.png"
         alt="Infografía"
       />
       <ImageSlider

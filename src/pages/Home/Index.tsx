@@ -24,7 +24,7 @@ const Index: React.FC = () => {
         {text.logline}
       </h1>
 
-      <Section id="aboutEC" title="¿Por qué Ecuador?">
+      <Section id="aboutEC" title={text.question}>
         <About />
       </Section>
 
@@ -35,7 +35,7 @@ const Index: React.FC = () => {
           </p>
           <img
             style={{ maxWidth: '90%', margin: '2rem auto' }}
-            src="../../../public/images/information/infografia2.png"
+            src="/images/information/infografia2.png"
             alt="Infografía"
           />
         </>

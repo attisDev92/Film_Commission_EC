@@ -32,6 +32,7 @@ export interface AboutEcuador {
 export interface LanguageState {
   logline: string
   principalDescription: string
+  question: string
   titulo: string
   idioma: string
   menu: {
