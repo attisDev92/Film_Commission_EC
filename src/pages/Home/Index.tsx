@@ -20,15 +20,22 @@ const Index: React.FC = () => {
     <>
       <VideoBanner />
 
+      <h1 style={{ paddingBlock: '10rem 0', textAlign: 'center' }}>
+        {text.logline}
+      </h1>
+
       <Section id="aboutEC" title="¿Por qué Ecuador?">
         <About />
       </Section>
 
       <Section id="film-commission" title={text.filmCommission.titulo}>
         <>
-          <p>{text.filmCommission.parrafo}</p>
+          <p style={{ margin: '2rem 5rem', display: 'block' }}>
+            {text.filmCommission.parrafo}
+          </p>
           <img
-            src="src/assets/images/information/infografía2.png"
+            style={{ maxWidth: '90%', margin: '2rem auto' }}
+            src="../../../public/images/information/infografia2.png"
             alt="Infografía"
           />
         </>

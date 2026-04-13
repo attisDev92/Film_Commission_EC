@@ -1,10 +1,18 @@
 import ImageSlider from '../../../../common/components/ImageSlider'
+import { LanguageState } from '../../../../common/types/LanguageState'
+import { useLanguageSelected } from '../../../../common/hooks/useLanguages'
 
 const About = () => {
+  const text: LanguageState = useLanguageSelected()
+
   return (
     <>
+      <p style={{ padding: '2rem 5rem', display: 'block' }}>
+        {text.principalDescription}
+      </p>
       <img
-        src="src/assets/images/information/infografia1.png"
+        style={{ maxWidth: '90%', margin: 'auto' }}
+        src="public/images/information/infografia1.png"
         alt="Infografía"
       />
       <ImageSlider

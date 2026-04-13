@@ -4,9 +4,6 @@ const securityImages = [
   '/images/information/Seguridad/page1.png',
   '/images/information/Seguridad/page2.png',
   '/images/information/Seguridad/page3.png',
-  '/images/information/Seguridad/page4.png',
-  '/images/information/Seguridad/page5.png',
-  '/images/information/Seguridad/page6.png',
 ]
 
 const SecuritySlider = () => (

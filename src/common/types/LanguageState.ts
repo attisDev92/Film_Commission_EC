@@ -30,6 +30,8 @@ export interface AboutEcuador {
 }
 
 export interface LanguageState {
+  logline: string
+  principalDescription: string
   titulo: string
   idioma: string
   menu: {

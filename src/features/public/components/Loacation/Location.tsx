@@ -95,12 +95,10 @@ const Locations: React.FC = () => {
             '/images/information/Locaciones/page2.png',
             '/images/information/Locaciones/page3.png',
             '/images/information/Locaciones/page4.png',
-            '/images/information/Locaciones/page5.png',
-            '/images/information/Locaciones/page6.png',
-            '/images/information/Locaciones/page7.png',
-            '/images/information/Locaciones/page8.png',
-            '/images/information/Locaciones/page9.png',
-            '/images/information/Locaciones/page10.png',
+            {
+              src: '/images/information/Locaciones/page5.png',
+              link: 'https://www.gob.ec/mae/tramites/emision-autorizacion-producciones-audiovisuales-caracter-comercial-informativo-educativo-documental-televisivo-areas-protegidas-subsistema-estatal',
+            },
           ]}
         />
       </div>

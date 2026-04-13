@@ -1,0 +1,14 @@
+/* Responsive padding y centrado para el acordeón de permisos */
+.permissions-accordion-responsive {
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 600px) {
+  .permissions-accordion-responsive {
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+}

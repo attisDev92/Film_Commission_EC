@@ -3,10 +3,22 @@
   gap: 1rem;
   cursor: pointer;
   width: 100%;
-  padding: 2rem 3rem;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   border-radius: 7px;
   background-color: rgba(0, 0, 0, 0.451);
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 600px) {
+  .image_accordion {
+    padding-left: 3%;
+    padding-right: 3%;
+  }
 }
 
 .image_accordion_item {

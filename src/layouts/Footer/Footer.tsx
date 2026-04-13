@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { LanguageState } from '../../common/types/LanguageState'
 import logoFilmCommision from '../../assets/images/filmcomissionEC_blanco.svg'
-import logoICCA from '../../assets/images/logo icca.png'
+import logoICCA from '../../assets/images/logo_icca.png'
 import styles from './Footer.module.css'
 import { useLanguageSelected } from '../../common/hooks/useLanguages'
 
