@@ -1,3 +1,8 @@
+.container:not(.container__video) {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
 .container__documents {
   text-align: justify;
   margin: 2rem 2rem;

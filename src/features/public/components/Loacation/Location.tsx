@@ -74,6 +74,29 @@ const Locations: React.FC = () => {
 
   const paragraph: string[] = text.locacionSeccion.parrafo.split('<br>')
 
+  const images =
+    text.idioma === 'esp'
+      ? [
+          '/images/information/es/Locaciones/page1.png',
+          '/images/information/es/Locaciones/page2.png',
+          '/images/information/es/Locaciones/page3.png',
+          '/images/information/es/Locaciones/page4.png',
+          {
+            src: '/images/information/es/Locaciones/page5.png',
+            link: 'https://www.gob.ec/mae/tramites/emision-autorizacion-producciones-audiovisuales-caracter-comercial-informativo-educativo-documental-televisivo-areas-protegidas-subsistema-estatal',
+          },
+        ]
+      : [
+          '/images/information/en/Locations/page1.png',
+          '/images/information/en/Locations/page2.png',
+          '/images/information/en/Locations/page3.png',
+          '/images/information/en/Locations/page4.png',
+          {
+            src: '/images/information/en/Locations/page5.png',
+            link: 'https://www.gob.ec/mae/tramites/emision-autorizacion-producciones-audiovisuales-caracter-comercial-informativo-educativo-documental-televisivo-areas-protegidas-subsistema-estatal',
+          },
+        ]
+
   return (
     <>
       <div className={styles.locations}>
@@ -89,18 +112,7 @@ const Locations: React.FC = () => {
 
       {/* Slider de locaciones tipo presentación */}
       <div style={{ margin: '2rem 0' }}>
-        <ImageSlider
-          images={[
-            '/images/information/Locaciones/page1.png',
-            '/images/information/Locaciones/page2.png',
-            '/images/information/Locaciones/page3.png',
-            '/images/information/Locaciones/page4.png',
-            {
-              src: '/images/information/Locaciones/page5.png',
-              link: 'https://www.gob.ec/mae/tramites/emision-autorizacion-producciones-audiovisuales-caracter-comercial-informativo-educativo-documental-televisivo-areas-protegidas-subsistema-estatal',
-            },
-          ]}
-        />
+        <ImageSlider images={images} />
       </div>
 
       <div className={styles.carousel__container}>

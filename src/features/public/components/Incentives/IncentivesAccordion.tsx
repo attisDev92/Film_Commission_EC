@@ -9,50 +9,78 @@ import {
   Incentive,
 } from '../../../../common/types/LanguageState'
 
-const incentivesImages: Record<string, IncentiveImage[]> = {
-  cia: [
-    '/images/information/Certificado de inversión audiovisual/page1.png',
-    '/images/information/Certificado de inversión audiovisual/page2.png',
-    '/images/information/Certificado de inversión audiovisual/page3.png',
-    '/images/information/Certificado de inversión audiovisual/page4.png',
-    '/images/information/Certificado de inversión audiovisual/page5.png',
-    '/images/information/Certificado de inversión audiovisual/page6.png',
-    {
-      src: '/images/information/Certificado de inversión audiovisual/page7.png',
-      link: 'https://siic.culturaypatrimonio.gob.ec/certificados-de-inversion-audiovisual/',
-    },
-    '/images/information/Certificado de inversión audiovisual/page8.png',
-    '/images/information/Certificado de inversión audiovisual/page9.png',
-    '/images/information/Certificado de inversión audiovisual/page10.png',
-    '/images/information/Certificado de inversión audiovisual/page11.png',
-    '/images/information/Certificado de inversión audiovisual/page12.png',
-  ],
-  deducibilidad150: [
-    '/images/information/deducibilidad 150/page1.png',
-    {
-      src: '/images/information/deducibilidad 150/page2.png',
-      link: 'https://150.culturaypatrimonio.gob.ec/',
-    },
-  ],
-  devolucion50: [
-    '/images/information/Devolucion 50/page1.png',
-    {
-      src: '/images/information/Devolucion 50/page2.png',
-      link: 'https://www.sri.gob.ec/devolucion-del-iva-pagado-por-sociedades-en-actividades-de-producciones-audiovisuales',
-    },
-  ],
-  iva0: [
-    '/images/information/IVA 0/page1.png',
-    {
-      src: '/images/information/IVA 0/page2.png',
-      link: 'https://www.sri.gob.ec/servicios-artisticos-y-culturales',
-    },
-  ],
-}
-
 const IncentivesAccordion = () => {
   const text: LanguageState = useLanguageSelected()
   const [open, setOpen] = useState<string | null>(null)
+
+  const incentivesImages: Record<string, IncentiveImage[]> =
+    text.idioma === 'esp'
+      ? {
+          cia: [
+            '/images/information/es/Certificado de inversion audiovisual/page1.png',
+            '/images/information/es/Certificado de inversion audiovisual/page2.png',
+            '/images/information/es/Certificado de inversion audiovisual/page3.png',
+            '/images/information/es/Certificado de inversion audiovisual/page4.png',
+            '/images/information/es/Certificado de inversion audiovisual/page5.png',
+            '/images/information/es/Certificado de inversion audiovisual/page6.png',
+            '/images/information/es/Certificado de inversion audiovisual/page7.png',
+            '/images/information/es/Certificado de inversion audiovisual/page8.png',
+          ],
+          deducibilidad150: [
+            '/images/information/es/deducibilidad 150/page1.png',
+            {
+              src: '/images/information/es/deducibilidad 150/page2.png',
+              link: 'https://150.culturaypatrimonio.gob.ec/',
+            },
+          ],
+          devolucion50: [
+            '/images/information/es/Devolucion 50/page1.png',
+            {
+              src: '/images/information/es/Devolucion 50/page2.png',
+              link: 'https://www.sri.gob.ec/devolucion-del-iva-pagado-por-sociedades-en-actividades-de-producciones-audiovisuales',
+            },
+          ],
+          iva0: [
+            '/images/information/es/IVA 0/page1.png',
+            {
+              src: '/images/information/es/IVA 0/page2.png',
+              link: 'https://www.sri.gob.ec/servicios-artisticos-y-culturales',
+            },
+          ],
+        }
+      : {
+          cia: [
+            '/images/information/en/Certificado de inversion audiovisual/page1.png',
+            '/images/information/en/Certificado de inversion audiovisual/page2.png',
+            '/images/information/en/Certificado de inversion audiovisual/page3.png',
+            '/images/information/en/Certificado de inversion audiovisual/page4.png',
+            '/images/information/en/Certificado de inversion audiovisual/page5.png',
+            '/images/information/en/Certificado de inversion audiovisual/page6.png',
+            '/images/information/en/Certificado de inversion audiovisual/page7.png',
+            '/images/information/en/Certificado de inversion audiovisual/page8.png',
+          ],
+          deducibilidad150: [
+            '/images/information/en/deducibilidad 150/page1.png',
+            {
+              src: '/images/information/en/deducibilidad 150/page2.png',
+              link: 'https://150.culturaypatrimonio.gob.ec/',
+            },
+          ],
+          devolucion50: [
+            '/images/information/en/Devolucion 50/page1.png',
+            {
+              src: '/images/information/en/Devolucion 50/page2.png',
+              link: 'https://www.sri.gob.ec/devolucion-del-iva-pagado-por-sociedades-en-actividades-de-producciones-audiovisuales',
+            },
+          ],
+          iva0: [
+            '/images/information/en/IVA 0/page1.png',
+            {
+              src: '/images/information/en/IVA 0/page2.png',
+              link: 'https://www.sri.gob.ec/servicios-artisticos-y-culturales',
+            },
+          ],
+        }
 
   return (
     <div className="accordion-responsive">

@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/swiper-bundle.css'
 import { Navigation } from 'swiper/modules'
+import { useLanguageSelected } from '../hooks/useLanguages'
 
 type ImageSlide = string | { src: string; link?: string }
 
@@ -14,41 +15,51 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   images,
   style,
   className,
-}) => (
-  <div className={className} style={style}>
-    <Swiper navigation modules={[Navigation]}>
-      {images.map((img, idx) => {
-        const slide = typeof img === 'string' ? { src: img } : img
-        const content = (
-          <img
-            src={slide.src}
-            alt={`Página ${idx + 1}`}
-            style={{
-              width: '100%',
-              borderRadius: 8,
-              cursor: slide.link ? 'pointer' : undefined,
-            }}
-          />
-        )
-        return (
-          <SwiperSlide key={idx}>
-            {slide.link ? (
-              <a
-                href={slide.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ display: 'block' }}
-              >
-                {content}
-              </a>
-            ) : (
-              content
-            )}
-          </SwiperSlide>
-        )
-      })}
-    </Swiper>
-  </div>
-)
+}) => {
+  const text = useLanguageSelected()
+  const safeImages = images || []
+
+  return (
+    <div key={text.idioma} className={className} style={style}>
+      <Swiper
+        navigation
+        modules={[Navigation]}
+        observer={true}
+        observeParents={true}
+      >
+        {safeImages.map((img, idx) => {
+          const slide = typeof img === 'string' ? { src: img } : img
+          const content = (
+            <img
+              src={slide.src}
+              alt={`Página ${idx + 1}`}
+              style={{
+                width: '100%',
+                borderRadius: 8,
+                cursor: slide.link ? 'pointer' : undefined,
+              }}
+            />
+          )
+          return (
+            <SwiperSlide key={`${text.idioma}-${idx}`}>
+              {slide.link ? (
+                <a
+                  href={slide.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: 'block' }}
+                >
+                  {content}
+                </a>
+              ) : (
+                content
+              )}
+            </SwiperSlide>
+          )
+        })}
+      </Swiper>
+    </div>
+  )
+}
 
 export default ImageSlider

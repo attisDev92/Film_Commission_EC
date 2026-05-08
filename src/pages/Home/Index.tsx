@@ -19,45 +19,49 @@ const Index: React.FC = () => {
   return (
     <>
       <VideoBanner />
+      <div className={styles.container}>
+        <h1 style={{ paddingBlock: '10rem 0', textAlign: 'center' }}>
+          {text.logline}
+        </h1>
 
-      <h1 style={{ paddingBlock: '10rem 0', textAlign: 'center' }}>
-        {text.logline}
-      </h1>
+        <Section id="aboutEC" title={text.question}>
+          <About />
+        </Section>
 
-      <Section id="aboutEC" title={text.question}>
-        <About />
-      </Section>
+        <Section id="film-commission" title={text.filmCommission.titulo}>
+          <>
+            <p style={{ margin: '2rem 5rem', display: 'block' }}>
+              {text.filmCommission.parrafo}
+            </p>
+            <img
+              style={{ maxWidth: '90%', margin: '2rem auto' }}
+              src={
+                text.idioma === 'esp'
+                  ? '/images/information/es/infografia2.png'
+                  : '/images/information/en/infografia2.png'
+              }
+              alt="Infografía"
+            />
+          </>
+        </Section>
 
-      <Section id="film-commission" title={text.filmCommission.titulo}>
-        <>
-          <p style={{ margin: '2rem 5rem', display: 'block' }}>
-            {text.filmCommission.parrafo}
-          </p>
-          <img
-            style={{ maxWidth: '90%', margin: '2rem auto' }}
-            src="/images/information/infografia2.png"
-            alt="Infografía"
-          />
-        </>
-      </Section>
+        <Section id="incentives" title={text.incentivesSection.titulo}>
+          <IncentivesAccordion />
+        </Section>
 
-      <Section id="incentives" title={text.incentivesSection.titulo}>
-        <IncentivesAccordion />
-      </Section>
+        <Section id="permissions" title={text.permissionsSection.titulo}>
+          <PermissionsAccordion />
+        </Section>
 
-      <Section id="permissions" title={text.permissionsSection.titulo}>
-        <PermissionsAccordion />
-      </Section>
+        <Section id="locations" title={text.locacionSeccion.titulo}>
+          <Locations />
+        </Section>
 
-      <Section id="locations" title={text.locacionSeccion.titulo}>
-        <Locations />
-      </Section>
+        <Section id="suppliers" title={text.suppliersSection.titulo}>
+          <Suppliers />
+        </Section>
 
-      <Section id="suppliers" title={text.suppliersSection.titulo}>
-        <Suppliers />
-      </Section>
-
-      {/* <Section id="documents" title={text.documentosSeccion.titulo}>
+        {/* <Section id="documents" title={text.documentosSeccion.titulo}>
         <div className={styles.container__documents}>
           <p>{text.documentosSeccion.parrafo}</p>
           <ul className={styles.list__links}>
@@ -74,17 +78,18 @@ const Index: React.FC = () => {
         </div>
       </Section> */}
 
-      <Section id="associations" title={text.associationsSeccion.titulo}>
-        <div className={styles.container__associations}>
-          {text.associationsSeccion.associations.map((association) => (
-            <AssociationsCard {...association} key={association.nombre} />
-          ))}
-        </div>
-      </Section>
+        <Section id="associations" title={text.associationsSeccion.titulo}>
+          <div className={styles.container__associations}>
+            {text.associationsSeccion.associations.map((association) => (
+              <AssociationsCard {...association} key={association.nombre} />
+            ))}
+          </div>
+        </Section>
 
-      <Section id="security" title={text.securitySection.titulo}>
-        <SecuritySlider />
-      </Section>
+        <Section id="security" title={text.securitySection.titulo}>
+          <SecuritySlider />
+        </Section>
+      </div>
     </>
   )
 }
